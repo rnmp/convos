@@ -15,8 +15,9 @@
   <%= @convo.votes %> points</a> |
   <%= link_to 'upvote', upvote_convo_path %></a> |
   <%= link_to 'downvote', downvote_convo_path %></a> |
-  posted <%= time_ago_in_words @convo.created_at %>
+  <%= time_ago_in_words @convo.created_at %> ago
   by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
+  <% if @convo.topic_id? %>in <%= link_to @convo.topic.name, topic_path(@convo.topic) %><% end %>
 </p>
 
 <section class="comments">

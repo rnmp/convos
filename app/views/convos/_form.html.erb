@@ -27,6 +27,10 @@
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
   </div>
+  <div class="field">
+    <%= f.label :topic %><br>
+    <%= f.collection_select(:topic_id, Topic.all, :id, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

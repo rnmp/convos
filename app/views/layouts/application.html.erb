@@ -23,22 +23,9 @@
 			<section>
 			  <h1>browse by topic</h1>
 			  <p class="topics">
-				<a href="#">#art</a>
-				<a href="#">#design</a>
-				<a href="#">#technology</a>
-				<a href="#">#science</a>
-				<a href="#">#health</a>
-				<a href="#">#politics</a>
-				<a href="#">#food</a>
-				<a href="#">#restaurants</a>
-				<a href="#">#football</a>
-				<a href="#">#soccer</a>
-				<a href="#">#sdfsdf</a>
-				<a href="#">#sdfsdf</a>
-				<a href="#">#sdfsdf</a>
-				<a href="#">#sdfsdf</a>
-				<a href="#">#sdfsdf</a>
-				<a href="#">#sdfsdf</a>
+			 	<% topics_list.each do |topic| %>
+			 		<%= link_to "##{topic.name}", topic_path(topic) %>
+			 	<% end %>
 			  </p>
 			</section>
 			<section>

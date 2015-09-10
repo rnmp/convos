@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h2>most popular</h2>
-    <% @convos.each do |convo| %>
+<h2>most popular (#<%= @topic.name %>)</h2>
+    <% @topic.convos.each do |convo| %>
       <article class="convo">
           <h1>
             <% if convo.url? %>
