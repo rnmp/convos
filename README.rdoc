@@ -6,4 +6,4 @@
 
 == Content creation
 
-Go to [http://localhost:3000/topics](http://localhost:3000/topics) to create new topics. You should then be able to create new convos and select a topic.
+Go to http://localhost:3000/topics to create new topics. You should then be able to create new convos and select a topic.
