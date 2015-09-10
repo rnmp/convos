@@ -11,7 +11,7 @@ class ConvosController < ApplicationController
   # GET /convos/1.json
   def show
     @comments = @convo.comments.all
-    @comment = @convo.comments.build
+    @comment = Comment.new(convo: @convo)
   end
 
   # GET /convos/new
@@ -21,6 +21,26 @@ class ConvosController < ApplicationController
 
   # GET /convos/1/edit
   def edit
+  end
+
+  def upvote
+    set_convo
+    if @convo.votes == nil
+      @convo.votes = 0
+    end
+    @convo.votes = @convo.votes+1
+    @convo.save
+    redirect_to :back
+  end
+
+  def downvote
+    set_convo
+    if @convo.votes == nil
+      @convo.votes = 0
+    end
+    @convo.votes = @convo.votes-1
+    @convo.save
+    redirect_to :back
   end
 
   # POST /convos

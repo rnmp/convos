@@ -12,8 +12,8 @@
           </h1>
           <p class="metadata">
             <%= link_to "#{convo.votes} points", convo %> |
-            <a href="#">upvote</a> |
-            <a href="#">downvote</a> |
+            <%= link_to 'upvote', upvote_convo_path(convo) %></a> |
+            <%= link_to 'downvote', downvote_convo_path(convo) %></a> |
             <%= link_to "#{convo.comments.count} #{'comment'.pluralize(convo.comments.count)}", convo %> |
             posted <%= link_to (time_ago_in_words convo.created_at), convo %>
             by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>

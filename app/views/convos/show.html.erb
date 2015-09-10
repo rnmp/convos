@@ -13,8 +13,8 @@
 <% end %>
 <p class="metadata">
   <%= @convo.votes %> points</a> |
-  <a href="#">upvote</a> |
-  <a href="#">downvote</a> |
+  <%= link_to 'upvote', upvote_convo_path %></a> |
+  <%= link_to 'downvote', downvote_convo_path %></a> |
   posted <%= time_ago_in_words @convo.created_at %>
   by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
 </p>
@@ -27,10 +27,10 @@
       <article class="convo">
         <div class="user-content"><%= comment.comment %></div>
         <p class="metadata">
-          <a href="#"><%= comment.votes %> points</a> |
+          <%= comment.votes %> points |
           <a href="#">upvote</a> |
           <a href="#">downvote</a> |
-          posted <%= comment.created_at %> |
+          posted <%= time_ago_in_words comment.created_at %>
           by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
         </p>
       </article>
