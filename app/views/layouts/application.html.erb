@@ -1,14 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Convos</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>convos.org</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="wrapper">
 
-<%= yield %>
+		  <nav class="site-nav group">
+			<%= link_to 'convos.org', root_path, class: 'logo' %>
+			<ul class="convos-menu">
+			  <li><%= link_to 'most popular', convos_path, class: 'active' %></li>
+			  <li><a href="#">most recent</a></li>
+			</ul>
+			<div class="sidebar">
+				<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>
+			</div>
+		  </nav>
+		  <aside class="sidebar">
+			<section>
+			  <h1>browse by topic</h1>
+			  <p class="topics">
+				<a href="#">#art</a>
+				<a href="#">#design</a>
+				<a href="#">#technology</a>
+				<a href="#">#science</a>
+				<a href="#">#health</a>
+				<a href="#">#politics</a>
+				<a href="#">#food</a>
+				<a href="#">#restaurants</a>
+				<a href="#">#football</a>
+				<a href="#">#soccer</a>
+				<a href="#">#sdfsdf</a>
+				<a href="#">#sdfsdf</a>
+				<a href="#">#sdfsdf</a>
+				<a href="#">#sdfsdf</a>
+				<a href="#">#sdfsdf</a>
+				<a href="#">#sdfsdf</a>
+			  </p>
+			</section>
+			<section>
+			  <h1>about convos.org</h1>
+			  <p>Feel free to share anything and talk about anything.</p>
+			</section>
+		  </aside>
+		  <main>
 
-</body>
+			<%= yield %>
+
+		  </main> <!-- /container -->
+		</div>
+		<div class="footer"></div>
+		<div class="footer-container">
+			<div class="footer">
+				<div>
+					<span class="separator"></span><a href="/about">about</a>
+					<span class="separator"></span><a href="/tos">terms of service</a>
+					<span class="separator"></span><a href="https://github.com/rnmp/convos">source code</a>
+				</div>
+				<p class="bottommenu">
+					&copy; 2015 convos.org. All rights reserved.
+				</p>
+			</div>
+		</div>
+	</body>
 </html>

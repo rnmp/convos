@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<h1>
+  <% if @convo.url? %>
+    <%= link_to @convo.title, @convo.url %>
+  <% else %>
+    <%= @convo.title %>
+  <% end %>
+</h1>
+<% if @convo.comment %>
+  <div class="user-content">
+    <%= @convo.comment %>
+  </div>
+<% end %>
+<p class="metadata">
+  <%= @convo.votes %> points</a> |
+  <a href="#">upvote</a> |
+  <a href="#">downvote</a> |
+  posted <%= time_ago_in_words @convo.created_at %>
+  by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
+</p>
+
+<section class="comments">
+  <h2>respond to this</h2>
+  <%= render 'comments/form' %>
+  <% if @convo.comments.count >= 1 %>
+    <% @convo.comments.each do |comment| %>
+      <article class="convo">
+        <div class="user-content"><%= comment.comment %></div>
+        <p class="metadata">
+          <a href="#"><%= comment.votes %> points</a> |
+          <a href="#">upvote</a> |
+          <a href="#">downvote</a> |
+          posted <%= comment.created_at %> |
+          by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
+        </p>
+      </article>
+    <% end %>
+  <% else %>
+    No comments yet.
+  <% end %>
+</section>

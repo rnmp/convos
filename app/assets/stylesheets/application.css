@@ -10,6 +10,166 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *\= \require_tree .
  *= require_self
  */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 85%;
+	margin: auto;
+	padding: 3% 0 2%;
+	font: 16px / 1.333 'Lato', Verdana, sans-serif;
+	color: #323232;
+}
+a, .metadata a.highlight {
+	color: #ee1b2c;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+nav a {
+	font-weight: bold;
+}
+ul li {
+	list-style-type: square;
+}
+.logo {
+	font-style: normal;
+	font-family: georgia;
+	font-size: 36px;
+	line-height: 1;
+	color: #323232;
+	position: relative;
+	top: -7px;
+	margin-right: 20px;
+}
+i {
+	font-style: normal;
+}
+
+h1 {
+	font-size: 24px;
+}
+.convo h1 {
+	font-size: 16px;
+}
+.button, input[type="submit"] {
+	background: #ee1b2c;
+	color: #fff;
+}
+.site-nav > * {
+	float: left;
+}
+.sidebar {
+	float: right;
+	width: 280px;
+	margin-left: 40px;
+}
+.sidebar section {
+	margin-bottom: 20px;
+}
+.topics a {
+	font-size: 20px;
+	color: #bbb;
+}
+main {
+	overflow: hidden;
+}
+.site-nav {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+	box-shadow: 0 2px 0 #f9f9f9;
+}
+.group:after /* clearfix */{
+  content: "";
+  display: table;
+  clear: both;
+}
+.convo, .convos-menu li, .button, input[type="submit"], input, textarea {
+	padding: 5px 10px;
+}
+.convos-menu {
+	margin-left: 10px;
+}
+.convos-menu li {
+	float: left;
+	margin-left: 0;
+	list-style-type: none;
+}
+.convos-menu a.active {
+	border-top: 2px solid #ee1b2c;
+}
+.convo {
+	background: #f9f9f9;
+	border: solid #eee;
+	border-width: 0 0 1px 0;
+}
+.convo {
+	margin-bottom: 5px;
+}
+.convo .metadata {
+	font-size: 14px;
+}
+.convo .convo {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 5px 0;
+	border-width: 0 0 0 1px;
+}
+.metadata,
+.metadata a {
+	color: #bbb;
+}
+section > h1, .single-convo > h1 {
+	margin-bottom: .333em;
+}
+.pages span {
+	color: #eee;
+}
+
+/* typography */
+.user-content p {
+	margin-bottom: .75em;
+	line-height: 1.4;
+}
+label, input, textarea {
+	display: block;
+}
+input, textarea {
+	border: 1px solid #eee;
+}
+input, textarea, input[type="submit"] {
+	font: inherit;
+}
+textarea {
+	width: 400px;
+	height: 200px;
+}
+input[type="submit"] {
+	border: 0;
+	font: inherit;
+	font-weight: bold;
+}
+
+#pushes footer to bottom of the page:
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 142px; /* .push must be the same height as .footer */
+}

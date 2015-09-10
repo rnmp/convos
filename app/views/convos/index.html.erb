@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h2>most popular</h2>
+    <% @convos.each do |convo| %>
+      <article class="convo">
+          <h1>
+            <% if convo.url? %>
+              <%= link_to convo.title, convo.url %>
+            <% elsif %>
+              <%= link_to convo.title, convo %>
+            <% end %>
+          </h1>
+          <p class="metadata">
+            <%= link_to "#{convo.votes} points", convo %> |
+            <a href="#">upvote</a> |
+            <a href="#">downvote</a> |
+            <%= link_to "#{convo.comments.count} #{'comment'.pluralize(convo.comments.count)}", convo %> |
+            posted <%= link_to (time_ago_in_words convo.created_at), convo %>
+            by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
+            on /t/general
+          </p>
+        </article>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
