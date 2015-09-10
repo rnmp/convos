@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/about' => 'static_pages#about'
+  get '/tos' => 'static_pages#tos'
+
   resources :topics
   resources :convos do
     member do
