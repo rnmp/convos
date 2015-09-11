@@ -9,48 +9,38 @@
 	<body>
 		<div class="wrapper">
 
-		  <nav class="site-nav group">
-			<%= link_to 'convos.org', root_path, class: 'logo' %>
-			<ul class="convos-menu">
-			  <li><%= link_to 'most popular', convos_path, class: 'active' %></li>
-			  <li><a href="#">most recent</a></li>
-			</ul>
-			<div class="sidebar">
-				<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>
-			</div>
-		  </nav>
-		  <aside class="sidebar">
-			<section>
-			  <h1>browse by topic</h1>
-			  <p class="topics">
-			 	<% topics_list.each do |topic| %>
-			 		<%= link_to "##{topic.name}", topic_path(topic) %>
-			 	<% end %>
-			  </p>
-			</section>
-			<section>
-			  <h1>about convos.org</h1>
-			  <p>Feel free to share anything and talk about anything.</p>
-			</section>
-		  </aside>
-		  <main>
-
-			<%= yield %>
-
-		  </main> <!-- /container -->
-		</div>
-		<div class="footer"></div>
-		<div class="footer-container">
-			<div class="footer">
-				<div>
-					<span class="separator"></span><a href="/about">about</a>
-					<span class="separator"></span><a href="/tos">terms of service</a>
-					<span class="separator"></span><a href="https://github.com/rnmp/convos">source code</a>
+			<nav class="site-nav group">
+				<%= link_to 'convos.org', root_path, class: 'logo' %>
+				<ul class="convos-menu">
+					<li><%= link_to 'most popular', convos_path, class: 'active' %></li>
+					<li><a href="#">most recent</a></li>
+				</ul>
+				<div class="sidebar">
+					<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>
 				</div>
-				<p class="bottommenu">
-					&copy; 2015 convos.org. All rights reserved.
-				</p>
-			</div>
+			</nav>
+			<aside class="sidebar">
+				<section>
+					<h1>browse by topic</h1>
+					<p class="topics">
+						<% topics_list.each do |topic| %>
+							<%= link_to "##{topic.name}", topic_path(topic) %>
+						<% end %>
+					</p>
+				</section>
+				<section>
+					<h1>about convos.org</h1>
+					<p>Feel free to share anything and talk about anything.</p>
+				</section>
+			</aside>
+			<main>
+				<%= yield %>
+			</main>
+
+			<footer>
+				<p class="links"><a href="/about">about</a> <a href="/tos">terms of service</a> <a href="https://github.com/rnmp/convos">source code</a></p>
+				<p class="copyright">&copy; 2015 convos.org. All rights reserved.</p>
+			</footer>
 		</div>
 	</body>
 </html>

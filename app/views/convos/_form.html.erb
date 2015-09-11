@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :topic_id, 'Topic' %>
-    <%= f.collection_select(:topic_id, Topic.all, :id, :name) %>
+    <%= f.collection_select :topic_id, topics_list, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
