@@ -12,14 +12,14 @@
   <% end %>
 
   <%= f.hidden_field :convo_id %>
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
 
   <div class="field">
-    <%= f.label :author %><br>
+    <%= f.label :author, 'Sign it (optional)' %>
     <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
   </div>
   <div class="actions">
     <%= f.submit %>

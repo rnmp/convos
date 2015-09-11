@@ -12,24 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
+    <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :comment %><br>
+    <%= f.label :comment %>
     <%= f.text_area :comment %>
   </div>
   <div class="field">
     <%= f.label :topic_id, 'Topic' %>
     <%= f.collection_select :topic_id, topics_list, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author, 'Sign it (optional)' %>
+    <%= f.text_field :author %>
   </div>
   <div class="actions">
     <%= f.submit %>
