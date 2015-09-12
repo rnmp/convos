@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :comments
+  get '/convo/:convo_id/comment/:parent_id', to: 'comments#new', as: :comment_to_comment
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

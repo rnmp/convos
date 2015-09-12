@@ -1,0 +1,14 @@
+<article class="convo" id="comment-<%= comment.id %>">
+  <div class="user-content"><%= comment.comment %></div>
+  <p class="metadata">
+	  <% from_reply_form ||= nil %>
+	  <% unless from_reply_form %>
+	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id) %> |
+	    <%= comment.votes %> points |
+	    <a href="#">upvote</a> |
+	    <a href="#">downvote</a> |
+	  <% end %>
+    posted <%= time_ago_in_words comment.created_at %>
+    by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
+  </p>
+</article>

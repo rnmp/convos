@@ -157,20 +157,19 @@ input[type="submit"] {
 	font: inherit;
 	font-weight: bold;
 }
-
-#pushes footer to bottom of the page:
-* {
-    margin: 0;
+.replies {
+	margin-left: 2px;
+	padding-left: 7px;
+	border-left: 1px dotted #ccc;
 }
-html, body {
-    height: 100%;
+.replies .convo {
+	position: relative;
 }
-.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-    height: 142px; /* .push must be the same height as .footer */
+.replies .convo::before {
+	content: '';
+	position: absolute;
+	width: 7px;
+	border-top: 1px dotted #ccc;
+	right: 100%;
+	top: 50%;
 }

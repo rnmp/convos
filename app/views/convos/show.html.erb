@@ -23,19 +23,8 @@
 <section class="comments">
   <h2>respond to this</h2>
   <%= render 'comments/form' %>
-  <% if @convo.comments.count >= 1 %>
-    <% @convo.comments.each do |comment| %>
-      <article class="convo">
-        <div class="user-content"><%= comment.comment %></div>
-        <p class="metadata">
-          <%= comment.votes %> points |
-          <a href="#">upvote</a> |
-          <a href="#">downvote</a> |
-          posted <%= time_ago_in_words comment.created_at %>
-          by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
-        </p>
-      </article>
-    <% end %>
+  <% if @comments %>
+    <%= comments_tree_for @comments %>
   <% else %>
     No comments yet.
   <% end %>

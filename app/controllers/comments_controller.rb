@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Comment.new(parent_id: params[:parent_id], convo_id: params[:convo_id])
   end
 
   # GET /comments/1/edit
@@ -24,7 +24,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    if params[:comment][:parent_id].to_i > 0
+      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
+      @comment = parent.children.build(comment_params)
+    else
+      @comment = Comment.new(comment_params)
+    end
 
     respond_to do |format|
       if @comment.save
@@ -70,6 +75,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:author, :votes, :comment, :convo_id)
+      params.require(:comment).permit(:author, :votes, :comment, :convo_id, :parent_id)
     end
 end
