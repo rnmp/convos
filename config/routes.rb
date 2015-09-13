@@ -17,7 +17,12 @@ Rails.application.routes.draw do
       get 'downvote'
     end
   end
-  resources :comments
+  resources :comments do
+    member do
+      get 'upvote'
+      get 'downvote'
+    end
+  end
   get '/convo/:convo_id/comment/:parent_id', to: 'comments#new', as: :comment_to_comment
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

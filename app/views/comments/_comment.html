@@ -4,9 +4,11 @@
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>
 	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id) %> |
-	    <%= comment.votes %> points |
-	    <a href="#">upvote</a> |
-	    <a href="#">downvote</a> |
+	    <%= comment.plusminus %> points |
+        <% unless current_user && current_user.voted_on?(comment) %>
+          <%= link_to 'upvote', upvote_comment_path(comment) %></a> |
+          <%= link_to 'downvote', downvote_comment_path(comment) %></a> |
+        <% end %>
 	  <% end %>
     posted <%= time_ago_in_words comment.created_at %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>

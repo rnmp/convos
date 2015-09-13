@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :check_user, only: [:upvote, :downvote]
 
   # GET /comments
   # GET /comments.json
@@ -43,6 +44,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    current_user.vote_for(@comment)
+    redirect_to :back
+  end
+  def downvote
+    current_user.vote_against(@comment)
+    redirect_to :back
+  end
+
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
@@ -73,8 +83,16 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
+    def check_user
+      unless current_user
+        @user = User.new_guest
+        @user.save!
+        session[:user_id] = @user.id
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:author, :votes, :comment, :convo_id, :parent_id)
+      params.require(:comment).permit(:author, :comment, :convo_id, :parent_id)
     end
 end

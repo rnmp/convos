@@ -1,5 +1,6 @@
 class ConvosController < ApplicationController
-  before_action :set_convo, only: [:show, :edit, :update, :destroy]
+  before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :check_user, only: [:upvote, :downvote]
 
   # GET /convos
   # GET /convos.json
@@ -25,22 +26,11 @@ class ConvosController < ApplicationController
   end
 
   def upvote
-    set_convo
-    if @convo.votes == nil
-      @convo.votes = 0
-    end
-    @convo.votes = @convo.votes+1
-    @convo.save
+    current_user.vote_for(@convo)
     redirect_to :back
   end
-
   def downvote
-    set_convo
-    if @convo.votes == nil
-      @convo.votes = 0
-    end
-    @convo.votes = @convo.votes-1
-    @convo.save
+    current_user.vote_against(@convo)
     redirect_to :back
   end
 
@@ -90,8 +80,16 @@ class ConvosController < ApplicationController
       @convo = Convo.find(params[:id])
     end
 
+    def check_user
+      unless current_user
+        @user = User.new_guest
+        @user.save!
+        session[:user_id] = @user.id
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def convo_params
-      params.require(:convo).permit(:title, :author, :votes, :url, :comment, :topic_id)
+      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id)
     end
 end
