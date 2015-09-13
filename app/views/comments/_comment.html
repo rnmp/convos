@@ -1,5 +1,5 @@
 <article class="convo" id="comment-<%= comment.id %>">
-  <div class="user-content"><%= comment.comment %></div>
+  <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>

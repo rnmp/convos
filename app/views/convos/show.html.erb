@@ -8,7 +8,7 @@
 </h1>
 <% if @convo.comment %>
   <div class="user-content">
-    <%= @convo.comment %>
+    <%= markdown @convo.comment %>
   </div>
 <% end %>
 <p class="metadata">

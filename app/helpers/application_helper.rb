@@ -1,6 +1,27 @@
 module ApplicationHelper
+  def markdown(text)
+    options = {
+      filter_html:     true,
+      hard_wrap:       true, 
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true, 
+      fenced_code_blocks: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown.render(text).html_safe
+  end
+
   def topics_list 
-    topics = Topic.all    
+    topics = Topic.all
   end
   def comments_tree_for(comments)
 	comments.map do |comment, nested_comments|
