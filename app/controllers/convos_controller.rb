@@ -41,7 +41,7 @@ class ConvosController < ApplicationController
 
     respond_to do |format|
       if @convo.save
-        format.html { redirect_to @convo, notice: 'Convo was successfully created.' }
+        format.html { redirect_to :root, notice: 'Convo was successfully created.' }
         format.json { render :show, status: :created, location: @convo }
       else
         format.html { render :new }

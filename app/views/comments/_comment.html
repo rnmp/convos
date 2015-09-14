@@ -3,12 +3,12 @@
   <p class="metadata">
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>
-	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id) %> |
-	    <%= comment.plusminus %> points |
-        <% unless current_user && current_user.voted_on?(comment) %>
-          <%= link_to 'upvote', upvote_comment_path(comment) %></a> |
-          <%= link_to 'downvote', downvote_comment_path(comment) %></a> |
-        <% end %>
+	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id), class: :highlight %> |
+	    <%= pluralized_points_for comment %> |
+      <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
+        <%= link_to 'upvote', upvote_comment_path(comment), remote: true, class: 'upvote' %></a>
+        <%= link_to 'downvote', downvote_comment_path(comment), remote: true, class: 'downvote' %></a>
+      </span>
 	  <% end %>
     posted <%= time_ago_in_words comment.created_at %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>

@@ -1,31 +1,32 @@
 <p id="notice"><%= notice %></p>
-<h1>
-  <% if @convo.url? %>
-    <%= link_to @convo.title, @convo.url %>
-  <% else %>
-    <%= @convo.title %>
+<article class="single-convo">
+  <h1>
+    <% if @convo.url? %>
+      <%= link_to @convo.title, @convo.url %>
+    <% else %>
+      <%= @convo.title %>
+    <% end %>
+  </h1>
+  <% if @convo.comment %>
+    <div class="user-content">
+      <%= markdown @convo.comment %>
+    </div>
   <% end %>
-</h1>
-<% if @convo.comment %>
-  <div class="user-content">
-    <%= markdown @convo.comment %>
-  </div>
-<% end %>
-<p class="metadata">
-  <%= @convo.plusminus %> points</a> |
-  <% unless current_user && current_user.voted_on?(@convo) %>
-    <%= link_to 'upvote', upvote_convo_path(@convo) %></a> |
-    <%= link_to 'downvote', downvote_convo_path(@convo) %></a> |
-  <% end %>
-  <%= time_ago_in_words @convo.created_at %> ago
-  by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
-  <% if @convo.topic_id? %>in <%= link_to @convo.topic.name, topic_path(@convo.topic) %><% end %>
-</p>
+  <p class="metadata">
+    <%= pluralized_points_for @convo %> |
+    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(@convo) %>">
+      <%= link_to 'upvote', upvote_convo_path(@convo), remote: true, class: 'upvote' %></a>
+      <%= link_to 'downvote', downvote_convo_path(@convo), remote: true, class: 'downvote' %></a>
+    </span>
+    <%= time_ago_in_words @convo.created_at %> ago
+    by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
+    <% if @convo.topic_id? %>in <%= link_to @convo.topic.name, topic_path(@convo.topic) %><% end %>
+  </p>
+</article>
 
 <section class="comments">
-  <h1>respond to this</h1>
   <%= render 'comments/form' %>
-  <h1><%= @convo.comments.count.to_s+' comment'.pluralize(@convo.comments.count) %></h1>
+  <h1><%= pluralized_comments_for @convo %></h1>
   <% if @comments %>
     <%= comments_tree_for @comments %>
   <% else %>

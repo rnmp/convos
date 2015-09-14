@@ -23,6 +23,15 @@ module ApplicationHelper
   def topics_list 
     topics = Topic.all
   end
+
+  def pluralized_points_for(item)
+    item.plusminus.to_s + ' point'.pluralize(item.plusminus)
+  end
+
+  def pluralized_comments_for(convo)
+    convo.comments.count.to_s + ' comment'.pluralize(convo.comments.count)
+  end
+
   def comments_tree_for(comments)
 	  comments.map do |comment, nested_comments|
 	    render(comment) +

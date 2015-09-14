@@ -14,15 +14,14 @@
   <%= f.hidden_field :convo_id %>
   <%= f.hidden_field :parent_id %>
   <div class="field">
-    <%= f.label :comment %>
-    <%= f.text_area :comment %>
+    <%= f.text_area :comment, placeholder: 'add a comment' %>
+    <small>Markdown enabled</small>
   </div>
 
   <div class="field">
-    <%= f.label :author, 'Sign it (optional)' %>
-    <%= f.text_field :author %>
+    <%= f.text_field :author, placeholder: 'sign it (optional)' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'submit' %>
   </div>
 <% end %>

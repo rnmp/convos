@@ -7,14 +7,14 @@
     <% end %>
   </h1>
   <p class="metadata">
-  <%= link_to "#{convo.plusminus} points", convo %> |
-  <% unless current_user && current_user.voted_on?(convo) %>
-  <%= link_to 'upvote', upvote_convo_path(convo) %></a> |
-  <%= link_to 'downvote', downvote_convo_path(convo) %></a> |
-  <% end %>
-  <%= link_to "#{convo.comments.count} #{'comment'.pluralize(convo.comments.count)}", convo %> |
-  <%= link_to (time_ago_in_words convo.created_at), convo %>
-  ago by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
-  <% if convo.topic_id? %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
+    <%= link_to pluralized_points_for(convo), convo %> |
+    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
+      <%= link_to 'upvote', upvote_convo_path(convo), remote: true, class: 'upvote' %></a>
+      <%= link_to 'downvote', downvote_convo_path(convo), remote: true, class: 'downvote' %></a>
+    </span>
+    <%= link_to pluralized_comments_for(convo), convo %> |
+    <%= link_to (time_ago_in_words convo.created_at), convo %>
+    ago by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
+    <% if convo.topic_id? %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
   </p>
 </article>

@@ -25,6 +25,7 @@ body {
 	padding: 3% 0 2%;
 	font: 16px / 1.333 'Lato', Verdana, sans-serif;
 	color: #323232;
+	background: #fffffe;
 }
 a, .metadata a.highlight {
 	color: #ee1b2c;
@@ -38,6 +39,9 @@ nav a {
 }
 ul li {
 	list-style-type: square;
+}
+small {
+	color: #999;
 }
 .logo {
 	font-style: normal;
@@ -84,17 +88,87 @@ main {
 .site-nav {
 	margin-bottom: 20px;
 	padding-bottom: 10px;
-	border-bottom: 1px solid #eee;
-	box-shadow: 0 2px 0 #f9f9f9;
+	border-bottom: 1px dotted #eee;
+}
+.site-footer {
+	margin-top: 20px;
+	padding: 10px 0 30px;
+	border-top: 1px dotted #eee;
 }
 .group:after /* clearfix */{
   content: "";
   display: table;
   clear: both;
 }
+
 .convo, .convos-menu li, .button, input[type="submit"], input, textarea {
 	padding: 5px 10px;
+	border-radius: 2px;
 }
+
+.convo {
+	position: relative;
+	margin-bottom: 5px;
+	padding-left: 35px;
+	background: #f9f9f9;
+	border: solid #eee;
+	border-width: 0 0 1px 0;
+}
+.vote-links {
+	position: absolute;
+	top: 7px;
+	left: 8px;
+	bottom: 7px;
+	padding-right: 7px;
+	border-right: 1px dotted #eee;
+}
+.disabled.vote-links a {
+	cursor: default;
+}
+a.upvote, 
+a.downvote {
+	display: block;
+	text-indent: -9999px;
+}
+
+a.upvote:hover,
+a.upvote.active,
+.disabled.vote-links a.upvote.active {
+	border-bottom-color: #ee1b2c;
+}
+.disabled.vote-links a.upvote {
+	border-bottom-color: #eee;	
+}
+
+a.downvote:hover,
+a.downvote.active,
+.disabled.vote-links a.downvote.active {
+	border-top-color: #ee1b2c;
+}
+.disabled.vote-links a.downvote {
+	border-top-color: #eee;	
+}
+
+a.upvote {
+	width: 0; 
+	height: 0; 
+	margin: 3px 0 7px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	
+	border-bottom: 5px solid #ccc;
+}
+
+a.downvote {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	
+	border-top: 5px solid #ccc;
+}
+
+
 .convos-menu {
 	margin-left: 10px;
 }
@@ -106,29 +180,19 @@ main {
 .convos-menu a.active {
 	border-top: 2px solid #ee1b2c;
 }
-.convo {
-	background: #f9f9f9;
-	border: solid #eee;
-	border-width: 0 0 1px 0;
-}
-.convo {
-	margin-bottom: 5px;
-}
-.convo .metadata {
+.metadata {
 	font-size: 14px;
-}
-.convo .convo {
-	padding-top: 0;
-	padding-bottom: 0;
-	margin: 5px 0;
-	border-width: 0 0 0 1px;
 }
 .metadata,
 .metadata a {
 	color: #bbb;
 }
-section > h1, .single-convo > h1 {
-	margin-bottom: .333em;
+.single-convo {
+	position: relative;
+	padding-left: 35px;
+}
+.single-convo .vote-links {
+	bottom: 5px;
 }
 .pages span {
 	color: #eee;
@@ -138,6 +202,16 @@ section > h1, .single-convo > h1 {
 .user-content p {
 	margin-bottom: .75em;
 	line-height: 1.4;
+}
+.user-content > *:only-child {
+	margin-bottom: 0;
+}
+.user-content img {
+	max-width: 100%;
+}
+
+.field {
+	margin-bottom: 10px;
 }
 label, input, textarea {
 	display: block;
@@ -160,7 +234,10 @@ input[type="submit"] {
 
 .comments {
 	margin-top: 20px;
-	border-top: 1px dotted #ccc;
+	border-top: 1px dotted #eee;
+}
+.comments form {
+	margin: 20px 0;
 }
 main > section h1 {
 	font-size: 18px;
