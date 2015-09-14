@@ -157,6 +157,16 @@ input[type="submit"] {
 	font: inherit;
 	font-weight: bold;
 }
+
+.comments {
+	margin-top: 20px;
+	border-top: 1px dotted #ccc;
+}
+main > section h1 {
+	font-size: 18px;
+	color: #666;
+}
+
 .replies {
 	margin-left: 2px;
 	padding-left: 7px;
@@ -172,4 +182,7 @@ input[type="submit"] {
 	border-top: 1px dotted #ccc;
 	right: 100%;
 	top: 50%;
+}
+.convo:target {
+	background: #fcfaf0;
 }

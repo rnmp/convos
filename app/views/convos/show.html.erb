@@ -23,8 +23,9 @@
 </p>
 
 <section class="comments">
-  <h2>respond to this</h2>
+  <h1>respond to this</h1>
   <%= render 'comments/form' %>
+  <h1><%= @convo.comments.count.to_s+' comment'.pluralize(@convo.comments.count) %></h1>
   <% if @comments %>
     <%= comments_tree_for @comments %>
   <% else %>

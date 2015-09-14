@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require autosize
 //= require_tree .
+
+$(function(){
+	autosize($('textarea'));
+});
