@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.json
   def index
-    @convos = Convo.all
+    @convos = Convo.plusminus_tally
   end
 
   # GET /convos/1
