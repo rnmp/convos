@@ -13,14 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20150913190247) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
   end
 
-  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_udx", unique: true
-  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx"
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_udx", unique: true, using: :btree
+  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "author"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150913190247) do
     t.integer  "parent_id"
   end
 
-  add_index "comments", ["convo_id"], name: "index_comments_on_convo_id"
+  add_index "comments", ["convo_id"], name: "index_comments_on_convo_id", using: :btree
 
   create_table "convos", force: :cascade do |t|
     t.string   "title"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150913190247) do
     t.integer  "topic_id"
   end
 
-  add_index "convos", ["topic_id"], name: "index_convos_on_topic_id"
+  add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
@@ -70,8 +73,10 @@ ActiveRecord::Schema.define(version: 20150913190247) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type"
-  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true
-  add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type"
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true, using: :btree
+  add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
+  add_foreign_key "comments", "convos"
+  add_foreign_key "convos", "topics"
 end
