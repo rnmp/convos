@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'securerandom'
+
+75.times do
+  Convo.create(
+    :title => "My Post #{SecureRandom.hex(2)}",
+    :comment => SecureRandom.hex(32)
+  )
+end
