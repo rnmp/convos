@@ -8,9 +8,15 @@
 
 require 'securerandom'
 
-75.times do
+topic_names = ['random', 'ask', 'feedback', 'pics', 'videos', 'WTF', 'technology', 'science', 'design', 'politics', 'news', 'worldnews', 'sports', 'videogames', 'tv&film', 'books', 'music']
+topic_names.length.times do |topic_name|
+  Topic.create(:name => topic_names[topic_name])
+end
+
+1000.times do
   Convo.create(
     :title => "My Post #{SecureRandom.hex(2)}",
-    :comment => SecureRandom.hex(32)
+    :comment => SecureRandom.hex(32),
+    :topic_id => rand(1..17)
   )
 end
