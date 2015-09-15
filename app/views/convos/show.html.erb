@@ -15,8 +15,8 @@
   <p class="metadata">
     <%= pluralized_points_for @convo %> |
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(@convo) %>">
-      <%= link_to 'upvote', upvote_convo_path(@convo), remote: true, class: 'upvote' %></a>
-      <%= link_to 'downvote', downvote_convo_path(@convo), remote: true, class: 'downvote' %></a>
+      <%= link_to 'upvote', upvote_convo_path(@convo), remote: true, class: 'upvote' %>
+      <%= link_to 'downvote', downvote_convo_path(@convo), remote: true, class: 'downvote' %>
     </span>
     <%= time_ago_in_words @convo.created_at %> ago
     by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>

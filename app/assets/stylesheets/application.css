@@ -231,6 +231,19 @@ input[type="submit"] {
 	font: inherit;
 	font-weight: bold;
 }
+.topics-selection {
+	width: 50%;
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+}
+.topics-selection label {
+	padding: 3px;
+}
+.topics-selection input {
+	display: inline-block;
+	margin-right: 5px;
+}
 
 .comments {
 	margin-top: 20px;

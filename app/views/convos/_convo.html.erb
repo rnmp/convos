@@ -9,8 +9,8 @@
   <p class="metadata">
     <%= link_to pluralized_points_for(convo), convo %> |
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
-      <%= link_to 'upvote', upvote_convo_path(convo), remote: true, class: 'upvote' %></a>
-      <%= link_to 'downvote', downvote_convo_path(convo), remote: true, class: 'downvote' %></a>
+      <%= link_to 'upvote', upvote_convo_path(convo), remote: true, class: 'upvote' %>
+      <%= link_to 'downvote', downvote_convo_path(convo), remote: true, class: 'downvote' %>
     </span>
     <%= link_to pluralized_comments_for(convo), convo %> |
     <%= link_to (time_ago_in_words convo.created_at), convo %>

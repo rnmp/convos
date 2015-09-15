@@ -21,9 +21,11 @@
     <%= f.text_area :comment, placeholder: 'comment' %>
     <small>Markdown enabled</small>
   </div>
-  <div class="field">
-    <%= f.label :topic_id, 'topic' %>
-    <%= f.collection_select :topic_id, topics_list, :id, :name %>
+  <%= f.label :topic_id, 'topic' %>
+  <div class="field topics-selection">
+    <%= f.collection_radio_buttons :topic_id, topics_list, :id, :name do |t| %>
+      <%= t.label { t.radio_button + t.text } %>
+    <% end %>
   </div>
 
   <div class="field">
