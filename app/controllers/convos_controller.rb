@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.json
   def index
-    @convos = Convo.plusminus_tally
+    @convos = Convo.page(params[:page]).per(25)
   end
 
   # GET /convos/1

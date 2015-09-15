@@ -57,3 +57,6 @@ source 'https://rails-assets.org' do
   # autosizes textareas for better writing experience
   gem 'rails-assets-autosize'
 end
+
+# Paginator
+gem 'kaminari'

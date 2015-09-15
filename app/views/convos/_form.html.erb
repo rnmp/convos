@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :title, 'title' %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :autocomplete => :off %>
   </div>
   <div class="field">
     <%= f.label :url, raw('url <em>or</em> comment') %>
-    <%= f.text_field :url, placeholder: 'url' %>
+    <%= f.text_field :url, placeholder: 'url', :autocomplete => :off %>
     <%= f.text_area :comment, placeholder: 'comment' %>
     <small>Markdown enabled</small>
   </div>
