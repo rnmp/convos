@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def pluralized_points_for(item)
-    item.plusminus.to_s + ' point'.pluralize(item.plusminus)
+    ['<span data-item-type="',item.class.to_s.downcase,'" data-item-id="', item.id,'">', item.plusminus,'</span>',' point'.pluralize(item.plusminus)].join('').html_safe
   end
 
   def pluralized_comments_for(convo)

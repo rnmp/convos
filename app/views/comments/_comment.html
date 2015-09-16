@@ -6,8 +6,12 @@
 	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id), class: :highlight %> |
 	    <%= pluralized_points_for comment %> |
       <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
-        <%= link_to 'upvote', upvote_comment_path(comment), remote: true, class: 'upvote' %>
-        <%= link_to 'downvote', downvote_comment_path(comment), remote: true, class: 'downvote' %>
+        <%= link_to 'upvote', upvote_comment_path(comment), remote: true, 
+          class: 'upvote'+(' active' if current_user && current_user.voted_for?(comment)).to_s, 
+          data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
+        <%= link_to 'downvote', downvote_comment_path(comment), remote: true, 
+          class: 'downvote'+(' active' if current_user && current_user.voted_against?(comment)).to_s, 
+          data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
       </span>
 	  <% end %>
     posted <%= time_ago_in_words comment.created_at %>
