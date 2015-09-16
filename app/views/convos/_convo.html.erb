@@ -1,6 +1,6 @@
-<article class="<%= params[:action] == 'show' ? 'single-convo' : 'convo' %>">
+<article class="<%= @convo ? 'single-convo' : 'convo' %>">
   <h1>
-    <% if params[:action] == 'show' %>
+    <% if @convo %>
       <%= convo.title %>
     <% else %>
       <% if convo.url? %>
@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
   </h1>
-  <% if params[:action] == 'show' && convo.comment? %>
+  <% if @convo && convo.comment? %>
     <div class="user-content">
       <%= markdown convo.comment %>
     </div>
@@ -25,7 +25,7 @@
         class: 'downvote'+(' active' if current_user && current_user.voted_against?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
     </span>
-    <% unless params[:action] == 'show' %>
+    <% unless @convo %>
       <%= link_to pluralized_comments_for(convo), convo %> |
     <% end %>
     <%= link_to (time_ago_in_words convo.created_at)+' ago', convo %>
