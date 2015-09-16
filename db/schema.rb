@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913190247) do
+ActiveRecord::Schema.define(version: 20150916005201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150913190247) do
     t.datetime "updated_at", null: false
     t.integer  "convo_id"
     t.integer  "parent_id"
+    t.integer  "points"
   end
 
   add_index "comments", ["convo_id"], name: "index_comments_on_convo_id", using: :btree
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150913190247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "topic_id"
+    t.integer  "points"
   end
 
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree

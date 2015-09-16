@@ -46,10 +46,12 @@ class CommentsController < ApplicationController
 
   def upvote
     current_user.vote_for(@comment)
+    @comment.update_attribute(:points, @comment.plusminus)
     redirect_to :back
   end
   def downvote
     current_user.vote_against(@comment)
+    @comment.update_attribute(:points, @comment.plusminus)
     redirect_to :back
   end
 
@@ -93,6 +95,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:author, :comment, :convo_id, :parent_id)
+      params.require(:comment).permit(:author, :comment, :convo_id, :parent_id, :points)
     end
 end

@@ -20,6 +20,10 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def cp(path)
+    "active" if current_page?(path)
+  end
+
   def topics_list 
     topics = Topic.all
   end

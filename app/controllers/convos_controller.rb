@@ -5,7 +5,15 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.json
   def index
-    @convos = Convo.page(params[:page]).per(25)
+    if params[:show].present?
+      if params[:show] == 'recent'
+        @title = 'most recent'
+        @convos = Convo.order('created_at DESC').page(params[:page]).per(25)
+      end
+    else
+      @title = 'most popular'
+      @convos = Convo.order('points DESC').page(params[:page]).per(25)
+    end
   end
 
   # GET /convos/1
@@ -27,10 +35,12 @@ class ConvosController < ApplicationController
 
   def upvote
     current_user.vote_for(@convo)
+    @convo.update_attribute(:points, @convo.plusminus)
     redirect_to :back
   end
   def downvote
     current_user.vote_against(@convo)
+    @convo.update_attribute(:points, @convo.plusminus)
     redirect_to :back
   end
 
@@ -41,7 +51,7 @@ class ConvosController < ApplicationController
 
     respond_to do |format|
       if @convo.save
-        format.html { redirect_to :root, notice: 'Convo was successfully created.' }
+        format.html { redirect_to '/?show=recent', notice: 'Convo was successfully created.' }
         format.json { render :show, status: :created, location: @convo }
       else
         format.html { render :new }
@@ -90,6 +100,6 @@ class ConvosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def convo_params
-      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id)
+      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id, :points)
     end
 end

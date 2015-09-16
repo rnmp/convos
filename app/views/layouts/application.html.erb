@@ -10,8 +10,8 @@
 		<nav class="site-nav group">
 			<%= link_to 'convos.org', root_path, class: 'logo' %>
 			<ul class="convos-menu">
-				<li><%= link_to 'most popular', convos_path, class: 'active' %></li>
-				<li><a href="#">most recent</a></li>
+				<li><%= link_to 'most popular', '/', class: cp('/') %></li>
+				<li><%= link_to 'most recent', convos_path+'?show=recent', class: cp(convos_path+'?show=recent') %></li>
 			</ul>
 			<div class="sidebar">
 				<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>

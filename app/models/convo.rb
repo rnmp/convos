@@ -6,4 +6,8 @@ class Convo < ActiveRecord::Base
 	validates :url, :format => URI::regexp(%w(http https)), unless: ->(convo){convo.comment.present?}
 	validates :comment, absence: true, if: ->(convo){convo.url.present?}
 	acts_as_voteable
+
+	def popularity
+		comments.count
+	end
 end

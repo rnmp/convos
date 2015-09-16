@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h2>most popular</h2>
+<h2><%= @title %></h2>
 <%= render @convos %>
 <%= paginate @convos %>
-<%= page_entries_info @convos %>
