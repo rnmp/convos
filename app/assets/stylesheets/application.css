@@ -226,7 +226,8 @@ a.downvote {
 label, input, textarea {
 	display: block;
 }
-input, textarea {
+input[type="text"], textarea {
+	margin-top: 5px;
 	border: 1px solid #eee;
 }
 input, textarea, input[type="submit"] {
