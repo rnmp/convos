@@ -20,11 +20,13 @@ class ConvosController < ApplicationController
   def show
     if params[:show].present?
       if params[:show] == 'recent'
-        @comments = @convo.comments.hash_tree # 'created_at DESC' defined as part of acts_as_tree
+        @comments_order = 'created_at'
       end
     else
-      @comments = @convo.comments.order('points DESC').hash_tree
+      @comments_order = 'points'
     end
+      @comments = @convo.comments.hash_tree
+      puts @comments
     @comment = Comment.new(convo: @convo)
     @comment_to_comment = Comment.new(convo: @convo, parent_id: params[:parent_id])
   end
