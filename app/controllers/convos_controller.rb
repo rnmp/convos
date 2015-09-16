@@ -25,8 +25,7 @@ class ConvosController < ApplicationController
     else
       @comments_order = 'points'
     end
-      @comments = @convo.comments.hash_tree
-      puts @comments
+    @comments = @convo.comments.hash_tree
     @comment = Comment.new(convo: @convo)
     @comment_to_comment = Comment.new(convo: @convo, parent_id: params[:parent_id])
   end
