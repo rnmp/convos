@@ -23,7 +23,7 @@
   </div>
   <%= f.label :topic_id, 'topic' %>
   <div class="field topics-selection">
-    <%= f.collection_radio_buttons :topic_id, topics_list, :id, :name do |t| %>
+    <%= f.collection_radio_buttons :topic_id, topics_list, :id, :name, checked: 1 do |t| %>
       <%= t.label { t.radio_button + t.text } %>
     <% end %>
   </div>

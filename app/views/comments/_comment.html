@@ -1,4 +1,4 @@
-<article class="convo" id="comment-<%= comment.id %>">
+<article class="convo<%= ' hidden' if comment.points < -5 %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
 	  <% from_reply_form ||= nil %>
