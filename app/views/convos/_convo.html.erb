@@ -1,11 +1,20 @@
-<article class="convo">
+<article class="<%= params[:action] == 'show' ? 'single-convo' : 'convo' %>">
   <h1>
-    <% if convo.url? %>
-      <%= link_to convo.title, convo.url %>
-    <% elsif %>
-      <%= link_to convo.title, convo %>
+    <% if params[:action] == 'show' %>
+      <%= convo.title %>
+    <% else %>
+      <% if convo.url? %>
+        <%= link_to convo.title, convo.url %>
+      <% elsif %>
+        <%= link_to convo.title, convo %>
+      <% end %>
     <% end %>
   </h1>
+  <% if params[:action] == 'show' && convo.comment? %>
+    <div class="user-content">
+      <%= markdown convo.comment %>
+    </div>
+  <% end %>
   <p class="metadata">
     <%= link_to pluralized_points_for(convo), convo %> |
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
@@ -16,9 +25,11 @@
         class: 'downvote'+(' active' if current_user && current_user.voted_against?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
     </span>
-    <%= link_to pluralized_comments_for(convo), convo %> |
-    <%= link_to (time_ago_in_words convo.created_at), convo %>
-    ago by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
+    <% unless params[:action] == 'show' %>
+      <%= link_to pluralized_comments_for(convo), convo %> |
+    <% end %>
+    <%= link_to (time_ago_in_words convo.created_at)+' ago', convo %>
+    by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
     <% if convo.topic_id? %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
   </p>
 </article>

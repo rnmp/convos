@@ -1,32 +1,5 @@
 <p id="notice"><%= notice %></p>
-<article class="single-convo">
-  <h1>
-    <% if @convo.url? %>
-      <%= link_to @convo.title, @convo.url %>
-    <% else %>
-      <%= @convo.title %>
-    <% end %>
-  </h1>
-  <% if @convo.comment %>
-    <div class="user-content">
-      <%= markdown @convo.comment %>
-    </div>
-  <% end %>
-  <p class="metadata">
-    <%= pluralized_points_for @convo %> |
-    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(@convo) %>">
-      <%= link_to 'upvote', upvote_convo_path(@convo), remote: true, 
-        class: 'upvote'+(' active' if current_user && current_user.voted_for?(@convo)).to_s, 
-        data: { item_type: @convo.class.to_s.downcase, item_id: @convo.id } %>
-      <%= link_to 'downvote', downvote_convo_path(@convo), remote: true, 
-        class: 'downvote'+(' active' if current_user && current_user.voted_against?(@convo)).to_s, 
-        data: { item_type: @convo.class.to_s.downcase, item_id: @convo.id } %>
-    </span>
-    <%= time_ago_in_words @convo.created_at %> ago
-    by <% if @convo.author? %><%= @convo.author %><% else %>someone<% end %>
-    <% if @convo.topic_id? %>in <%= link_to @convo.topic.name, topic_path(@convo.topic) %><% end %>
-  </p>
-</article>
+<%= render @convo %>
 
 <section class="comments">
   <%= render 'comments/form' %>
