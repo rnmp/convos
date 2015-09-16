@@ -1,6 +1,5 @@
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :check_user, only: [:upvote, :downvote]
 
   # GET /convos
   # GET /convos.json
@@ -94,14 +93,6 @@ class ConvosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_convo
       @convo = Convo.find(params[:id])
-    end
-
-    def check_user
-      unless current_user
-        @user = User.new_guest
-        @user.save!
-        session[:user_id] = @user.id
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

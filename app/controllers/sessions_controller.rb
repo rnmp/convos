@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 		unless current_user.guest?
 	  		session[:user_id] = nil
 	  	end
-	  redirect_to '/login'
+	    redirect_to '/login'
 	end
 end

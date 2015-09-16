@@ -1,13 +1,9 @@
 <article class="<%= @convo ? 'single-convo' : 'convo' %>">
   <h1>
-    <% if @convo %>
-      <%= convo.title %>
-    <% else %>
-      <% if convo.url? %>
-        <%= link_to convo.title, convo.url %>
-      <% elsif %>
-        <%= link_to convo.title, convo %>
-      <% end %>
+    <% if convo.url? %>
+      <%= link_to convo.title, convo.url %>
+    <% elsif %>
+      <%= link_to_unless @convo, convo.title, convo %>
     <% end %>
   </h1>
   <% if @convo && convo.comment? %>
@@ -16,7 +12,7 @@
     </div>
   <% end %>
   <p class="metadata">
-    <%= link_to pluralized_points_for(convo), convo %> |
+    <%= link_to_unless @convo, pluralized_points_for(convo), convo %> |
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
       <%= link_to 'upvote', upvote_convo_path(convo), remote: true, 
         class: 'upvote'+(' active' if current_user && current_user.voted_for?(convo)).to_s, 
@@ -28,8 +24,8 @@
     <% unless @convo %>
       <%= link_to pluralized_comments_for(convo), convo %> |
     <% end %>
-    <%= link_to (time_ago_in_words convo.created_at)+' ago', convo %>
+    <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
-    <% if convo.topic_id? %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
+    <% unless @topic %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
   </p>
 </article>

@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :check_user, only: [:upvote, :downvote]
 
   # GET /comments
   # GET /comments.json
