@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic_convos = @topic.convos.order('points DESC').page(params[:page]).per(25)
   end
 
   # GET /topics/new
