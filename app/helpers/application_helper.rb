@@ -24,22 +24,11 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
-  def topics_list 
-    topics = Topic.all
-  end
-
   def pluralized_points_for(item)
     ['<span data-item-type="',item.class.to_s.downcase,'" data-item-id="', item.id,'">', item.plusminus,'</span>',' point'.pluralize(item.plusminus)].join('').html_safe
   end
 
   def pluralized_comments_for(convo)
     convo.comments.count.to_s + ' comment'.pluralize(convo.comments.count)
-  end
-
-  def comments_tree_for(comments)
-	  comments.map do |comment, nested_comments|
-	    render(comment) +
-	      (nested_comments.size > 0 ? content_tag(:div, comments_tree_for(nested_comments), class: "replies") : nil)
-	  end.join.html_safe
   end
 end
