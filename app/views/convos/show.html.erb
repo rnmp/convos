@@ -30,7 +30,7 @@
 
 <section class="comments">
   <%= render 'comments/form' %>
-  <h1><%= pluralized_comments_for @convo %></h1>
+  <h1><%= pluralized_comments_for @convo %>  <%= link_to "top", convo_path(@convo) %> <%= link_to "recent", convo_path(@convo)+'?show=recent' %> </h1>
   <% if @comments %>
     <%= comments_tree_for @comments %>
   <% else %>
