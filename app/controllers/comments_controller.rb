@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @convo = @comment.convo
-        format.html { redirect_to @convo, notice: 'Comment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
