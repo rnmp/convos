@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20150916005201) do
   create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "convo_id"
     t.integer  "parent_id"
-    t.integer  "points"
+    t.integer  "points",     default: 0
   end
 
   add_index "comments", ["convo_id"], name: "index_comments_on_convo_id", using: :btree
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20150916005201) do
     t.string   "author"
     t.string   "url"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "topic_id"
-    t.integer  "points"
+    t.integer  "points",     default: 0
   end
 
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree

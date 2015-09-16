@@ -19,7 +19,7 @@ class ConvosController < ApplicationController
   # GET /convos/1
   # GET /convos/1.json
   def show
-    @comments = @convo.comments.hash_tree
+    @comments = @convo.comments.order('points DESC').hash_tree
     @comment = Comment.new(convo: @convo)
     @comment_to_comment = Comment.new(convo: @convo, parent_id: params[:parent_id])
   end
