@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Topics</h1>
+<h1>topics <%= link_to '+ new', new_topic_path %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,14 +14,10 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= topic.name %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'show', topic %></td>
+        <td><%= link_to 'edit', edit_topic_path(topic) %></td>
+        <td><%= link_to 'destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>

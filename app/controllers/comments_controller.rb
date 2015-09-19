@@ -84,14 +84,6 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
-    def check_user
-      unless current_user
-        @user = User.new_guest
-        @user.save!
-        session[:user_id] = @user.id
-      end
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:author, :comment, :convo_id, :parent_id, :points)
