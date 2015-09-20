@@ -226,7 +226,7 @@ a.downvote {
 label, input, textarea {
 	display: block;
 }
-input[type="text"], textarea {
+input[type="text"], input[type="email"], input[type="password"], textarea {
 	margin-top: 5px;
 	border: 1px solid #eee;
 }

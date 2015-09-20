@@ -8,6 +8,8 @@
 
 require 'securerandom'
 
+User.create(username: 'rnmp', email: 'rolando@bandd.co', password: 's3b45t14ng4y')
+
 topic_names = ['random', 'ask', 'feedback', 'pics', 'videos', 'WTF', 'technology', 'science', 'design', 'politics', 'news', 'worldnews', 'sports', 'videogames', 'tv&film', 'books', 'music']
 topic_names.length.times do |topic_name|
   Topic.create(:name => topic_names[topic_name])

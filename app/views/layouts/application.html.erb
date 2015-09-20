@@ -12,6 +12,10 @@
 			<ul class="convos-menu">
 				<li><%= link_to 'most popular', '/', class: cp('/') %></li>
 				<li><%= link_to 'most recent', convos_path+'?show=recent', class: cp(convos_path+'?show=recent') %></li>
+				<% if current_user && !current_user.guest? %>
+					<li>hello, <strong><%= current_user.username %></strong></li>
+					<li><%= link_to "logout", logout_path %></li>
+				<% end %>
 			</ul>
 			<div class="sidebar">
 				<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>

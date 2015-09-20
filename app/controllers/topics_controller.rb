@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
+    redirect_to '/' if current_user && current_user.guest?
     @topics = Topic.all
   end
 
@@ -20,6 +21,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
+    redirect_to '/' if current_user && current_user.guest?
   end
 
   # POST /topics
