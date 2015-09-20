@@ -27,7 +27,7 @@ body {
 	color: #323232;
 	background: #fffffe;
 }
-a, .metadata a.highlight {
+a, .metadata a.highlight, .topics a.active {
 	color: #ee1b2c;
 	text-decoration: none;
 }
@@ -250,6 +250,9 @@ input[type="submit"] {
 	-webkit-column-count: 4;
 	-moz-column-count: 4;
 	column-count: 4;
+	padding: 10px;
+	padding-top: 5px;
+	border-radius: 2px;
 	background: #fafafa;
 }
 .topics-selection label {

@@ -11,7 +11,12 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @topic_convos = @topic.convos.order('points DESC').page(params[:page]).per(25)
+    @title = "##{@topic.name}"
+    if params[:show] == 'recent'
+      @convos = @topic.convos.order('created_at DESC').page(params[:page]).per(25)
+    else
+      @convos = @topic.convos.order('points DESC').page(params[:page]).per(25)
+    end
   end
 
   # GET /topics/new
