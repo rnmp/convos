@@ -7,6 +7,14 @@ class Convo < ActiveRecord::Base
 	validates :comment, absence: true, if: ->(convo){convo.url.present?}
 	acts_as_voteable
 
+	def self.search(search)
+	  if search
+	    where("title LIKE ? OR comment LIKE ?", "%#{search}%", "%#{search}%")
+	  else
+	    all
+	  end
+	end
+
 	protected
 
 	def smart_add_url_protocol

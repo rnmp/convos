@@ -13,6 +13,10 @@ class ConvosController < ApplicationController
       @title = 'most popular'
       @convos = Convo.order('points DESC').page(params[:page]).per(25)
     end
+    if params[:search]
+      @title = "search results for #{params[:search]}"
+      @convos = Convo.search(params[:search]).order('created_at DESC').page(params[:page]).per(25)
+    end
   end
 
   # GET /convos/1
@@ -57,6 +61,7 @@ class ConvosController < ApplicationController
 
     respond_to do |format|
       if @convo.save
+        upvote
         format.html { redirect_to '/?show=recent', notice: 'Convo was successfully created.' }
         format.json { render :show, status: :created, location: @convo }
       else

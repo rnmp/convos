@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @title %></h2>
-<%= render @convos %>
+<% if @convos.present? %>
+	<%= render @convos %>
+<% else %>
+	<p>No convos found.</p>
+<% end %>
 <%= paginate @convos %>

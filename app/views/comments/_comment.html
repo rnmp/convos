@@ -1,20 +1,24 @@
 <article class="convo<%= ' hidden' if comment.points < -5 %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
+    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
+      <%= link_to 'upvote', upvote_comment_path(comment), remote: true, 
+        class: 'upvote'+(' active' if current_user && current_user.voted_for?(comment)).to_s, 
+        data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
+      <%= link_to 'downvote', downvote_comment_path(comment), remote: true, 
+        class: 'downvote'+(' active' if current_user && current_user.voted_against?(comment)).to_s, 
+        data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
+    </span>
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>
 	    <%= link_to 'reply', comment_to_comment_path(comment.convo.id, comment.id), class: :highlight %> |
-	    <%= pluralized_points_for comment %> |
-      <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
-        <%= link_to 'upvote', upvote_comment_path(comment), remote: true, 
-          class: 'upvote'+(' active' if current_user && current_user.voted_for?(comment)).to_s, 
-          data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
-        <%= link_to 'downvote', downvote_comment_path(comment), remote: true, 
-          class: 'downvote'+(' active' if current_user && current_user.voted_against?(comment)).to_s, 
-          data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
-      </span>
-	  <% end %>
-    posted <%= time_ago_in_words comment.created_at %>
+    <% end %>
+    <%= link_to_unless @comment.parent, 
+      pluralized_points_for(comment), 
+      comment_to_comment_path(comment.convo.id, comment.id) %> |
+    <%= link_to_unless @comment.parent, 
+      time_ago_in_words(comment.created_at)+' ago', 
+      comment_to_comment_path(comment.convo.id, comment.id) %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
   </p>
 </article>

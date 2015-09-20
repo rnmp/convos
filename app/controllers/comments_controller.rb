@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.search(params[:search]).page(params[:page]).per(25)
   end
 
   # GET /comments/1
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @convo = @comment.convo
-        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
+        format.html { redirect_to convo_path(@convo, anchor: "comment-#{@comment.id}") }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

@@ -223,6 +223,10 @@ a.downvote {
 .field {
 	margin-bottom: 10px;
 }
+label {
+	font-style: italic;
+	color: #777;
+}
 label, input, textarea {
 	display: block;
 }
@@ -243,13 +247,15 @@ input[type="submit"] {
 	font-weight: bold;
 }
 .topics-selection {
-	width: 50%;
-	-webkit-column-count: 2;
-	-moz-column-count: 2;
-	column-count: 2;
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	column-count: 4;
+	background: #fafafa;
 }
 .topics-selection label {
 	padding: 3px;
+	font-style: normal;
+	color: inherit;
 }
 .topics-selection input {
 	display: inline-block;
