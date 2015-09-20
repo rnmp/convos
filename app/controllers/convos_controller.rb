@@ -42,10 +42,12 @@ class ConvosController < ApplicationController
   def upvote
     current_user.vote_for(@convo)
     @convo.update_attribute(:points, @convo.plusminus)
+    redirect_to :back
   end
   def downvote
     current_user.vote_against(@convo)
     @convo.update_attribute(:points, @convo.plusminus)
+    redirect_to :back
   end
 
   # POST /convos
@@ -55,7 +57,8 @@ class ConvosController < ApplicationController
 
     respond_to do |format|
       if @convo.save
-        upvote
+        current_user.vote_for(@convo)
+        @convo.update_attribute(:points, @convo.plusminus)
         format.html { redirect_to convos_path(show: 'recent') }
         format.json { render :show, status: :created, location: @convo }
       else

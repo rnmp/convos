@@ -46,10 +46,12 @@ class CommentsController < ApplicationController
   def upvote
     current_user.vote_for(@comment)
     @comment.update_attribute(:points, @comment.plusminus)
+    redirect_to :back
   end
   def downvote
     current_user.vote_against(@comment)
     @comment.update_attribute(:points, @comment.plusminus)
+    redirect_to :back
   end
 
   # PATCH/PUT /comments/1
