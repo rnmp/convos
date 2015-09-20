@@ -34,6 +34,10 @@ a, .metadata a.highlight, .topics a.active {
 a:hover {
 	text-decoration: underline;
 }
+nav {
+	position: relative;
+	padding-left: 50px;
+}
 nav a {
 	font-weight: bold;
 }
@@ -44,14 +48,20 @@ small {
 	color: #999;
 }
 .logo {
-	font-style: normal;
+	/*font-style: normal;
 	font-family: georgia;
 	font-size: 36px;
 	line-height: 1;
 	color: #323232;
 	position: relative;
 	top: -7px;
-	margin-right: 20px;
+	margin-right: 20px;*/
+	width: 60px;
+	position: absolute;
+	left: -10px;
+	top: -13px;
+	border-radius: 50em;
+	border: 1px dotted #eee;
 }
 i {
 	font-style: normal;

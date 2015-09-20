@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<nav class="site-nav group">
-			<%= link_to 'convos.org', root_path, class: 'logo' %>
+			<%= link_to image_tag('logo.png', alt:'convos.org', class:'logo'), root_path %>
 			<ul class="convos-menu">
 				<li>sort by</li>
 				<li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] != 'recent') %></li>
