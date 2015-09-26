@@ -306,3 +306,19 @@ main > section h1 {
 .convo:target {
 	background: #fcfaf0;
 }
+.convo > .thumbnail {
+	float: right;
+	max-height: 75px;
+	overflow: hidden;
+	margin: -5px;
+	margin-left: 10px;
+	margin-right: -10px;
+	margin-bottom: -6px;
+	border-radius: 0 2px 2px 0;
+	background: #232323;
+	position: relative;
+}
+.convo > .thumbnail > img {
+	width: 75px;
+	position: relative;
+}

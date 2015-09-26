@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916171108) do
+ActiveRecord::Schema.define(version: 20150926204601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20150916171108) do
   end
 
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree
+
+  create_table "scrapes", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.text     "description"
+    t.text     "images"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"

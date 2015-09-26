@@ -1,4 +1,5 @@
-<article class="<%= @convo ? 'single-convo' : 'convo' %>" id="convo-<%= convo.id %>">
+<article class="group <%= @convo ? 'single-convo' : 'convo' %>" id="convo-<%= convo.id %>">
+  <%= render_thumbnail convo.url if convo.url? %>
   <h1>
     <% if convo.url? %>
       <%= link_to convo.title, convo.url %>
