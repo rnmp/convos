@@ -34,6 +34,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @convo = @comment.convo
+        current_user.vote_for(@comment)
+        @comment.update_attribute(:points, @comment.plusminus)
         format.html { redirect_to convo_path(@convo, anchor: "comment-#{@comment.id}") }
         format.json { render :show, status: :created, location: @comment }
       else
