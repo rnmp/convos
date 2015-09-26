@@ -4,7 +4,7 @@
 ready = ->
 	autosize($('textarea'))
 
-	$("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
+	$("a[data-remote]").on "click", () ->
 		item_type = $(this).attr('data-item-type')
 		item_id = $(this).attr('data-item-id')
 		$span = $('span[data-item-type='+item_type+'][data-item-id='+item_id+']')
