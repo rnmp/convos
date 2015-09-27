@@ -36,6 +36,8 @@ a:hover {
 }
 nav {
 	position: relative;
+}
+body > nav {
 	padding-left: 50px;
 }
 nav a {
@@ -111,7 +113,7 @@ main {
 .convo {
 	position: relative;
 	margin-bottom: 5px;
-	padding-left: 35px;
+	padding-left: 40px;
 	background: #f9f9f9;
 	border: solid #eee;
 	border-width: 0 0 1px 0;
