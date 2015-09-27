@@ -9,6 +9,7 @@ class Convo < ActiveRecord::Base
 	validates :comment, absence: true, if: ->(convo){convo.url.present?}
 	
 	acts_as_voteable
+	include VoteActions
 
 	before_save :create_scrape
 

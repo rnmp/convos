@@ -15,14 +15,12 @@
  *= stub scaffolds
  */
 
+/* defaults */
 * {
 	margin: 0;
 	padding: 0;
 }
 body {
-	width: 85%;
-	margin: auto;
-	padding: 3% 0 2%;
 	font: 16px / 1.333 'Lato', Verdana, sans-serif;
 	color: #323232;
 	background: #fffffe;
@@ -37,11 +35,14 @@ a:hover {
 nav {
 	position: relative;
 }
-body > nav {
-	padding-left: 50px;
-}
 nav a {
 	font-weight: bold;
+}
+i {
+	font-style: normal;
+}
+h1 {
+	font-size: 24px;
 }
 ul li {
 	list-style-type: square;
@@ -49,182 +50,11 @@ ul li {
 small {
 	color: #999;
 }
-.logo {
-	width: 60px;
-	position: absolute;
-	left: -10px;
-	top: -13px;
-	border-radius: 50em;
-	border: 1px dotted #eee;
-}
-i {
-	font-style: normal;
-}
 
-h1 {
-	font-size: 24px;
-}
-.convo h1 {
-	font-size: 16px;
-}
+/* ui (forms, buttons) */
 .button, input[type="submit"] {
 	background: #ee1b2c;
 	color: #fff;
-}
-.site-nav > * {
-	float: left;
-}
-.sidebar {
-	float: right;
-	width: 280px;
-	margin-left: 40px;
-}
-.sidebar section {
-	margin-bottom: 20px;
-}
-.topics a {
-	font-size: 20px;
-	color: #bbb;
-}
-main {
-	overflow: hidden;
-}
-.site-nav {
-	margin-bottom: 20px;
-	padding-bottom: 10px;
-	border-bottom: 1px dotted #eee;
-}
-.site-footer {
-	margin-top: 20px;
-	padding: 10px 0 30px;
-	border-top: 1px dotted #eee;
-}
-.group:after /* clearfix */{
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.convo, .convos-menu li, .button, input[type="submit"], input, textarea {
-	padding: 5px 10px;
-	border-radius: 2px;
-}
-
-.convo {
-	position: relative;
-	margin-bottom: 5px;
-	padding-left: 40px;
-	background: #f9f9f9;
-	border: solid #eee;
-	border-width: 0 0 1px 0;
-}
-.vote-links {
-	position: absolute;
-	top: 7px;
-	left: 8px;
-	bottom: 7px;
-	padding-right: 8px;
-	border-right: 1px dotted #eee;
-}
-.disabled.vote-links a {
-	cursor: default;
-}
-a.upvote, 
-a.downvote {
-	position: relative;
-	display: block;
-	text-indent: -9999px;
-}
-a.upvote::before,  
-a.downvote::before {
-	content: '';
-	position: absolute;
-	top: -5px;
-	right: -5px;
-	bottom: -5px;
-	left: -5px;
-}
-
-a.upvote:hover,
-a.upvote.active,
-.disabled.vote-links a.upvote.active {
-	border-bottom-color: #ee1b2c;
-}
-.disabled.vote-links a.upvote {
-	border-bottom-color: #eee;	
-}
-
-a.downvote:hover,
-a.downvote.active,
-.disabled.vote-links a.downvote.active {
-	border-top-color: #222;
-}
-.disabled.vote-links a.downvote {
-	border-top-color: #eee;	
-}
-
-a.upvote {
-	width: 0; 
-	height: 0; 
-	margin: 3px 0 8px;
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-bottom: 8px solid #ccc;
-	outline: 0;
-}
-
-a.downvote {
-	width: 0; 
-	height: 0; 
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-top: 8px solid #ccc;
-	outline: 0;
-}
-
-
-.convos-menu {
-	margin-left: 10px;
-}
-.convos-menu li {
-	float: left;
-	margin-left: 0;
-	list-style-type: none;
-}
-.convos-menu a.active {
-	border-top: 2px solid #ee1b2c;
-}
-.metadata,
-.url-token {
-	font-size: 14px;
-}
-.metadata,
-.metadata a,
-.url-token {
-	color: #bbb;
-}
-.single-convo {
-	position: relative;
-	padding-left: 35px;
-}
-.single-convo .vote-links {
-	bottom: 5px;
-}
-.pages span {
-	color: #eee;
-}
-
-/* typography */
-.user-content p {
-	margin-bottom: .75em;
-	line-height: 1.4;
-}
-.user-content > *:only-child {
-	margin-bottom: 0;
-}
-.user-content img,
-.single-convo img {
-	max-width: 100%;
 }
 
 .field {
@@ -272,6 +102,216 @@ input[type="submit"] {
 	margin-right: 5px;
 }
 
+/* helpers */
+._group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* layout */
+body {
+	width: 85%;
+	margin: auto;
+	padding: 3% 0 2%;
+}
+
+/** header **/
+.logo {
+	width: 60px;
+	position: absolute;
+	left: -10px;
+	top: -13px;
+	border-radius: 50em;
+	border: 1px dotted #eee;
+}
+.site-nav {
+	margin-bottom: 20px;
+	padding-left: 50px;
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #eee;
+}
+.site-nav > * {
+	float: left;
+}
+.convos-menu {
+	margin-left: 10px;
+}
+.convos-menu li {
+	float: left;
+	margin-left: 0;
+	list-style-type: none;
+}
+.convos-menu a.active {
+	border-top: 2px solid #ee1b2c;
+}
+
+/** main **/
+main {
+	overflow: hidden;
+}
+
+.sidebar {
+	float: right;
+	width: 280px;
+	margin-left: 40px;
+}
+.sidebar section {
+	margin-bottom: 20px;
+}
+.topics a {
+	font-size: 20px;
+	color: #bbb;
+}
+
+/** footer **/
+.site-footer {
+	margin-top: 20px;
+	padding: 10px 0 30px;
+	border-top: 1px dotted #eee;
+}
+
+/* items (convos, comments) */
+.convo, .convos-menu li, .button, input[type="submit"], input, textarea {
+	padding: 5px 10px;
+	border-radius: 2px;
+}
+
+.convo {
+	position: relative;
+	margin-bottom: 5px;
+	background: #f9f9f9;
+	border: solid #eee;
+	border-width: 0 0 1px 0;
+}
+.convo, .single-convo {
+	padding-left: 40px;
+}
+.convo:target, .active.convo {
+	background: #fcfaf0;
+}
+
+.convo h1 {
+	font-size: 16px;
+}
+
+.vote-links {
+	position: absolute;
+	top: 7px;
+	left: 8px;
+	bottom: 7px;
+	padding-right: 8px;
+	border-right: 1px dotted #eee;
+}
+.disabled.vote-links a {
+	cursor: default;
+}
+
+a.upvote, 
+a.downvote {
+	width: 0; 
+	height: 0; 
+	position: relative;
+	display: block;
+	text-indent: -9999px;
+	outline: 0;
+}
+a.upvote::before,  
+a.downvote::before {
+	content: '';
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	bottom: -5px;
+	left: -5px;
+}
+
+a.upvote:hover,
+a.upvote.active,
+.disabled.vote-links a.upvote.active {
+	border-bottom-color: #ee1b2c;
+}
+.disabled.vote-links a.upvote {
+	border-bottom-color: #eee;	
+}
+
+a.downvote:hover,
+a.downvote.active,
+.disabled.vote-links a.downvote.active {
+	border-top-color: #222;
+}
+.disabled.vote-links a.downvote {
+	border-top-color: #eee;	
+}
+
+a.upvote {
+	margin: 3px 0 8px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #ccc;
+}
+
+a.downvote {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #ccc;
+}
+
+.metadata,
+.url-token {
+	font-size: 14px;
+}
+.metadata,
+.metadata a,
+.url-token,
+.url-token a {
+	color: #bbb;
+}
+.url-token {
+	font-weight: normal;
+}
+
+.thumbnail {
+	float: right;
+	max-height: 75px;
+	overflow: hidden;
+	margin: -5px;
+	margin-left: 10px;
+	margin-right: -10px;
+	margin-bottom: -6px;
+	border-radius: 0 2px 2px 0;
+	background: #232323;
+	position: relative;
+}
+.thumbnail > img {
+	width: 75px;
+	position: relative;
+}
+
+/* single convo */
+.single-convo {
+	position: relative;
+}
+.single-convo .vote-links {
+	bottom: 5px;
+}
+.pages span {
+	color: #eee;
+}
+
+.user-content p {
+	margin-bottom: .75em;
+	line-height: 1.4;
+}
+.user-content > *:only-child {
+	margin-bottom: 0;
+}
+.user-content img,
+.single-convo img {
+	max-width: 100%;
+}
+
+/* comments */
 .comments {
 	margin-top: 20px;
 	border-top: 1px dotted #eee;
@@ -279,11 +319,6 @@ input[type="submit"] {
 .comments form {
 	margin: 20px 0;
 }
-main > section h1 {
-	font-size: 18px;
-	color: #666;
-}
-
 .replies {
 	margin-left: 2px;
 	padding-left: 7px;
@@ -299,29 +334,4 @@ main > section h1 {
 	border-top: 1px dotted #ccc;
 	right: 100%;
 	top: 50%;
-}
-.convo:target {
-	background: #fcfaf0;
-}
-.convo > .thumbnail {
-	float: right;
-	max-height: 75px;
-	overflow: hidden;
-	margin: -5px;
-	margin-left: 10px;
-	margin-right: -10px;
-	margin-bottom: -6px;
-	border-radius: 0 2px 2px 0;
-	background: #232323;
-	position: relative;
-}
-.convo > .thumbnail > img {
-	width: 75px;
-	position: relative;
-}
-.url-token {
-	font-weight: normal;
-}
-.url-token a {
-	color: inherit;
 }
