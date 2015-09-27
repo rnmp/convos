@@ -1,6 +1,5 @@
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  after_action :create_scrape, only: [:create]
 
   # GET /convos
   # GET /convos.json
@@ -101,15 +100,6 @@ class ConvosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def convo_params
-      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id, :points)
-    end
-
-    def create_scrape
-      if @convo.url.present?
-        @scrape = Scrape.new(url: @convo.url)
-        unless @scrape.images.nil?
-          @scrape.save
-        end
-      end
+      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id, :points, :scrape_id)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926204601) do
+ActiveRecord::Schema.define(version: 20150927044555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20150926204601) do
     t.datetime "updated_at",             null: false
     t.integer  "topic_id"
     t.integer  "points",     default: 0
+    t.integer  "scrape_id"
   end
 
+  add_index "convos", ["scrape_id"], name: "index_convos_on_scrape_id", using: :btree
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree
 
   create_table "scrapes", force: :cascade do |t|
@@ -90,5 +92,6 @@ ActiveRecord::Schema.define(version: 20150926204601) do
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   add_foreign_key "comments", "convos"
+  add_foreign_key "convos", "scrapes"
   add_foreign_key "convos", "topics"
 end

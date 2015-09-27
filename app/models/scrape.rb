@@ -1,10 +1,11 @@
 class Scrape < ActiveRecord::Base
+  has_many :convos
 
   serialize :images   # Store images array as YAML in the database
 
-  validates :url, presence: true, :format => URI::regexp(%w(http https))
+  validates :url, presence: true
 
-  before_save :scrape_with_grabbit, :check_if_images
+  before_save :scrape_with_grabbit
 
   private
 
@@ -24,5 +25,7 @@ class Scrape < ActiveRecord::Base
 	      self.images = data.images
 	    end
     end
+
+    return false if self.images.empty?
   end
 end
