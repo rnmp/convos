@@ -202,6 +202,7 @@ main {
 	bottom: 7px;
 	padding-right: 8px;
 	border-right: 1px dotted #eee;
+
 }
 .disabled.vote-links a {
 	cursor: default;
@@ -272,15 +273,15 @@ a.downvote {
 }
 
 .thumbnail {
-	float: right;
+	float: left;
 	max-height: 75px;
 	overflow: hidden;
-	margin: -5px;
-	margin-left: 10px;
-	margin-right: -10px;
+	margin: -4px;
+	margin-left: -6px;
+	margin-right: 8px;
 	margin-bottom: -6px;
 	border-radius: 0 2px 2px 0;
-	background: #232323;
+	background: #f9f9f9;
 	position: relative;
 }
 .thumbnail > img {

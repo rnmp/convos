@@ -25,7 +25,7 @@ class Convo < ActiveRecord::Base
 
 	def smart_add_url_protocol
 		unless self.comment.present?
-			unless self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+			unless self.url[/^http:\/\//] || self.url[/^https:\/\//]
 				self.url = "http://#{self.url}"
 			end
 		end
