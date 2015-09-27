@@ -20,13 +20,6 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def render_thumbnail(url)
-    @scrape = Scrape.find_by(url: url)
-    if @scrape != nil
-      link_to (image_tag @scrape.images.first), url, class: 'thumbnail'
-    end
-  end
-
   def cp(path)
     "active" if current_page?(path)
   end
