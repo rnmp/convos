@@ -1,7 +1,7 @@
 class Convo < ActiveRecord::Base
 	belongs_to :topic
 	has_many :comments
-	before_validation :smart_add_url_protocol
+	after_validation :smart_add_url_protocol
 	validates :title, presence: true
 	validates :url, presence: true, unless: ->(convo){convo.comment.present?}
 	validates :comment, absence: true, if: ->(convo){convo.url.present?}

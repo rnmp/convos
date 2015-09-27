@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :url, raw('url <em>or</em> comment') %>
-    <%= f.text_field :url, placeholder: 'url', :autocomplete => :off %>
+    <%= f.url_field :url, placeholder: 'url', :autocomplete => :off %>
     <%= f.text_area :comment, placeholder: 'comment' %>
     <small>Markdown enabled</small>
   </div>

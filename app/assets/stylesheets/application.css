@@ -48,14 +48,6 @@ small {
 	color: #999;
 }
 .logo {
-	/*font-style: normal;
-	font-family: georgia;
-	font-size: 36px;
-	line-height: 1;
-	color: #323232;
-	position: relative;
-	top: -7px;
-	margin-right: 20px;*/
 	width: 60px;
 	position: absolute;
 	left: -10px;
@@ -200,11 +192,13 @@ a.downvote {
 .convos-menu a.active {
 	border-top: 2px solid #ee1b2c;
 }
-.metadata {
+.metadata,
+.url-token {
 	font-size: 14px;
 }
 .metadata,
-.metadata a {
+.metadata a,
+.url-token {
 	color: #bbb;
 }
 .single-convo {
@@ -226,7 +220,8 @@ a.downvote {
 .user-content > *:only-child {
 	margin-bottom: 0;
 }
-.user-content img {
+.user-content img,
+.single-convo img {
 	max-width: 100%;
 }
 
@@ -321,4 +316,10 @@ main > section h1 {
 .convo > .thumbnail > img {
 	width: 75px;
 	position: relative;
+}
+.url-token {
+	font-weight: normal;
+}
+.url-token a {
+	color: inherit;
 }

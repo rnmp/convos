@@ -3,6 +3,7 @@
   <h1>
     <% if convo.url? %>
       <%= link_to convo.title, convo.url %>
+      <span class="url-token">@ <%= link_to_unless @convo, host_for(convo.url), convo.url %></span>
     <% elsif %>
       <%= link_to_unless @convo, highlight(convo.title, params[:search]), convo %>
     <% end %>
