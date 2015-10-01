@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  def new
-  end
   def create
-  	@user = params[:user] ? User.new(user_params) : User.new_guest
+    @user = params[:user] ? User.new(user_params) : User.new_guest
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/'

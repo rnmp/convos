@@ -63,3 +63,6 @@ end
 
 # Paginator
 gem 'kaminari'
+
+# URL validator cuz URI.regexp sucks
+gem 'valid_url'
