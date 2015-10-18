@@ -7,7 +7,7 @@ class ConvosController < ApplicationController
     if params[:show] == 'recent'
       @convos = Convo.order('created_at DESC').page(params[:page]).per(25)
     else
-      @convos = Convo.order('points DESC').page(params[:page]).per(25)
+      @convos = Convo.order('weighted_score DESC').page(params[:page]).per(25)
     end
     if params[:search]
       @title = "search results for #{params[:search]}"
@@ -23,7 +23,7 @@ class ConvosController < ApplicationController
         @comments_order = 'created_at'
       end
     else
-      @comments_order = 'points'
+      @comments_order = 'weighted_score'
     end
     @comments = @convo.comments.hash_tree
     @comment = Comment.new(convo: @convo)
