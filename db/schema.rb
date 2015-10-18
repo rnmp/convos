@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 20151018202245) do
   create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.text     "comment"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "convo_id"
     t.integer  "parent_id"
     t.integer  "points",         default: 0
     t.integer  "upvotes",        default: 0
     t.integer  "downvotes",      default: 0
-    t.integer  "weighted_score", default: 0
+    t.float    "weighted_score", default: 0.0
   end
 
   add_index "comments", ["convo_id"], name: "index_comments_on_convo_id", using: :btree
@@ -45,14 +45,14 @@ ActiveRecord::Schema.define(version: 20151018202245) do
     t.string   "author"
     t.string   "url"
     t.text     "comment"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "topic_id"
     t.integer  "points",         default: 0
     t.integer  "scrape_id"
     t.integer  "upvotes",        default: 0
     t.integer  "downvotes",      default: 0
-    t.integer  "weighted_score", default: 0
+    t.float    "weighted_score", default: 0.0
   end
 
   add_index "convos", ["scrape_id"], name: "index_convos_on_scrape_id", using: :btree

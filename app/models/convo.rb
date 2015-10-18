@@ -15,7 +15,6 @@ class Convo < ActiveRecord::Base
   include VoteActions
 
   before_save :create_scrape
-  after_create :update_popularity
 
   def self.search(search)
     if search

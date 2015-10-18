@@ -8,8 +8,6 @@ class Comment < ActiveRecord::Base
   acts_as_voteable
   include VoteActions
 
-  after_create :update_popularity
-
   def self.search(search)
     if search
       where("comment LIKE ?", "%#{search}%")
@@ -19,7 +17,7 @@ class Comment < ActiveRecord::Base
   end
 
   protected
-  
+
   def update_popularity
     if points == 0
         return 0
