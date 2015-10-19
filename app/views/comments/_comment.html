@@ -20,5 +20,6 @@
       time_ago_in_words(comment.created_at)+' ago', 
       comment_to_comment_path(comment.convo.id, comment.id) %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
+    | <%= comment.weighted_score %> <!-- for testing purposes -->
   </p>
 </article>

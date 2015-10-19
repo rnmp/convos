@@ -29,5 +29,6 @@
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
     <% unless @topic %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
+    | <%= convo.weighted_score %> <!-- for testing purposes -->
   </p>
 </article>
