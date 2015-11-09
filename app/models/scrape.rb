@@ -1,11 +1,12 @@
 class Scrape < ActiveRecord::Base
   has_many :convos
-
   serialize :images   # Store images array as YAML in the database
-
   validates :url, presence: true
-
   before_save :scrape_with_grabbit
+
+  attr_reader :thumbnail_remote_url
+  has_attached_file :thumbnail
+
 
   private
 
@@ -28,4 +29,10 @@ class Scrape < ActiveRecord::Base
 
     return false if self.images.empty?
   end
+
+  def thumbnail_remote_url=(url_value)
+    self.images = URI.parse(url_value)
+    @thumbnail_remote_url = url_value
+  end
+
 end
