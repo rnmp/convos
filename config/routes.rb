@@ -11,13 +11,15 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/tos' => 'static_pages#tos'
 
-  resources :topics
-  resources :convos, param: :slug do
+# convos :only => [:show] when nested within topics
+  resources :topics, :path => "t", param: :slug
+  resources :convos, :path => "c", param: :slug do
     member do
       get 'upvote'
       get 'downvote'
     end
   end
+  
   resources :comments do
     member do
       get 'upvote'

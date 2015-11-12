@@ -74,7 +74,7 @@ class Convo < ActiveRecord::Base
   private
 
   def create_slug
-    self.slug = name.parameterize
+    self.slug = title.parameterize
   end
 
 end
