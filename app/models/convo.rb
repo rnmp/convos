@@ -8,6 +8,9 @@ class Convo < ActiveRecord::Base
   before_validation :smart_add_url_protocol
   validates :url, url:true, presence: true, unless: ->(convo){convo.comment.present?}
 
+  before_validation :create_slug
+  validates :slug, presence: true, uniqueness: { case_sensitive: false }
+
   validates :comment, absence: true, if: ->(convo){convo.url.present?}
   
   acts_as_voteable
@@ -21,6 +24,10 @@ class Convo < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def to_param
+    slug
   end
 
   protected
@@ -63,4 +70,11 @@ class Convo < ActiveRecord::Base
         end
       end
   end
+
+  private
+
+  def create_slug
+    self.slug = name.parameterize
+  end
+
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/tos' => 'static_pages#tos'
 
   resources :topics
-  resources :convos do
+  resources :convos, param: :slug do
     member do
       get 'upvote'
       get 'downvote'
