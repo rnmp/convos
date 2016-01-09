@@ -1,4 +1,4 @@
-<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group">
+<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-weighted-score="<%= convo.weighted_score %>">
   <%= render_thumbnail convo if convo.scrape_id? %>
   <h1>
     <% if convo.url? %>
@@ -15,10 +15,10 @@
   <% end %>
   <p class="metadata">
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
-      <%= link_to 'upvote', upvote_convo_path(convo), remote: true, 
+      <%= link_to 'upvote', (upvote_convo_path(convo) unless current_user.voted_for?(convo)), remote: (true unless current_user.voted_for?(convo)), 
         class: 'upvote'+(' active' if current_user && current_user.voted_for?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
-      <%= link_to 'downvote', downvote_convo_path(convo), remote: true, 
+      <%= link_to 'downvote', (downvote_convo_path(convo) unless current_user.voted_against?(convo)), remote: (true unless current_user.voted_against?(convo)), 
         class: 'downvote'+(' active' if current_user && current_user.voted_against?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
     </span>
@@ -29,6 +29,5 @@
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %>
     <% unless @topic %>in <%= link_to convo.topic.name, topic_path(convo.topic) %><% end %>
-    | <%= convo.weighted_score %> <!-- for testing purposes -->
   </p>
 </article>

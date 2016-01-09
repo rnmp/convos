@@ -9,7 +9,7 @@
 ready = ->
   autosize($('textarea'))
 
-  $("a[data-remote]").on "click", () ->
+  $("a[data-remote]").on "click", (e) ->
     is_selected = $(this).hasClass('active')
 
     $(this).parent().removeClass 'disabled'
@@ -51,6 +51,9 @@ ready = ->
     $span.html item_points
     $(this).parent().addClass 'disabled'
     $(this).addClass 'active'
+
+    $(this).unbind()
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
