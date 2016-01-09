@@ -15,10 +15,10 @@
   <% end %>
   <p class="metadata">
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
-      <%= link_to 'upvote', (upvote_convo_path(convo) unless current_user.voted_for?(convo)), remote: (true unless current_user.voted_for?(convo)), 
+      <%= link_to 'upvote', (current_user.voted_on?(convo) ? 'javascript:;' : upvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 
         class: 'upvote'+(' active' if current_user && current_user.voted_for?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
-      <%= link_to 'downvote', (downvote_convo_path(convo) unless current_user.voted_against?(convo)), remote: (true unless current_user.voted_against?(convo)), 
+      <%= link_to 'downvote', (current_user.voted_on?(convo) ? 'javascript:;' : downvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 
         class: 'downvote'+(' active' if current_user && current_user.voted_against?(convo)).to_s, 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
     </span>
