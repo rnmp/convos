@@ -304,7 +304,7 @@ a.downvote {
 	color: #eee;
 }
 
-.user-content p {
+.user-content p, .user-content ul {
 	margin-bottom: .75em;
 	line-height: 1.4;
 }
