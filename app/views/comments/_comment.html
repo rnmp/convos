@@ -1,4 +1,4 @@
-<article class="convo<%= ' hidden' if comment.points < -5 %>" id="comment-<%= comment.id %>">
+<article class="convo<%= ' hidden' if comment.points < -5 %>" id="comment-<%= comment.id %>" data-weighted-score="<%= comment.weighted_score %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
@@ -20,6 +20,5 @@
       time_ago_in_words(comment.created_at)+' ago', 
       comment_to_comment_path(comment.convo.id, comment.id) %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
-    | <%= comment.weighted_score %> <!-- for testing purposes -->
   </p>
 </article>
