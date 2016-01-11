@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  get '/about' => 'static_pages#about'
+  #get '/about' => 'static_pages#about'
   get '/tos' => 'static_pages#tos'
 
   resources :topics
