@@ -113,9 +113,11 @@ input[type="submit"] {
 
 /* layout */
 body {
-	width: 85%;
+	/*width: 85%;*/
+	width: 900px;
 	margin: auto;
-	padding: 3% 0 2%;
+	/*padding: 3% 0 2%;*/
+	padding: 40px 0 30px;
 }
 
 /** header **/

@@ -15,10 +15,10 @@ topic_names.length.times do |topic_name|
   Topic.create(:name => topic_names[topic_name])
 end
 
-1000.times do
-  Convo.create(
-    :title => "My Post #{SecureRandom.hex(2)}",
-    :comment => SecureRandom.hex(32),
-    :topic_id => rand(1..17)
-  )
-end
+# 1000.times do
+#   Convo.create(
+#     :title => "My Post #{SecureRandom.hex(2)}",
+#     :comment => SecureRandom.hex(32),
+#     :topic_id => rand(1..17)
+#   )
+# end
