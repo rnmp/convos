@@ -113,8 +113,8 @@ input[type="submit"] {
 
 /* layout */
 body {
-	/*width: 85%;*/
-	width: 900px;
+	width: 85%;
+	min-width: 900px;
 	margin: auto;
 	/*padding: 3% 0 2%;*/
 	padding: 40px 0 30px;
@@ -130,6 +130,7 @@ body {
 	border: 1px dotted #eee;
 }
 .site-nav {
+	height:30px;
 	margin-bottom: 20px;
 	padding-left: 50px;
 	padding-bottom: 10px;
@@ -157,11 +158,21 @@ main {
 
 .sidebar {
 	float: right;
-	width: 280px;
-	margin-left: 40px;
+	padding-left: 10px;
+	background: #fff;
 }
 .sidebar section {
 	margin-bottom: 20px;
+}
+a.new-convo {
+	display: block;
+	width: 110px;
+}
+.sidebar .reg-banner {
+	font-size: 12px;
+	top: 100%;
+	color: #999;
+	background: #fff;
 }
 .topics a {
 	font-size: 20px;

@@ -7,7 +7,7 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<nav class="site-nav _group">
+		<nav class="site-nav">
 			<%= link_to image_tag('logo.png', alt:'convos.org', class:'logo'), root_path %>
 			<ul class="convos-menu">
 				<li>sort by</li>
@@ -20,8 +20,10 @@
 			</ul>
 			<div class="sidebar">
 				<%= link_to '+ start a convo', new_convo_path, class: 'new-convo button' %>
+				<p class="reg-banner">registration not required</p>
 			</div>
 		</nav>
+		<% if false %>
 		<aside class="sidebar">
 			<section>
 				<h1>filter by topic</h1>
@@ -39,11 +41,12 @@
 				<% end %>
 			</section>
 		</aside>
+		<% end %>
 		<main>
 			<%= yield %>
 		</main>
 		<footer class="site-footer">
-			<p class="copyright">&copy; 2016 convos.org. All rights reserved. <a href="/tos" style="float: right;">Terms of service</a></p> 
+			<p class="copyright">&copy; 2016. All rights reserved. <a href="/tos" style="float: right;">Terms of service</a></p> 
 		</footer>
 	</body>
 </html>

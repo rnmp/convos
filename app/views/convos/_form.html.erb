@@ -21,12 +21,12 @@
     <%= f.text_area :comment, placeholder: 'comment' %>
     <small>Markdown enabled</small>
   </div>
-  <%= f.label :topic_id, 'topic' %>
+<!--   <%= f.label :topic_id, 'topic' %>
   <div class="field topics-selection">
     <%= f.collection_radio_buttons :topic_id, topics_list, :id, :name, checked: 1 do |t| %>
       <%= t.label { t.radio_button + t.text } %>
     <% end %>
-  </div>
+  </div> -->
 
   <div class="field">
     <%= f.label :author, 'sign it (optional)' %>
