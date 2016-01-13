@@ -113,11 +113,11 @@ input[type="submit"] {
 
 /* layout */
 body {
-	width: 85%;
-	min-width: 900px;
+	width: 60%;
+	min-width: 700px;
 	margin: auto;
 	/*padding: 3% 0 2%;*/
-	padding: 40px 0 30px;
+	padding: 40px 30px 30px;
 }
 
 /** header **/
@@ -172,6 +172,7 @@ a.new-convo {
 	top: 100%;
 	color: #999;
 	background: #fff;
+	text-align: center;
 }
 .topics a {
 	font-size: 20px;
@@ -182,6 +183,7 @@ a.new-convo {
 .site-footer {
 	margin-top: 20px;
 	padding: 10px 0 30px;
+	font-size: 14px;
 	border-top: 1px dotted #eee;
 }
 
