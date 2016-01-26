@@ -6,6 +6,15 @@ GIT
       activerecord
       statistics2
 
+GIT
+  remote: git://github.com/christianarevalo/grabbit.git
+  revision: 92d550d7b486d911440a4c585658b3fbeda41376
+  specs:
+    grabbit (1.0.0)
+      addressable
+      httparty
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -67,9 +76,6 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    grabbit (1.0.0)
-      httparty
-      nokogiri
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -182,7 +188,7 @@ DEPENDENCIES
   byebug
   closure_tree
   coffee-rails (~> 4.1.0)
-  grabbit
+  grabbit!
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
@@ -199,3 +205,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   valid_url
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.11.2
