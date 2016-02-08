@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'convos#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  #get '/signup' => 'users#new'
+  #post '/users' => 'users#create'
 
   #get '/about' => 'static_pages#about'
   get '/tos' => 'static_pages#tos'

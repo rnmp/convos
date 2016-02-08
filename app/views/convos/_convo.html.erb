@@ -28,6 +28,7 @@
     <% end %>
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %> 
+    <!-- Make these links available to the user on posts made by that user -->
     <% unless current_user.guest %> ·
       <%= link_to 'delete', convo, :method => :delete %> ·
       <%= link_to 'edit', edit_convo_path(convo) %>
