@@ -32,7 +32,7 @@ gem 'redcarpet'
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
 
 # Thumbnails
-gem 'grabbit'
+gem 'grabbit', :github => 'christianarevalo/grabbit'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

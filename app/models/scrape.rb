@@ -1,3 +1,5 @@
+require 'uri'
+
 class Scrape < ActiveRecord::Base
   has_many :convos
 
