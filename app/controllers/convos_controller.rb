@@ -37,6 +37,7 @@ class ConvosController < ApplicationController
 
   # GET /convos/1/edit
   def edit
+    @convo = Convo.find(params[:id])
   end
 
   def upvote
@@ -78,6 +79,16 @@ class ConvosController < ApplicationController
       end
     end
   end
+
+def update
+  @convo = Convo.find(params[:id])
+  
+  if @convo.update(convo_params)
+    redirect_to root_path
+  else
+    render 'edit'
+  end 
+end
 
   # DELETE /convos/1
   # DELETE /convos/1.json
