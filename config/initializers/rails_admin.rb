@@ -4,8 +4,6 @@ RailsAdmin.config do |config|
       username == 'sdh-admin' && password == 'r0l4nd0 g4yl0rd'
     end
   end
-end
-
 
   ### Popular gems integration
 
