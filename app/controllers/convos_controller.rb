@@ -69,33 +69,21 @@ class ConvosController < ApplicationController
   # PATCH/PUT /convos/1
   # PATCH/PUT /convos/1.json
   def update
-    respond_to do |format|
-      if @convo.update(convo_params)
-        format.html { redirect_to @convo, notice: 'Convo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @convo }
-      else
-        format.html { render :edit }
-        format.json { render json: @convo.errors, status: :unprocessable_entity }
-      end
-    end
+    @convo = Convo.find(params[:id])
+    
+    if @convo.update(convo_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end 
   end
-
-def update
-  @convo = Convo.find(params[:id])
-  
-  if @convo.update(convo_params)
-    redirect_to root_path
-  else
-    render 'edit'
-  end 
-end
 
   # DELETE /convos/1
   # DELETE /convos/1.json
   def destroy
     @convo.destroy
     respond_to do |format|
-      format.html { redirect_to convos_url, notice: 'Convo was successfully destroyed.' }
+      format.html { redirect_to convos_url }
       format.json { head :no_content }
     end
   end

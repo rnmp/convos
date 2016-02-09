@@ -20,5 +20,10 @@
       time_ago_in_words(comment.created_at)+' ago', 
       comment_to_comment_path(comment.convo.id, comment.id) %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
+    <!-- Make these links available to the user on posts made by that user -->
+    <% unless current_user.guest %> ·
+      <%= link_to 'delete', comment, :method => :delete %> ·
+      <%= link_to 'edit', edit_comment_path(comment) %>
+    <% end %>
   </p>
 </article>
