@@ -14,7 +14,7 @@
   <%= f.hidden_field :convo_id %>
   <%= f.hidden_field :parent_id %>
   <div class="field">
-    <%= f.text_area :comment, placeholder: 'add a comment' %>
+    <%= f.text_area :comment, :maxlength => 10000 %>
   </div>
 
 <a href="#" id='formatting_help_link'><small>Formatting help</small></a>
