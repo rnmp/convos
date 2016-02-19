@@ -31,8 +31,8 @@ gem 'redcarpet'
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
 
-# Thumbnails
-gem 'grabbit', :github => 'christianarevalo/grabbit'
+# Thumbnails, currently deprecated
+# gem 'grabbit', :github => 'christianarevalo/grabbit'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -67,5 +67,5 @@ gem 'kaminari'
 # URL validator cuz URI.regexp sucks
 gem 'valid_url'
 
-# convos.org/admin
+# Admin tools convos.org/admin
 gem 'rails_admin'
