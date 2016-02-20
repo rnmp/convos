@@ -31,9 +31,6 @@ gem 'redcarpet'
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
 
-# Thumbnails
-gem 'grabbit', :github => 'christianarevalo/grabbit'
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
