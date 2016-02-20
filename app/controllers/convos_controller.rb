@@ -4,10 +4,10 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.json
   def index
-    if params[:show] == 'recent'
-      @convos = Convo.order('created_at DESC').page(params[:page]).per(25)
-    else
+    if params[:show] == 'popular'
       @convos = Convo.order('weighted_score DESC').page(params[:page]).per(25)
+    else
+      @convos = Convo.order('created_at DESC').page(params[:page]).per(25)
     end
     if params[:search]
       @title = "search results for #{params[:search]}"
