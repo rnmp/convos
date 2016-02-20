@@ -96,6 +96,6 @@ class ConvosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def convo_params
-      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id, :points, :scrape_id)
+      params.require(:convo).permit(:title, :author, :url, :comment, :topic_id, :points)
     end
 end

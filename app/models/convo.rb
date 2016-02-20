@@ -1,6 +1,5 @@
 class Convo < ActiveRecord::Base
   belongs_to :topic
-  belongs_to :scrape
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true
@@ -12,8 +11,6 @@ class Convo < ActiveRecord::Base
   
   acts_as_voteable
   include VoteActions
-
-  before_save :create_scrape
 
   def self.search(search)
     if search
@@ -55,12 +52,4 @@ class Convo < ActiveRecord::Base
     self.update_attribute(:weighted_score, result)
   end
 
-  def create_scrape
-    if self.url.present?
-        @scrape = Scrape.new(url: self.url)
-        if @scrape.save
-          self.scrape_id = @scrape.id
-        end
-      end
-  end
 end
