@@ -352,3 +352,19 @@ a.downvote {
 	right: 100%;
 	top: 50%;
 }
+
+.new_convo {
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px 0 #eee;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+.new_convo label {
+	display: none;
+}
+.new_convo .field,
+.new_convo input[type="text"],
+.new_convo input[type="url"],
+.new_convo textarea {
+	margin: 0;
+}

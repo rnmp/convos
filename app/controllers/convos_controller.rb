@@ -4,6 +4,8 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.json
   def index
+    @new_convo = Convo.new
+
     if params[:show] == 'popular'
       @convos = Convo.order('weighted_score DESC').page(params[:page]).per(25)
     else
