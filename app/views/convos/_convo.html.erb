@@ -1,17 +1,5 @@
 <article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-weighted-score="<%= convo.weighted_score %>">
-  <h1>
-    <% if convo.url? %>
-      <%= link_to convo.title, convo.url %>
-      <span class="url-token">@ <%= link_to_unless @convo, host_for(convo.url), convo.url %></span>
-    <% elsif %>
-      <%= link_to_unless @convo, highlight(convo.title, params[:search]), convo %>
-    <% end %>
-  </h1>
-  <% if @convo && convo.comment? || params[:search] %>
-    <div class="user-content">
-      <%= highlight markdown(convo.comment), params[:search] %>
-    </div>
-  <% end %>
+  <%= highlight markdown(convo.convo), params[:search] %>
   <p class="metadata">
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
       <%= link_to 'upvote', (current_user.voted_on?(convo) ? 'javascript:;' : upvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 

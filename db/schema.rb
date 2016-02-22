@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018202245) do
+ActiveRecord::Schema.define(version: 20160221050018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151018202245) do
     t.integer  "upvotes",        default: 0
     t.integer  "downvotes",      default: 0
     t.float    "weighted_score", default: 0.0
+    t.text     "convo"
   end
 
   add_index "convos", ["scrape_id"], name: "index_convos_on_scrape_id", using: :btree

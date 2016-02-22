@@ -31,6 +31,9 @@ gem 'redcarpet'
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
 
+# Data migration
+gem 'migration_data'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

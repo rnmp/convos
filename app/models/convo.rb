@@ -2,12 +2,7 @@ class Convo < ActiveRecord::Base
   belongs_to :topic
   has_many :comments, dependent: :destroy
 
-  validates :title, presence: true
-
-  before_validation :smart_add_url_protocol
-  validates :url, url:true, presence: true, unless: ->(convo){convo.comment.present?}
-
-  validates :comment, absence: true, if: ->(convo){convo.url.present?}
+  validates :convo, presence: true
   
   acts_as_voteable
   include VoteActions
@@ -21,14 +16,6 @@ class Convo < ActiveRecord::Base
   end
 
   protected
-
-  def smart_add_url_protocol
-    unless self.comment.present?
-      unless self.url[/^http:\/\//] || self.url[/^https:\/\//]
-        self.url = "http://#{self.url}"
-      end
-    end
-  end
 
   $our_epoch = Time.local(2005, 12, 8, 7, 46, 43).to_time
 

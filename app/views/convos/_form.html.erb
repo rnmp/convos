@@ -12,13 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, 'title' %>
-    <%= f.text_field :title, placeholder: 'title', :maxlength => 300 %>
-  </div>
-  <div class="field">
-    <%= f.label :url, raw('url <em>or</em> comment') %>
-    <%= f.url_field :url, placeholder: 'url', :autocomplete => :off %>
-    <%= f.text_area :comment, placeholder: 'comment', :maxlength => 10000 %>
+    <%= f.text_area :convo, placeholder: 'start a convo. share a link, thought, anything…', :maxlength => 10000 %>
     <small>Markdown enabled</small>
   </div>
 <!--   <%= f.label :topic_id, 'topic' %>
