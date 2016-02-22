@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_area :convo, placeholder: 'start a convo. share a link, thought, anything…', :maxlength => 10000 %>
-    <small>Markdown enabled</small>
+    <%= f.label :convo, 'message' %>
+    <%= f.text_area :convo, placeholder: 'start a convo. share a thought, story, or anything…', :maxlength => 10000 %>
   </div>
 <!--   <%= f.label :topic_id, 'topic' %>
   <div class="field topics-selection">
@@ -22,11 +22,9 @@
     <% end %>
   </div> -->
 
-  <div class="field">
+  <div class="options">
     <%= f.label :author, 'sign it (optional)' %>
-    <%= f.text_field :author %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'submit' %>
+    <%= f.text_field :author, placeholder: '— sign it (optional)' %>
+    <%= f.submit '+ start a convo' %>
   </div>
 <% end %>

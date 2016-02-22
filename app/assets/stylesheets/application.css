@@ -32,12 +32,6 @@ a, .metadata a.highlight, .topics a.active {
 a:hover {
 	text-decoration: underline;
 }
-nav {
-	position: relative;
-}
-nav a {
-	font-weight: bold;
-}
 i {
 	font-style: normal;
 }
@@ -113,10 +107,9 @@ input[type="submit"] {
 
 /* layout */
 body {
-	width: 60%;
-	min-width: 700px;
+	position: relative;
+	width: 700px;
 	margin: auto;
-	/*padding: 3% 0 2%;*/
 	padding: 40px 30px 30px;
 }
 
@@ -124,28 +117,20 @@ body {
 .logo {
 	width: 60px;
 	position: absolute;
-	left: -10px;
-	top: -13px;
 	border-radius: 50em;
 	border: 1px dotted #eee;
-}
-.site-nav {
-	height:30px;
-	margin-bottom: 20px;
-	padding-left: 50px;
-	padding-bottom: 10px;
-	border-bottom: 1px dotted #eee;
-}
-.site-nav > * {
-	float: left;
+	right: 100%;
 }
 .convos-menu {
-	margin-left: 10px;
+	margin-bottom: 10px;
 }
 .convos-menu li {
 	float: left;
-	margin-left: 0;
+	margin-right: 20px;
 	list-style-type: none;
+}
+.convos-menu a {
+	font-weight: bold;
 }
 .convos-menu a.active {
 	border-top: 2px solid #ee1b2c;
@@ -153,31 +138,9 @@ body {
 
 /** main **/
 main {
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
-.sidebar {
-	float: right;
-	padding-left: 10px;
-	background: #fff;
-}
-.sidebar section {
-	margin-bottom: 20px;
-}
-a.new-convo {
-	display: block;
-}
-.sidebar .reg-banner {
-	font-size: 12px;
-	top: 100%;
-	color: #999;
-	background: #fff;
-	text-align: center;
-}
-.topics a {
-	font-size: 20px;
-	color: #bbb;
-}
 
 /** footer **/
 .site-footer {
@@ -188,7 +151,7 @@ a.new-convo {
 }
 
 /* items (convos, comments) */
-.convo, .convos-menu li, .button, input[type="submit"], input, textarea {
+.convo, .button, input[type="submit"], input, textarea {
 	padding: 5px 10px;
 	border-radius: 2px;
 }
@@ -354,10 +317,11 @@ a.downvote {
 }
 
 .new_convo {
-	border: 1px solid #ccc;
-	box-shadow: 1px 1px 0 #eee;
-	border-radius: 3px;
-	margin-bottom: 10px;
+	padding: 10px 15px;
+	border: 1px solid #eaeaea;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	border-radius: 2px;
+	margin-bottom: 20px;
 }
 .new_convo label {
 	display: none;
@@ -367,4 +331,27 @@ a.downvote {
 .new_convo input[type="url"],
 .new_convo textarea {
 	margin: 0;
+	border: 0;
+	padding: 0;
+}
+.new_convo:focus {
+	border-color: #ee1b2c;
+}
+.new_convo input[type="text"]:focus,
+.new_convo input[type="url"]:focus,
+.new_convo textarea:focus {
+	outline: none;
+}
+.new_convo input[type="submit"] {
+	margin-left: auto;
+}
+.new_convo .options {
+	border-top: 1px solid #eaeaea;
+	display: flex;
+	padding-top: 7px;
+}
+.new_convo textarea {
+	width: 100%;
+	resize: none;
+	padding-bottom: 21px;
 }

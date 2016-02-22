@@ -1,4 +1,9 @@
 <%= render partial: 'form', locals: { convo: @new_convo } %>
+<ul class="convos-menu _group">
+  <li>sort by</li>
+  <li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
+  <li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
+</ul>
 <% if @convos.present? %>
 	<%= render @convos %>
 <% else %>
