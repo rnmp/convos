@@ -1,5 +1,7 @@
 <article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-weighted-score="<%= convo.weighted_score %>">
-  <%= highlight markdown(convo.convo), params[:search] %>
+  <div class="user-content">
+    <%= highlight markdown(convo.convo), params[:search] %>
+  </div>
   <p class="metadata">
     <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
       <%= link_to 'upvote', (current_user.voted_on?(convo) ? 'javascript:;' : upvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 
