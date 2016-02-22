@@ -1,6 +1,6 @@
 <h1>Editing Convo</h1>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { convo: @convo } %>
 
 <%= link_to 'Show', @convo %> |
 <%= link_to 'Back', convos_path %>

@@ -22,8 +22,8 @@
 	<body>
 		<%= link_to image_tag('logo.png', alt:'convos.org', class:'logo'), root_path %>
 		<% if current_user && !current_user.guest? %>
-		  <li>hello, <strong><%= current_user.username %></strong></li>
-		  <li><%= link_to "logout", logout_path %></li>
+		  hello, <strong><%= current_user.username %></strong> ·
+		  <%= link_to "logout", logout_path %>
 		<% end %>
 		<% if false %>
 		<aside class="sidebar">

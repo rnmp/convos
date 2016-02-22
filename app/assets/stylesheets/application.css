@@ -41,6 +41,10 @@ h1 {
 ul li {
 	list-style-type: square;
 }
+ul {
+	margin-left: 0;
+	padding-left: 1em;
+ }
 small {
 	color: #999;
 }
@@ -162,6 +166,7 @@ main {
 	background: #f9f9f9;
 	border: solid #eee;
 	border-width: 0 0 1px 0;
+	word-wrap: break-word;
 }
 .convo.truncate .user-content {
 	position: relative;
