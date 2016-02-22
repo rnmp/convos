@@ -190,6 +190,7 @@ main {
 }
 .convo, .single-convo {
 	padding-left: 40px;
+	word-wrap: break-word;
 }
 .convo:target, .active.convo {
 	background: #fcfaf0;
@@ -376,6 +377,48 @@ a.downvote {
 	padding-top: 7px;
 }
 .new_convo textarea {
+	width: 100%;
+	resize: none;
+	padding-bottom: 21px;
+}
+
+
+
+.new_comment {
+	padding: 10px 15px;
+	border: 1px solid #eaeaea;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	border-radius: 2px;
+	margin-bottom: 20px;
+}
+.new_comment label {
+	display: none;
+}
+.new_comment .field,
+.new_comment input[type="text"],
+.new_comment input[type="url"],
+.new_comment textarea {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+.new_comment:focus {
+	border-color: #ee1b2c;
+}
+.new_comment input[type="text"]:focus,
+.new_comment input[type="url"]:focus,
+.new_comment textarea:focus {
+	outline: none;
+}
+.new_comment input[type="submit"] {
+	margin-left: auto;
+}
+.new_comment .options {
+	border-top: 1px solid #eaeaea;
+	display: flex;
+	padding-top: 7px;
+}
+.new_comment textarea {
 	width: 100%;
 	resize: none;
 	padding-bottom: 21px;
