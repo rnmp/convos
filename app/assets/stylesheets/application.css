@@ -163,6 +163,26 @@ main {
 	border: solid #eee;
 	border-width: 0 0 1px 0;
 }
+.convo.truncate .user-content {
+	position: relative;
+	height: 90px;
+	overflow: hidden;
+}
+.convo.truncate .user-content .expand-link {
+	position: absolute;
+	bottom: 0;
+	z-index: 1;
+	cursor: pointer;
+}
+.convo.truncate .user-content::after {
+	position: absolute;
+	content: '';
+	background: #f9f9f9;
+	height: 21px;
+	width: 100%;
+	bottom: 0;
+	pointer-events: none;
+}
 .convo, .single-convo {
 	padding-left: 40px;
 }
