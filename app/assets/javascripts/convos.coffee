@@ -7,6 +7,17 @@
 # versa). currently votecount only changes in increment of 1.
 
 ready = ->
+  $(".convo").each ->
+    self = this
+    content = $('.user-content', this)
+    if content.height() > 90
+      $(self).addClass('truncate')
+      expand_link = $('<a>').addClass('expand-link').text('— expand —')
+      content.append(expand_link)
+      expand_link.on "click", () ->
+        $(self).removeClass('truncate')
+        $(this).remove()
+  
   autosize($('textarea'))
 
   $("a[data-remote]").on "click", (e) ->
