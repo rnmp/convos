@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :convo
+  belongs_to :user
 
   validates :comment, presence: true
 

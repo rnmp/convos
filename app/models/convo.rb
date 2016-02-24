@@ -1,5 +1,6 @@
 class Convo < ActiveRecord::Base
   belongs_to :topic
+  belongs_to :user
   has_many :comments, dependent: :destroy
 
   validates :convo, presence: true

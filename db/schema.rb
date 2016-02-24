@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221050018) do
+ActiveRecord::Schema.define(version: 20160224195637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,9 +36,11 @@ ActiveRecord::Schema.define(version: 20160221050018) do
     t.integer  "upvotes",        default: 0
     t.integer  "downvotes",      default: 0
     t.float    "weighted_score", default: 0.0
+    t.integer  "user_id"
   end
 
   add_index "comments", ["convo_id"], name: "index_comments_on_convo_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "convos", force: :cascade do |t|
     t.string   "title"
@@ -54,10 +56,12 @@ ActiveRecord::Schema.define(version: 20160221050018) do
     t.integer  "downvotes",      default: 0
     t.float    "weighted_score", default: 0.0
     t.text     "convo"
+    t.integer  "user_id"
   end
 
   add_index "convos", ["scrape_id"], name: "index_convos_on_scrape_id", using: :btree
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree
+  add_index "convos", ["user_id"], name: "index_convos_on_user_id", using: :btree
 
   create_table "scrapes", force: :cascade do |t|
     t.string   "url"
@@ -99,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160221050018) do
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   add_foreign_key "comments", "convos"
+  add_foreign_key "comments", "users"
   add_foreign_key "convos", "scrapes"
   add_foreign_key "convos", "topics"
+  add_foreign_key "convos", "users"
 end

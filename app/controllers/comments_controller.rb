@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
     else
       @comment = Comment.new(comment_params)
     end
+    @comment.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @comment.save

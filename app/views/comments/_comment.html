@@ -24,6 +24,7 @@
     <% unless current_user.guest %> ·
       <%= link_to 'delete', comment, :method => :delete %> ·
       <%= link_to 'edit', edit_comment_path(comment) %>
+      · user_id: <%= comment.user_id %>
     <% end %>
   </p>
 </article>

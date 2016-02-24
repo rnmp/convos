@@ -55,6 +55,7 @@ class ConvosController < ApplicationController
   # POST /convos.json
   def create
     @convo = Convo.new(convo_params)
+    @convo.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @convo.save

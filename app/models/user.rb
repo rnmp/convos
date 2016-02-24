@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :convos
+  has_many :comments
   validates :email, :password_digest, presence: true, unless: :guest?
   validates :password, confirmation: true
   has_secure_password(validations: false)
