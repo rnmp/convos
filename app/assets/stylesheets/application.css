@@ -195,7 +195,7 @@ main {
 .convo:target, .active.convo {
 	background: #fcfaf0;
 }
-.convo a:visited, .single-convo a:visited {
+.user-content a:visited {
 	color: #999;
 }
 
