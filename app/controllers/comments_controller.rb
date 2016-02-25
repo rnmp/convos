@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    redirect_to :back unless @comment.user && @comment.user = current_user
   end
 
   # POST /comments
@@ -69,10 +70,14 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to convos_url }
-      format.json { head :no_content }
+    if @comment.user && @comment.user = current_user
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to convos_url }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to :back
     end
   end
 

@@ -2,7 +2,7 @@
 <%= render @convo %>
 
 <section class="comments">
-  <%= render 'comments/form' %>
+  <%= render partial: 'comments/form', locals: { submit_text: 'submit' } %>
   <% if @comments.count > 0 %>
     <h1><%= pluralized_comments_for @convo %>  <%= link_to "top", convo_path(@convo) %> <%= link_to "recent", convo_path(@convo)+'?show=recent' %> </h1>
     <%= comments_tree_for @comments, @comments_order %>
