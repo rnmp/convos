@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     
     if @comment.update(comment_params)
-      redirect_to root_path
+      redirect_to :back
     else
       render 'edit'
     end 
@@ -73,7 +73,7 @@ class CommentsController < ApplicationController
     if @comment.user && @comment.user = current_user
       @comment.destroy
       respond_to do |format|
-        format.html { redirect_to convos_url }
+        format.html { redirect_to :back }
         format.json { head :no_content }
       end
     else
