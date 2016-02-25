@@ -1,4 +1,4 @@
-<%= form_for(convo) do |f| %>
+<%= form_for convo, html: {class: 'block-form'} do |f| %>
   <% if convo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(convo.errors.count, "error") %> prohibited this convo from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :convo, 'message' %>
-    <%= f.text_area :convo, placeholder: 'start a convo. share a thought, story, or anything…', :maxlength => 10000 %>
+    <%= f.text_area :convo, placeholder: 'share a thought, story, or anything…', :maxlength => 10000 %>
   </div>
 <!--   <%= f.label :topic_id, 'topic' %>
   <div class="field topics-selection">
@@ -25,6 +25,6 @@
   <div class="options">
     <%= f.label :author, 'sign it (optional)' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)' %>
-    <%= f.submit '+ start a convo' %>
+    <%= f.submit submit_text %>
   </div>
 <% end %>

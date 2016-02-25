@@ -39,7 +39,7 @@ class ConvosController < ApplicationController
 
   # GET /convos/1/edit
   def edit
-    @convo = Convo.find(params[:id])
+    redirect_to :back unless @convo.user && @convo.user = current_user
   end
 
   def upvote
@@ -84,10 +84,15 @@ class ConvosController < ApplicationController
   # DELETE /convos/1
   # DELETE /convos/1.json
   def destroy
-    @convo.destroy
-    respond_to do |format|
-      format.html { redirect_to convos_url }
-      format.json { head :no_content }
+    @convo = Convo.find(params[:id])
+    if @convo.user && @convo.user = current_user
+      @convo.destroy
+      respond_to do |format|
+        format.html { redirect_to convos_url }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to :back
     end
   end
 
