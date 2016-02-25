@@ -195,6 +195,9 @@ main {
 .convo:target, .active.convo {
 	background: #fcfaf0;
 }
+.convo a:visited, .single-convo a:visited {
+	color: #999;
+}
 
 .convo h1 {
 	font-size: 16px;
