@@ -21,7 +21,7 @@
       comment_to_comment_path(comment.convo.id, comment.id) %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
 
-    <% if comment.user_id = current_user %>
+    <% if comment.user && comment.user = current_user %>
       | <%= link_to 'edit', edit_comment_path(comment) %>
       | <%= link_to 'delete', comment, :method => :delete %>
     <% end %>
