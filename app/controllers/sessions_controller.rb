@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_user, :create
+  skip_before_action :assign_current_user, :create
   def new
   end
   def create
