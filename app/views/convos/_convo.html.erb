@@ -19,7 +19,7 @@
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %> 
 
     <% if convo.user && convo.user == current_user %>
-      | <%= link_to 'edit', edit_convo_path(convo) %>
+<!--- | <%= link_to 'edit', edit_convo_path(convo) %>   -->
       | <%= link_to 'delete', convo, :method => :delete %>
     <% end %>
   </p>
