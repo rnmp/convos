@@ -39,7 +39,9 @@ class ConvosController < ApplicationController
 
   # GET /convos/1/edit
   def edit
-    redirect_to :back unless @convo.user && @convo.user = current_user
+    redirect_to :back unless @convo.user && @convo.user == current_user
+  rescue ActionController::RedirectBackError
+      redirect_to root_path
   end
 
   def upvote

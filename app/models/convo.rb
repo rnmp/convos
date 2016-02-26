@@ -4,17 +4,9 @@ class Convo < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   validates :convo, presence: true
-  validate :spam_check?, :on => :create
   
   acts_as_voteable
   include VoteActions
-
-  def spam_check?
-     @convo = Convo.where(user_id: current_user).last
-     last_time = @convo.created_at
-
-     Time.now - last_time > 1.minute
-  end
 
   def self.search(search)
     if search

@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    redirect_to :back unless @comment.user && @comment.user = current_user
+    redirect_to :back unless @comment.user && @comment.user == current_user
   end
 
   # POST /comments
