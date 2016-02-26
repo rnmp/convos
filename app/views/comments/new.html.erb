@@ -1,7 +1,6 @@
-<h1>comment to <%= link_to @comment.convo.title, convo_path(@comment.convo) %></h1>
 <% if @comment.parent %>
   <%= render @comment.parent, from_reply_form: true %>
 <% end %>
 
 <h1>reply</h1>
-<%= render 'form' %>
+<%= render partial: 'comments/form', locals: { submit_text: 'submit' } %>
