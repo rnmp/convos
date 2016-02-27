@@ -9,4 +9,16 @@ class User < ActiveRecord::Base
   def self.new_guest
     new { |u| u.guest = true }
   end
+
+  def last_convo
+    self.convos.last
+  end
+
+  def can_post_new_convo?
+    if self.convos
+      (Time.now - last_convo.created_at) > 1.minute
+    else
+      true
+    end
+  end
 end

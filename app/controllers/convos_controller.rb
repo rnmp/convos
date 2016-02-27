@@ -54,18 +54,22 @@ class ConvosController < ApplicationController
   # POST /convos
   # POST /convos.json
   def create
-    @convo = Convo.new(convo_params)
-    @convo.user_id = current_user.id if current_user
+    if current_user.can_post_new_convo?
+      @convo = Convo.new(convo_params)
+      @convo.user_id = current_user.id if current_user
 
-    respond_to do |format|
-      if @convo.save
-        @convo.upvote(current_user)
-        format.html { redirect_to convos_path(show: 'recent'), notice: @convo.id }
-        format.json { render :show, status: :created, location: @convo }
-      else
-        format.html { render :new }
-        format.json { render json: @convo.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @convo.save
+          @convo.upvote(current_user)
+          format.html { redirect_to convos_path(show: 'recent'), notice: @convo.id }
+          format.json { render :show, status: :created, location: @convo }
+        else
+          format.html { render :new }
+          format.json { render json: @convo.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 

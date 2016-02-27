@@ -427,3 +427,6 @@ a.downvote {
 	resize: none;
 	padding-bottom: 21px;
 }
+input[type="submit"][disabled] {
+	background: #ccc;
+}

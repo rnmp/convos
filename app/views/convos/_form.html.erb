@@ -25,6 +25,35 @@
   <div class="options">
     <%= f.label :author, 'sign it (optional)' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)' %>
-    <%= f.submit submit_text %>
+    <%= f.submit submit_text, timeout: ((current_user.last_convo.created_at.to_f*1000) unless current_user.can_post_new_convo?) %>
+    <% if timeout %>
+      <script>
+        $('[timeout]').each(function(){
+          var $self = $(this);
+          var timeout = $self.attr('timeout');
+          var originalVal = $self.val();
+          var dateThen = new Date(parseInt(timeout));
+          var dateNow = new Date();
+          var timeLeft = function(){
+            return Math.round((dateThen.getTime()-dateNow.getTime()+60000)/1000) 
+          };
+
+          $self.val('wait '+timeLeft()+'s');
+          $self.attr('disabled', 'disabled');
+
+          var timer = setInterval(function(){
+            dateNow = new Date();
+            timeLeft();
+            if (timeLeft() < 60 && timeLeft() >= 1){
+              $self.val('wait '+timeLeft()+'s');
+            } else {
+              $self.val(originalVal);
+              $self.removeAttr('disabled');
+              clearInterval(timer);
+            };
+          }, 1000);
+        });
+      </script>
+    <% end %>
   </div>
 <% end %>

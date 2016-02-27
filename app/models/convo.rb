@@ -4,7 +4,7 @@ class Convo < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   validates :convo, presence: true
-  
+
   acts_as_voteable
   include VoteActions
 
