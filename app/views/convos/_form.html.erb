@@ -31,7 +31,7 @@
       $('.nicer-select').each(function(){
         var self = this;
         var targetField = $(self).attr('data-target-field');
-        var currentValue = $('a[data-id='+($(targetField).val()||1)+']', self);
+        var currentValue = $('a[data-id='+($(targetField).val()||<%= topics_list.first.id%>)+']', self);
         var newshit = $('<a href>');
         newshit.text(currentValue.text());
         $(self).before(newshit);
