@@ -29,12 +29,7 @@
 		<aside class="sidebar">
 			<section>
 				<h1>filter by topic</h1>
-				<p class="topics">
-					<%= link_to '(all)', root_path(show: params[:show]), class: cp(root_path(show: params[:show])) %>
-					<% topics_list.each do |topic| %>
-						<%= link_to "##{topic.name}", topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
-					<% end %>
-				</p>
+				
 			</section>
 			<section>
 				<h1>find convos</h1>
@@ -48,6 +43,12 @@
 			<%= yield %>
 		</main>
 		<footer class="site-footer">
+			<p class="topics">
+				<b><%= link_to 'All topics:', root_path(show: params[:show]), class: cp(root_path(show: params[:show])) %></b>
+				<% for topic in topics_list %>
+					<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
+				<% end %>
+			</p>
 			<p class="copyright">&copy; 2016. All rights reserved. <a href="/tos" style="float: right;">Terms of service</a></p> 
 		</footer>
 	</body>

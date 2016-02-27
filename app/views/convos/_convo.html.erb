@@ -18,6 +18,11 @@
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
     <% if convo.edited? %>(edited)<% end %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %> 
+    <% unless @topic %>
+      <% if convo.topic %>
+        in <%= link_to convo.topic.name, topic_path(convo.topic) %>
+      <% end %>
+    <% end %>
     <% if convo.user && convo.user == current_user %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 
       | <%= link_to 'delete', convo, :method => :delete %>

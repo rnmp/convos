@@ -14,12 +14,12 @@
   <%= f.hidden_field :convo_id %>
   <%= f.hidden_field :parent_id %>
   <div class="field">
-    <%= f.label :comment, 'message' %>
+    <%= f.label :comment, 'message', class: 'redundant-label' %>
     <%= f.text_area :comment, placeholder: 'leave a comment...', :maxlength => 10000 %>
   </div>
   <div class="options">
-    <%= f.label :author, 'sign it (optional)' %>
-    <%= f.text_field :author, placeholder: '— sign it (optional)' %>
+    <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
+    <%= f.text_field :author, placeholder: '— sign it (optional)', style: 'marg' %>
     <%= f.submit submit_text %>
   </div>
 <% end %>

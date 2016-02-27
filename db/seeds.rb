@@ -10,15 +10,7 @@ require 'securerandom'
 
 User.create(username: 'rnmp', email: 'rolando@bandd.co', password: 's3b45t14ng4y')
 
-topic_names = ['random', 'ask', 'feedback', 'pics', 'videos', 'WTF', 'technology', 'science', 'design', 'politics', 'news', 'worldnews', 'sports', 'videogames', 'tv&film', 'books', 'music']
+topic_names = ['random', 'feedback', 'politics & news', 'culture', 'lifestyle', 'fashion & style', 'science & tech', 'sports', 'international']
 topic_names.length.times do |topic_name|
   Topic.create(:name => topic_names[topic_name])
 end
-
-# 1000.times do
-#   Convo.create(
-#     :title => "My Post #{SecureRandom.hex(2)}",
-#     :comment => SecureRandom.hex(32),
-#     :topic_id => rand(1..17)
-#   )
-# end

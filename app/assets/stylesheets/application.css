@@ -37,6 +37,7 @@ i {
 }
 h1 {
 	font-size: 24px;
+	margin-bottom: .5em;
 }
 
 small {
@@ -81,24 +82,6 @@ input[type="submit"] {
 	-ms-transition: background-color 0.2s;
 	transition: background-color 0.2s;
 }
-.topics-selection {
-	-webkit-column-count: 4;
-	-moz-column-count: 4;
-	column-count: 4;
-	padding: 10px;
-	padding-top: 5px;
-	border-radius: 2px;
-	background: #fafafa;
-}
-.topics-selection label {
-	padding: 3px;
-	font-style: normal;
-	color: inherit;
-}
-.topics-selection input {
-	display: inline-block;
-	margin-right: 5px;
-}
 
 /* helpers */
 ._group:after {
@@ -110,7 +93,7 @@ input[type="submit"] {
 /* layout */
 body {
 	position: relative;
-	width: 700px;
+	max-width: 700px;
 	margin: auto;
 	padding: 40px 30px 30px;
 }
@@ -129,7 +112,7 @@ body {
 	width: 100%;
 	opacity: 0.8;
 }
-.logo, .block-form {
+.logo, .block-form, .nicer-select {
 	border: 1px solid #eaeaea;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -148,11 +131,6 @@ body {
 	border-top: 2px solid #ee1b2c;
 }
 
-/** main **/
-main {
-	/*overflow: hidden;*/
-}
-
 
 /** footer **/
 .site-footer {
@@ -161,9 +139,12 @@ main {
 	font-size: 14px;
 	border-top: 1px dotted #eee;
 }
+.topics {
+	margin-bottom: 10px;
+}
 
 /* items (convos, comments) */
-.convo, .button, input[type="submit"], input, textarea {
+.convo, .button, input[type="submit"], input, textarea, .select {
 	padding: 5px 10px;
 	border-radius: 2px;
 }
@@ -409,17 +390,17 @@ a.downvote {
 	top: 50%;
 }
 
-.block-form {
+.block-form, .nicer-select {
 	padding: 10px 15px;
 	border-radius: 2px;
 	margin-bottom: 20px;
 }
-.block-form label {
+label.redundant-label {
 	display: none;
 }
 .block-form .field,
-.block-form input[type="text"],
 .block-form input[type="url"],
+input[type="text"],
 .block-form textarea {
 	margin: 0;
 	border: 0;
@@ -433,13 +414,16 @@ a.downvote {
 .block-form textarea:focus {
 	outline: none;
 }
-.block-form input[type="submit"] {
-	margin-left: auto;
-}
 .block-form .options {
 	border-top: 1px solid #eaeaea;
 	display: flex;
 	padding-top: 7px;
+}
+.block-form .options input[type="text"] {
+	margin-left: auto;
+	padding-left: 10px;
+	border-left: 1px dotted #eaeaea;
+	border-radius: 0;
 }
 .block-form textarea {
 	width: 100%;
@@ -448,4 +432,26 @@ a.downvote {
 }
 input[type="submit"][disabled] {
 	background: #ccc;
+}
+.select {
+	position: relative;
+	padding-left: 0;
+	color: #bbb;
+}
+.nicer-select {
+	position: absolute;
+	top: 100%;
+	left: -16px;
+	z-index: 9999;
+	background: #fff;
+	border-top: none;
+	width: 300px;
+	border-radius: 0 0 2px 2px;
+}
+.nicer-select li {
+	width: 50%;
+	float: left;
+	list-style-type: none;
+	border-top: 1px dotted #eaeaea;
+	padding: 2px 0;
 }

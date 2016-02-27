@@ -12,18 +12,48 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :convo, 'message' %>
+    <%= f.label :convo, 'message', class: 'redundant-label' %>
     <%= f.text_area :convo, placeholder: 'share a thought, story, or anything…', :maxlength => 10000 %>
   </div>
-<!--   <%= f.label :topic_id, 'topic' %>
-  <div class="field topics-selection">
-    <%= f.collection_radio_buttons :topic_id, topics_list, :id, :name, checked: 1 do |t| %>
-      <%= t.label { t.radio_button + t.text } %>
-    <% end %>
-  </div> -->
 
   <div class="options">
-    <%= f.label :author, 'sign it (optional)' %>
+
+    <div class="select">
+      in
+      <ul class="nicer-select" data-target-field="#convo_topic_id">
+        <% for topic in topics_list %>
+          <li><a href data-id=<%= topic.id %>><%= topic.name %></a></li>
+        <% end %>
+      </ul>
+      <%= f.hidden_field :topic_id %>
+    </div>
+    <script>
+      $('.nicer-select').each(function(){
+        var self = this;
+        var targetField = $(self).attr('data-target-field');
+        var currentValue = $('a[data-id='+($(targetField).val()||1)+']', self);
+        var newshit = $('<a href>');
+        newshit.text(currentValue.text());
+        $(self).before(newshit);
+        $(self).hide();
+        $('a[data-id]', self).on('click', function(){
+          event.preventDefault();
+          $(targetField).val($(this).attr('data-id'));
+          currentValue = $(this);
+          newshit.text(currentValue.text());
+          $(self).hide();
+        });
+        $(window).on('click', function(){
+          $(self).hide();
+        })
+        newshit.on('click', function(){
+          event.preventDefault();
+          event.stopPropagation ();
+          $(self).toggle();
+        });
+      });
+    </script>
+    <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)' %>
     <%= f.submit submit_text, timeout: ((current_user.last_convo.created_at.to_f*1000) unless current_user.can_post_new_convo?) %>
     <% if timeout %>

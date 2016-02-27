@@ -11,61 +11,13 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @title = "##{@topic.name}"
+    @title = "#{@topic.name}"
+    @new_convo = Convo.new
+    @new_convo.topic = @topic
     if params[:show] == 'recent'
       @convos = @topic.convos.order('created_at DESC').page(params[:page]).per(25)
     else
       @convos = @topic.convos.order('points DESC').page(params[:page]).per(25)
-    end
-  end
-
-  # GET /topics/new
-  def new
-    @topic = Topic.new
-  end
-
-  # GET /topics/1/edit
-  def edit
-    redirect_to '/' if current_user && current_user.guest?
-  end
-
-  # POST /topics
-  # POST /topics.json
-  def create
-    @topic = Topic.new(topic_params)
-
-    respond_to do |format|
-      if @topic.save
-        format.html { redirect_to topics_url, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created, location: @topic }
-      else
-        format.html { render :new }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /topics/1
-  # PATCH/PUT /topics/1.json
-  def update
-    respond_to do |format|
-      if @topic.update(topic_params)
-        format.html { redirect_to topics_url, notice: 'Topic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @topic }
-      else
-        format.html { render :edit }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /topics/1
-  # DELETE /topics/1.json
-  def destroy
-    @topic.destroy
-    respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
