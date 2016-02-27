@@ -20,7 +20,7 @@
 		</script>
 	</head>
 	<body>
-		<%= link_to image_tag('logo.png', alt:'convos.org', class:'logo'), root_path %>
+		<%= link_to image_tag('logo.png', alt:'convos.org'), root_path, class:'logo' %>
 		<% if current_user && !current_user.guest? %>
 		  hello, <strong><%= current_user.username %></strong> ·
 		  <%= link_to "logout", logout_path %>
