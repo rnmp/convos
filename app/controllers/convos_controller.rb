@@ -40,8 +40,6 @@ class ConvosController < ApplicationController
   # GET /convos/1/edit
   def edit
     redirect_to :back unless @convo.user && @convo.user == current_user
-  rescue ActionController::RedirectBackError
-      redirect_to root_path
   end
 
   def upvote
@@ -75,9 +73,10 @@ class ConvosController < ApplicationController
   # PATCH/PUT /convos/1.json
   def update
     @convo = Convo.find(params[:id])
+    @convo.edited = true
     
     if @convo.update(convo_params)
-      redirect_to root_path
+      redirect_to @convo
     else
       render 'edit'
     end 

@@ -20,8 +20,6 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     redirect_to :back unless @comment.user && @comment.user == current_user
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
   end
 
   # POST /comments
@@ -61,6 +59,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
+    @comment.edited = true
     
     if @comment.update(comment_params)
       redirect_to convo_path(@comment.convo)

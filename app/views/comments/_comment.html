@@ -19,9 +19,7 @@
     <%= link_to_unless @comment.parent, 
       time_ago_in_words(comment.created_at)+' ago', 
       comment_to_comment_path(comment.convo.id, comment.id) %>
-    <% if comment.created_at.to_s != comment.updated_at.to_s %>
-      <abbr title="<%= time_ago_in_words comment.updated_at %> ago"> (edited)</abbr>
-    <% end %>
+    <% if comment.edited? %>(edited)<% end %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
     <% if comment.user && comment.user == current_user %>
       | <%= link_to 'edit', edit_comment_path(comment) %>

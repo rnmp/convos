@@ -16,9 +16,7 @@
       <%= link_to pluralized_comments_for(convo), convo %> |
     <% end %>
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo %>
-    <% if convo.created_at.to_s != convo.updated_at.to_s %>
-      <abbr title="<%= time_ago_in_words convo.updated_at %> ago"> (edited)</abbr>
-    <% end %>
+    <% if convo.edited? %>(edited)<% end %>
     by <% if convo.author? %><%= convo.author %><% else %>someone<% end %> 
     <% if convo.user && convo.user == current_user %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 
