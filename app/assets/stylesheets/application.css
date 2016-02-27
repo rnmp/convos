@@ -38,13 +38,7 @@ i {
 h1 {
 	font-size: 24px;
 }
-ul li {
-	list-style-type: square;
-}
-ul {
-	margin-left: 0;
-	padding-left: 1.1em;
- }
+
 small {
 	color: #999;
 }
@@ -82,6 +76,10 @@ input[type="submit"] {
 	border: 0;
 	font: inherit;
 	font-weight: bold;
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-ms-transition: background-color 0.2s;
+	transition: background-color 0.2s;
 }
 .topics-selection {
 	-webkit-column-count: 4;
@@ -120,10 +118,20 @@ body {
 /** header **/
 .logo {
 	width: 60px;
+	height: 60px;
 	position: absolute;
 	border-radius: 50em;
-	border: 1px dotted #eee;
 	right: 100%;
+	overflow: hidden;
+}
+.logo img {
+	display: block;
+	width: 100%;
+	opacity: 0.8;
+}
+.logo, .block-form {
+	border: 1px solid #eaeaea;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .convos-menu {
 	margin-bottom: 10px;
@@ -351,11 +359,24 @@ a.downvote {
 	color: #eee;
 }
 
-.user-content p, .user-content ul {
+.user-content li {
+	margin-left: 1.5em;
+}
+.user-content ul li {
+	list-style-type: square;
+}
+.user-content blockquote {
+	margin-left: 5px;
+	padding-left: 10px;
+	border-left: 2px solid #eee;
+	color: #666;
+}
+
+.user-content p, .user-content ul, .user-content ol {
 	margin-bottom: .75em;
 	line-height: 1.4;
 }
-.user-content > *:only-child {
+.user-content > *:only-child:not(ul, ol) {
 	margin-bottom: 0;
 }
 .user-content img,
@@ -390,8 +411,6 @@ a.downvote {
 
 .block-form {
 	padding: 10px 15px;
-	border: 1px solid #eaeaea;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 	border-radius: 2px;
 	margin-bottom: 20px;
 }
