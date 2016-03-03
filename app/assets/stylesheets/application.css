@@ -455,3 +455,8 @@ input[type="submit"][disabled] {
 	border-top: 1px dotted #eaeaea;
 	padding: 2px 0;
 }
+
+html.turbolinks-progress-bar::before {
+  background-color: red !important;
+  height: 2px !important;
+}

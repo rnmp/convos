@@ -25,24 +25,28 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    if params[:comment][:parent_id].to_i > 0
-      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      @comment = parent.children.build(comment_params)
-    else
-      @comment = Comment.new(comment_params)
-    end
-    @comment.user_id = current_user.id if current_user
-
-    respond_to do |format|
-      if @comment.save
-        @convo = @comment.convo
-        @comment.upvote(current_user)
-        format.html { redirect_to convo_path(@convo, anchor: "comment-#{@comment.id}") }
-        format.json { render :show, status: :created, location: @comment }
+    if current_user.can_post_new_comment?
+      if params[:comment][:parent_id].to_i > 0
+        parent = Comment.find_by_id(params[:comment].delete(:parent_id))
+        @comment = parent.children.build(comment_params)
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        @comment = Comment.new(comment_params)
       end
+      @comment.user_id = current_user.id if current_user
+
+      respond_to do |format|
+        if @comment.save
+          @convo = @comment.convo
+          @comment.upvote(current_user)
+          format.html { redirect_to convo_path(@convo, anchor: "comment-#{@comment.id}") }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to root_path
     end
   end
 
