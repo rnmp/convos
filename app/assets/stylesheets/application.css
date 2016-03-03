@@ -457,6 +457,6 @@ input[type="submit"][disabled] {
 }
 
 html.turbolinks-progress-bar::before {
-  background-color: red !important;
+  background-color: #ee1b2c !important;
   height: 2px !important;
 }

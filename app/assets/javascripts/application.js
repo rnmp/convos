@@ -16,20 +16,6 @@
 //= require autosize
 //= require_tree .
 
-var App = {
-    onLoadFns: [],
-
-    onPageLoad: function(callback) {
-        this.onLoadFns.push(callback);
-    },
-
-    load: function() {
-        _.each(this.onLoadFns, function(callback) {
-            callback.call(this);
-        }, this);
-    }
-};
-
 $(function() {
 
     Turbolinks.enableProgressBar();
