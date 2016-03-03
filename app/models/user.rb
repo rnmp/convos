@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password(validations: false)
   acts_as_voter
 
+  VOTE_LIMIT = 10
+
   def self.new_guest
     new { |u| u.guest = true }
   end
@@ -20,5 +22,17 @@ class User < ActiveRecord::Base
     else
       true
     end
+  end
+
+  def vote_count_for(voteable)
+    Vote.where(voter_id: self.id, voteable_id: voteable.id, voteable_type: voteable.class.to_s).count
+  end
+
+  def remainder_votes_for(voteable)
+    VOTE_LIMIT - vote_count_for(voteable)
+  end
+
+  def can_vote_on?(voteable)
+    vote_count_for(voteable) < VOTE_LIMIT
   end
 end

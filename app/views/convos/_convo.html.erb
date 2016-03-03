@@ -1,14 +1,13 @@
-<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-weighted-score="<%= convo.weighted_score %>">
+<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-points="<%= convo.points %>">
   <div class="user-content">
+    <%= current_user.remainder_votes_for(convo) %>
     <%= highlight markdown(convo.convo), params[:search] %>
   </div>
   <p class="metadata">
-    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(convo) %>">
-      <%= link_to 'upvote', (current_user.voted_on?(convo) ? 'javascript:;' : upvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 
-        class: 'upvote'+(' active' if current_user && current_user.voted_for?(convo)).to_s, 
+    <span class="vote-links<%= " disabled" if current_user && current_user.can_vote_on?(convo) %>">
+      <%= link_to 'upvote', upvote_convo_path(convo), remote: true, class: 'upvote active', 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
-      <%= link_to 'downvote', (current_user.voted_on?(convo) ? 'javascript:;' : downvote_convo_path(convo)), remote: (true unless current_user.voted_on?(convo)), 
-        class: 'downvote'+(' active' if current_user && current_user.voted_against?(convo)).to_s, 
+      <%= link_to 'downvote', downvote_convo_path(convo), remote: true, class: 'downvote active', 
         data: { item_type: convo.class.to_s.downcase, item_id: convo.id } %>
     </span>
     <%= link_to_unless @convo, pluralized_points_for(convo), convo %> |

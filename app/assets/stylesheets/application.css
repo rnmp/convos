@@ -16,6 +16,9 @@
  */
 
 /* defaults */
+:root {
+  --accent-color: #ee1b2c;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -26,7 +29,7 @@ body {
 	background: #fffffe;
 }
 a, .metadata a.highlight, .topics a.active {
-	color: #ee1b2c;
+	color: var(--accent-color);
 	text-decoration: none;
 }
 a:hover {
@@ -46,7 +49,7 @@ small {
 
 /* ui (forms, buttons) */
 .button, input[type="submit"] {
-	background: #ee1b2c;
+	background: var(--accent-color);
 	color: #fff;
 }
 
@@ -128,7 +131,7 @@ body {
 	font-weight: bold;
 }
 .convos-menu a.active {
-	border-top: 2px solid #ee1b2c;
+	border-top: 2px solid var(--accent-color);
 }
 
 
@@ -228,7 +231,7 @@ a.downvote::before {
 a.upvote:hover,
 a.upvote.active,
 .disabled.vote-links a.upvote.active {
-	border-bottom-color: #ee1b2c;
+	border-bottom-color: var(--accent-color);
 }
 .disabled.vote-links a.upvote {
 	border-bottom-color: #eee;	
@@ -407,7 +410,7 @@ input[type="text"],
 	padding: 0;
 }
 .block-form:focus {
-	border-color: #ee1b2c;
+	border-color: var(--accent-color);
 }
 .block-form input[type="text"]:focus,
 .block-form input[type="url"]:focus,
