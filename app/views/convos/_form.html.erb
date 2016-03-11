@@ -20,7 +20,7 @@
 
     <div class="select">
       in
-      <ul class="nicer-select" data-target-field="#convo_topic_id">
+      <ul class="nicer-select">
         <% for topic in topics_list %>
           <li><a href data-id=<%= topic.id %>><%= topic.name %></a></li>
         <% end %>
@@ -30,10 +30,17 @@
     <script>
       $('.nicer-select').each(function(){
         var self = this;
-        var targetField = $(self).attr('data-target-field');
-        var currentValue = $('a[data-id='+($(targetField).val()||<%= topics_list.first.id%>)+']', self);
+        var targetField = $('#convo_topic_id');
+        var currentValue = function(){
+          var topicId = $(targetField).val();
+          if (topicId) {
+            return $('a[data-id='+($(targetField).val())+']', self).text();
+          } else {
+            return 'choose topic (required)';
+          };
+        };
         var newshit = $('<a href>');
-        newshit.text(currentValue.text());
+        newshit.text(currentValue());
         $(self).before(newshit);
         $(self).hide();
         $('a[data-id]', self).on('click', function(){
@@ -52,10 +59,19 @@
           $(self).toggle();
         });
       });
+      $('#new_convo').submit(function(event){
+        if ($('#convo_convo').val().match(/^\s*$/)) {
+          event.preventDefault();
+          alert('This can’t be empty.')
+        } else if ($('#convo_topic_id').val() == ''){
+          event.preventDefault();
+          alert('Please choose a topic.')
+        }
+      });
     </script>
     <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)' %>
-    <%= f.submit submit_text, timeout: ((current_user.last_convo.created_at.to_f*1000) unless current_user.can_post_new_convo?) %>
+    <%= f.submit submit_text, timeout: ((current_user.last_convo.created_at.to_f*1000) unless current_user.can_post_new_convo?), id: 'submit_convo' %>
     <% if timeout %>
       <script>
         $('[timeout]').each(function(){
