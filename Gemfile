@@ -69,3 +69,6 @@ gem 'valid_url'
 
 # Admin tools convos.org/admin
 gem 'rails_admin'
+
+# Lightweight meta tags for SEO (for more features check out MetaTags)
+gem 'metamagic'
