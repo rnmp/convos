@@ -2,13 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<%
-		meta title: "convos.org",
-			 description: "An anonymous message board. Share your thoughts, comment and vote. No registration 
-			 required.",
-			 keywords: %w(anonymous forum reddit 4chan alternative)
-		%>
-		<%= metamagic %>
+		<%= metamagic site: "convos.org", title: [:title, :site], separator: " | ",
+			description: "An anonymous message board. Share your thoughts, comment and vote. No registration required.",
+			keywords: %w(anonymous forum reddit 4chan alternative) %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic" rel="stylesheet" />
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

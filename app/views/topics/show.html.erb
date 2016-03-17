@@ -1,7 +1,4 @@
-<head>
-  <%= metamagic site: "Test", title: [:title, :site], separator: " — " %>
-</head>
-
+<% meta title: @title %>
 <h1><%= @title %></h1>
 <%= render partial: 'convos/form', locals: { convo: @new_convo, submit_text: '+ start a convo', timeout: true } %>
 <ul class="convos-menu _group">
