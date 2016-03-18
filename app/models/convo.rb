@@ -1,4 +1,7 @@
 class Convo < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :convo, use: :slugged
+
   belongs_to :topic
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -8,6 +11,10 @@ class Convo < ActiveRecord::Base
 
   acts_as_voteable
   include VoteActions
+
+  def normalize_friendly_id(string)
+    super[0..49]
+  end
 
   def self.search(search)
     if search

@@ -76,7 +76,7 @@ class ConvosController < ApplicationController
   # PATCH/PUT /convos/1
   # PATCH/PUT /convos/1.json
   def update
-    @convo = Convo.find(params[:id])
+    @convo = Convo.friendly.find(params[:id])
     @convo.edited = true
     
     if @convo.update(convo_params)
@@ -89,7 +89,7 @@ class ConvosController < ApplicationController
   # DELETE /convos/1
   # DELETE /convos/1.json
   def destroy
-    @convo = Convo.find(params[:id])
+    @convo = Convo.friendly.find(params[:id])
     if @convo.user && @convo.user = current_user
       @convo.destroy
       respond_to do |format|
@@ -104,7 +104,7 @@ class ConvosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_convo
-      @convo = Convo.find(params[:id])
+      @convo = Convo.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

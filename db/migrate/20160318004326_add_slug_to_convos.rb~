@@ -1,0 +1,4 @@
+class AddSlugToConvos < ActiveRecord::Migration
+  def change
+  end
+end
