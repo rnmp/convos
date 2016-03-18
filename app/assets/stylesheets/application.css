@@ -25,7 +25,7 @@ body {
 	color: #323232;
 	background: #fffffe;
 }
-a, .metadata a.highlight, .topics a.active {
+a, .metadata a.highlight {
 	color: #ee1b2c;
 	text-decoration: none;
 }
@@ -95,7 +95,7 @@ body {
 	position: relative;
 	max-width: 700px;
 	margin: auto;
-	padding: 40px 30px 30px;
+	padding: 40px 30px 30px 50px;
 }
 
 /** header **/
@@ -131,6 +131,22 @@ body {
 	border-top: 2px solid #ee1b2c;
 }
 
+/** topics **/
+.topic-tabs {
+	position: absolute;
+	right: 100%;
+	text-align: right;
+	top: 120px;
+	width: 150px;
+}
+.topic-tabs a {
+	display: block;
+}
+.topic-tabs a.active {
+	font-weight: bold;
+	color: inherit;
+}
+
 
 /** footer **/
 .site-footer {
@@ -139,10 +155,6 @@ body {
 	font-size: 14px;
 	border-top: 1px dotted #eee;
 }
-.topics {
-	margin-bottom: 10px;
-}
-
 /* items (convos, comments) */
 .convo, .button, input[type="submit"], input, textarea, .select {
 	padding: 5px 10px;
@@ -351,6 +363,19 @@ a.downvote {
 	padding-left: 10px;
 	border-left: 2px solid #eee;
 	color: #666;
+}
+.user-content table {
+	border-collapse: collapse;
+}
+.user-content td, .user-content th  {
+	padding: 2px 10px;
+	border: 1px solid #ddd;
+}
+.user-content thead tr {
+	background: #f3f3f3;
+}
+.user-content tr:nth-child(2n) {
+	background: #fafafa;
 }
 
 .user-content p, .user-content ul, .user-content ol {
