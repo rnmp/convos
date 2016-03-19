@@ -425,6 +425,7 @@ input[type="text"],
 }
 input[type="submit"][disabled] {
 	background: #BACDD9;
+	cursor: default;
 }
 .select {
 	position: relative;
