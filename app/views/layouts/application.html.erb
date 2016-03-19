@@ -27,30 +27,16 @@
 		  hello, <strong><%= current_user.username %></strong> ·
 		  <%= link_to "logout", logout_path %>
 		<% end %>
-		<% if false %>
-		<aside class="sidebar">
-			<section>
-				<h1>filter by topic</h1>
-				
-			</section>
-			<section>
-				<h1>find convos</h1>
-				<%= form_tag(convos_path, :method => "get") do %>
-					<%= text_field_tag :search, params[:search], placeholder: "search", type: 'search', :autocomplete => :off %>
-				<% end %>
-			</section>
-		</aside>
-		<% end %>
+		<nav class="topic-tabs">
+			<%= link_to "all convos", convos_path, class: cp(convos_path) %>
+			<% for topic in topics_list %>
+				<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
+			<% end %>
+		</nav>
 		<main>
 			<%= yield %>
 		</main>
 		<footer class="site-footer">
-			<p class="topics">
-				<b><%= link_to 'All topics:', root_path(show: params[:show]), class: cp(root_path(show: params[:show])) %></b>
-				<% for topic in topics_list %>
-					<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
-				<% end %>
-			</p>
 			<p class="copyright">&copy; 2016. All rights reserved. <a href="/tos" style="float: right;">Terms of service</a></p> 
 		</footer>
 	</body>

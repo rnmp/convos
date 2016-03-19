@@ -36,11 +36,11 @@
           if (topicId) {
             return $('a[data-id='+($(targetField).val())+']', self).text();
           } else {
-            return 'choose a topic (required)';
+            return 'choose a topic <span>(required)</span>';
           };
         };
         var newshit = $('<a href>');
-        newshit.text(currentValue());
+        newshit.html(currentValue());
         $(self).before(newshit);
         $(self).hide();
         $('a[data-id]', self).on('click', function(){
