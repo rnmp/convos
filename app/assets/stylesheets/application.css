@@ -22,11 +22,11 @@
 }
 body {
 	font: 16px / 1.333 'Lato', Verdana, sans-serif;
-	color: #323232;
-	background: #fffffe;
+	color: #586166;
+	background: #F5F9FC;
 }
 a, .metadata a.highlight {
-	color: #ee1b2c;
+	color: #F5565B;
 	text-decoration: none;
 }
 a:hover {
@@ -41,13 +41,14 @@ h1 {
 }
 
 small {
-	color: #999;
+	color: #93A2AB;
 }
 
 /* ui (forms, buttons) */
 .button, input[type="submit"] {
-	background: #ee1b2c;
-	color: #fff;
+	background: #F5565B;
+	color: #FCFEFF;
+	cursor: pointer;
 }
 
 .field {
@@ -59,6 +60,7 @@ label {
 }
 label, input, textarea {
 	display: block;
+	color: #586166;
 }
 input[type="text"], input[type="email"], 
 input[type="url"], input[type="password"], 
@@ -72,6 +74,7 @@ input, textarea, input[type="submit"] {
 textarea {
 	width: 400px;
 	height: 200px;
+	background: transparent;
 }
 input[type="submit"] {
 	border: 0;
@@ -110,11 +113,10 @@ body {
 .logo img {
 	display: block;
 	width: 100%;
-	opacity: 0.8;
+	opacity: 0.75;
 }
-.logo, .block-form, .nicer-select {
-	border: 1px solid #eaeaea;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+.logo, .block-form, .nicer-select, .convo {
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
 .convos-menu {
 	margin-bottom: 10px;
@@ -128,7 +130,7 @@ body {
 	font-weight: bold;
 }
 .convos-menu a.active {
-	border-top: 2px solid #ee1b2c;
+	border-top: 2px solid #F5565B;
 }
 
 /** topics **/
@@ -141,6 +143,7 @@ body {
 }
 .topic-tabs a {
 	display: block;
+	margin-bottom: 3px;
 }
 .topic-tabs a.active {
 	font-weight: bold;
@@ -165,10 +168,11 @@ body {
 	position: relative;
 	padding: 10px;
 	margin-bottom: 7px;
-	background: #f9f9f9;
-	border: solid #eee;
 	border-width: 0 0 1px 0;
 	word-wrap: break-word;
+}
+.convo, .convo.truncate .user-content::after {
+	background: #fff;
 }
 .convo.truncate .user-content {
 	position: relative;
@@ -184,7 +188,6 @@ body {
 .convo.truncate .user-content::after {
 	position: absolute;
 	content: '';
-	background: #f9f9f9;
 	height: 21px;
 	width: 100%;
 	bottom: 0;
@@ -198,7 +201,7 @@ body {
 	background: #fcfaf0;
 }
 .user-content a:visited {
-	color: #999;
+	color: #93A2AB;
 }
 
 .convo h1 {
@@ -240,7 +243,7 @@ a.downvote::before {
 a.upvote:hover,
 a.upvote.active,
 .disabled.vote-links a.upvote.active {
-	border-bottom-color: #ee1b2c;
+	border-bottom-color: #F5565B;
 }
 .disabled.vote-links a.upvote {
 	border-bottom-color: #eee;	
@@ -249,7 +252,7 @@ a.upvote.active,
 a.downvote:hover,
 a.downvote.active,
 .disabled.vote-links a.downvote.active {
-	border-top-color: #222;
+	border-top-color: #586166;
 }
 .disabled.vote-links a.downvote {
 	border-top-color: #eee;	
@@ -259,13 +262,13 @@ a.upvote {
 	margin: 3px 0 8px;
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-bottom: 8px solid #ccc;
+	border-bottom: 8px solid #BACDD9;
 }
 
 a.downvote {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-top: 8px solid #ccc;
+	border-top: 8px solid #BACDD9;
 }
 
 .metadata,
@@ -276,7 +279,7 @@ a.downvote {
 .metadata a,
 .url-token,
 .url-token a {
-	color: #bbb;
+	color: #93A2AB;
 }
 .url-token {
 	font-weight: normal;
@@ -307,6 +310,9 @@ a.downvote {
 	border: solid #eee;
 	border-width: 0 0 1px 0;
 	word-wrap: break-word;
+}
+.user-content {
+	margin-bottom: 3px;
 }
 .comment.truncate .user-content {
 	position: relative;
@@ -366,6 +372,7 @@ a.downvote {
 }
 .user-content table {
 	border-collapse: collapse;
+	background: #FCFEFF;
 }
 .user-content td, .user-content th  {
 	padding: 2px 10px;
@@ -401,7 +408,7 @@ a.downvote {
 .replies {
 	margin-left: 2px;
 	padding-left: 7px;
-	border-left: 1px dotted #ccc;
+	border-left: 1px dotted #BACDD9;
 }
 .replies .convo {
 	position: relative;
@@ -410,11 +417,14 @@ a.downvote {
 	content: '';
 	position: absolute;
 	width: 7px;
-	border-top: 1px dotted #ccc;
+	border-top: 1px dotted #BACDD9;
 	right: 100%;
 	top: 50%;
 }
 
+.block-form {
+	background: #FCFEFF;
+}
 .block-form, .nicer-select {
 	padding: 10px 15px;
 	border-radius: 2px;
@@ -432,7 +442,7 @@ input[type="text"],
 	padding: 0;
 }
 .block-form:focus {
-	border-color: #ee1b2c;
+	border-color: #F5565B;
 }
 .block-form input[type="text"]:focus,
 .block-form input[type="url"]:focus,
@@ -456,19 +466,24 @@ input[type="text"],
 	padding-bottom: 21px;
 }
 input[type="submit"][disabled] {
-	background: #ccc;
+	background: #BACDD9;
 }
 .select {
 	position: relative;
 	padding-left: 0;
+}
+.select, .select a span {
 	color: #bbb;
+}
+.select a:hover {
+	text-decoration: none;
 }
 .nicer-select {
 	position: absolute;
 	top: 100%;
 	left: -16px;
 	z-index: 9999;
-	background: #fff;
+	background: #FCFEFF;
 	border-top: none;
 	width: 300px;
 	border-radius: 0 0 2px 2px;
@@ -482,6 +497,6 @@ input[type="submit"][disabled] {
 }
 
 html.turbolinks-progress-bar::before {
-  background-color: #ee1b2c !important;
+  background-color: #F5565B !important;
   height: 2px !important;
 }

@@ -61,7 +61,7 @@ class ConvosController < ApplicationController
       respond_to do |format|
         if @convo.save
           @convo.upvote(current_user)
-          format.html { redirect_to convos_path(show: 'recent'), notice: @convo.id }
+          format.html { redirect_to :back, notice: @convo.id }
           format.json { render :show, status: :created, location: @convo }
         else
           format.html { render :new }
