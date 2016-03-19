@@ -12,6 +12,10 @@ class Convo < ActiveRecord::Base
   acts_as_voteable
   include VoteActions
 
+  def normalize_friendly_id(string)
+    super[0..40]
+  end
+
   def self.search(search)
     if search
       where("title LIKE ? OR comment LIKE ?", "%#{search}%", "%#{search}%")
