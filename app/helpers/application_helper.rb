@@ -10,7 +10,7 @@ module ApplicationHelper
     extensions = {
       autolink:           true,
       superscript:        true,
-      space_after_headers: true, 
+      space_after_headers: false, 
       disable_indented_code_blocks: false,
       fenced_code_blocks: false,
       tables: true,
