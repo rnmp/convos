@@ -1,19 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>comment to <%= truncate markdown_for_title(@comment.convo.convo) %></h1>
+<% if @comment.parent %>
+  <%= render @comment.parent, from_reply_form: true %>
+<% end %>
 
-<p>
-  <strong>Author:</strong>
-  <%= @comment.author %>
-</p>
-
-<p>
-  <strong>Votes:</strong>
-  <%= @comment.votes %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @comment.comment %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<h1>reply</h1>
+<%= render partial: 'comments/form', locals: { submit_text: 'submit' } %>
