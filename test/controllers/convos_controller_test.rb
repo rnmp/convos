@@ -3,6 +3,7 @@ require 'test_helper'
 class ConvosControllerTest < ActionController::TestCase
   setup do
     @convo = convos(:one)
+    @request.env["HTTP_REFERER"] = 'http://convos.org/'
   end
 
   test "should get index" do
@@ -11,17 +12,12 @@ class ConvosControllerTest < ActionController::TestCase
     assert_not_nil assigns(:convos)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create convo" do
     assert_difference('Convo.count') do
-      post :create, convo: { author: @convo.author, comment: @convo.comment, title: @convo.title, url: @convo.url, votes: @convo.votes }
+      post :create, convo: { author: @convo.author, convo: @convo.convo, votes: @convo.votes }
     end
 
-    assert_redirected_to convo_path(assigns(:convo))
+    assert_redirected_to convo_path(assigns(:convo)).with({partial:'comments/form', locals: { submit_text: 'submit'}})
   end
 
   test "should show convo" do
@@ -35,7 +31,7 @@ class ConvosControllerTest < ActionController::TestCase
   end
 
   test "should update convo" do
-    patch :update, id: @convo, convo: { author: @convo.author, comment: @convo.comment, title: @convo.title, url: @convo.url, votes: @convo.votes }
+    patch :update, id: @convo, convo: { author: @convo.author, url: @convo.convo, votes: @convo.votes }
     assert_redirected_to convo_path(assigns(:convo))
   end
 

@@ -1,13 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
-  # GET /comments/1/edit
   def edit
     redirect_to :back unless @comment.user && @comment.user == current_user
   end
 
-  # POST /comments
-  # POST /comments.json
   def create
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
@@ -39,8 +36,6 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
-  # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
     @comment.edited = true
@@ -52,8 +47,6 @@ class CommentsController < ApplicationController
     end 
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
     if @comment.user && @comment.user = current_user
       @comment.destroy
@@ -67,12 +60,10 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:author, :comment, :convo_id, :parent_id, :points)
     end

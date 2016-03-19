@@ -1,8 +1,6 @@
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
-  # GET /convos
-  # GET /convos.json
   def index
     @new_convo = Convo.new
 
@@ -17,8 +15,6 @@ class ConvosController < ApplicationController
     end
   end
 
-  # GET /convos/1
-  # GET /convos/1.json
   def show
     if params[:show].present?
       if params[:show] == 'recent'
@@ -32,12 +28,6 @@ class ConvosController < ApplicationController
     @comment_to_comment = Comment.new(convo: @convo, parent_id: params[:parent_id])
   end
 
-  # GET /convos/new
-  def new
-    @convo = Convo.new
-  end
-
-  # GET /convos/1/edit
   def edit
     redirect_to :back unless @convo.user && @convo.user == current_user
   end
@@ -51,8 +41,6 @@ class ConvosController < ApplicationController
     redirect_to :back
   end
 
-  # POST /convos
-  # POST /convos.json
   def create
     if current_user.can_post_new_convo?
       @convo = Convo.new(convo_params)
@@ -73,8 +61,6 @@ class ConvosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /convos/1
-  # PATCH/PUT /convos/1.json
   def update
     @convo.edited = true
     
@@ -85,8 +71,6 @@ class ConvosController < ApplicationController
     end 
   end
 
-  # DELETE /convos/1
-  # DELETE /convos/1.json
   def destroy
     if @convo.user && @convo.user = current_user
       @convo.destroy
@@ -98,12 +82,10 @@ class ConvosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_convo
       @convo = Convo.friendly.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def convo_params
       params.require(:convo).permit(:convo, :author, :topic_id, :points)
     end
