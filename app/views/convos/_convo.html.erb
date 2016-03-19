@@ -1,4 +1,4 @@
-<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo' %> _group" data-weighted-score="<%= convo.weighted_score %>">
+<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group" data-weighted-score="<%= convo.weighted_score %>">
   <div class="user-content">
     <%= highlight markdown(convo.convo), params[:search] %>
   </div>
