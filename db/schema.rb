@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227062226) do
+ActiveRecord::Schema.define(version: 20160318004330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20160227062226) do
     t.text     "convo"
     t.integer  "user_id"
     t.boolean  "edited",         default: false
+    t.string   "slug"
   end
 
   add_index "convos", ["scrape_id"], name: "index_convos_on_scrape_id", using: :btree
+  add_index "convos", ["slug"], name: "index_convos_on_slug", unique: true, using: :btree
   add_index "convos", ["topic_id"], name: "index_convos_on_topic_id", using: :btree
   add_index "convos", ["user_id"], name: "index_convos_on_user_id", using: :btree
 
@@ -75,7 +77,10 @@ ActiveRecord::Schema.define(version: 20160227062226) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
+
+  add_index "topics", ["slug"], name: "index_topics_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -98,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160227062226) do
   end
 
   add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
-  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true, using: :btree
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   add_foreign_key "comments", "convos"

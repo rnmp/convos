@@ -1,4 +1,7 @@
 class Convo < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :convo, use: [:slugged, :finders]
+
   belongs_to :topic
   belongs_to :user
   has_many :comments, dependent: :destroy

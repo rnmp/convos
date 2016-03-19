@@ -28,7 +28,7 @@
 		  <%= link_to "logout", logout_path %>
 		<% end %>
 		<nav class="topic-tabs">
-			<%= link_to "all convos", convos_path, class: cp(convos_path) %>
+			<%= link_to "all convos", root_path, class: cp(root_path) %>
 			<% for topic in topics_list %>
 				<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
 			<% end %>
