@@ -1,5 +1,5 @@
-<%= form_for @comment, html: {class: 'block-form'} do |f| %>
-  <% if @comment.errors.any? %>
+<%= form_for comment, html: {id: form_id, class: 'block-form'} do |f| %>
+  <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
@@ -15,7 +15,7 @@
   <%= f.hidden_field :parent_id %>
   <div class="field">
     <%= f.label :comment, 'message', class: 'redundant-label' %>
-    <%= f.text_area :comment, placeholder: 'leave a comment...', :maxlength => 10000 %>
+    <%= f.text_area :comment, placeholder: placeholder, :maxlength => 10000 %>
   </div>
   <div class="options">
     <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>

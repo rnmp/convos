@@ -11,14 +11,12 @@
     </span>
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>
-	    <%= link_to 'reply', comment_to_comment_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug, comment.id), class: :highlight %> |
+	    <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> |
     <% end %>
-    <%= link_to_unless @comment.parent, 
-      pluralized_points_for(comment), 
-      comment_to_comment_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug, comment.id) %> |
-    <%= link_to_unless @comment.parent, 
-      time_ago_in_words(comment.created_at)+' ago', 
-      comment_to_comment_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug, comment.id) %>
+    <%= link_to pluralized_points_for(comment), 
+      "#comment-#{comment.id}", title: 'Permalink to comment' %> |
+    <%= link_to time_ago_in_words(comment.created_at)+' ago', 
+      "#comment-#{comment.id}", title: 'Permalink to comment' %>
     <% if comment.edited? %>(edited)<% end %>
     by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
     <% if comment.user && comment.user == current_user %>

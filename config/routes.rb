@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  #get '/signup' => 'users#new'
-  #post '/users' => 'users#create'
-
-  #get '/about' => 'static_pages#about'
   get '/tos' => 'static_pages#tos'
 
   resources :topics
@@ -29,5 +25,4 @@ Rails.application.routes.draw do
       get 'downvote'
     end
   end
-  get '/topics/:topic_slug/:convo_id/:convo_slug/comment/:parent_id', to: 'comments#new', as: :comment_to_comment
 end

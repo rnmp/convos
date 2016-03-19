@@ -1,5 +1,5 @@
 <h1>Editing Comment</h1>
 
-<%= render partial: 'form', locals: { submit_text: 'save changes' } %>
+<%= render partial: 'form', locals: { comment: @comment, placeholder: 'leave a comment...', form_id: 'edit_comment', submit_text: 'save changes' } %>
 
-<%= link_to 'back to convo', convo_path(@comment.convo) %>
+<%= link_to 'back to convo', :back %>
