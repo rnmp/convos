@@ -7,6 +7,12 @@
 # versa). currently votecount only changes in increment of 1.
 
 ready = ->
+  $(".replies .block-form").hide()
+
+  $(".show-reply-form").on "click", (e) ->
+    e.preventDefault()
+    $($(this).attr 'href').toggle()
+
   $(".truncate-content").each ->
     self = this
     content = $('.user-content', this)

@@ -72,8 +72,6 @@ input, textarea, input[type="submit"] {
 	font: inherit;
 }
 textarea {
-	width: 400px;
-	height: 200px;
 	background: transparent;
 }
 input[type="submit"] {
@@ -368,16 +366,20 @@ a.downvote {
 	padding-left: 7px;
 	border-left: 1px dotted #BACDD9;
 }
-.replies .convo {
+.replies .convo, .replies .block-form {
 	position: relative;
 }
-.replies .convo::before {
+.replies .convo::before, .replies .block-form::before {
 	content: '';
 	position: absolute;
 	width: 7px;
 	border-top: 1px dotted #BACDD9;
 	right: 100%;
 	top: 50%;
+}
+.replies .block-form {
+	margin-top: 0;
+	margin-bottom: 7px;
 }
 
 .block-form {
