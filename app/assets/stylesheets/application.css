@@ -493,13 +493,15 @@ html.turbolinks-progress-bar::before {
 	}
 	.block-form .options input[type="text"] {
 		border-left: none;
-		border: dotted #eaeaea;
-		border-width: 1px 0 0;
 		margin: 3px 0;
-		padding: 5px 0;
+		padding: 0 0 5px;
 		-webkit-appearance: none;
+	}
+	.select {
+		border-bottom: 1px dotted #eaeaea;
 	}
 	.nicer-select {
 		width: auto;
+		margin-left: 1px;
 	}
 }
