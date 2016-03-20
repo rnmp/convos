@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require autosize
+//= require fastclick
 //= require_tree .
 
 $(function() {
-
+    FastClick.attach(document.body);
     Turbolinks.enableProgressBar();
 });

@@ -120,6 +120,7 @@ GEM
       railties (= 4.2.4)
       sprockets-rails
     rails-assets-autosize (3.0.15)
+    rails-assets-fastclick (1.0.6)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -215,6 +216,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.4)
   rails-assets-autosize!
+  rails-assets-fastclick!
   rails_12factor
   rails_admin
   redcarpet
@@ -226,3 +228,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   valid_url
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.11.2

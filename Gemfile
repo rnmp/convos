@@ -59,6 +59,7 @@ end
 source 'https://rails-assets.org' do
   # autosizes textareas for better writing experience
   gem 'rails-assets-autosize'
+  gem 'rails-assets-fastclick'
 end
 
 # Paginator
