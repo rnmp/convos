@@ -142,7 +142,6 @@ body {
 	text-align: right;
 	top: 120px;
 	width: 150px;
-	font-weight: bold;
 }
 .topic-tabs a {
 	display: block;
@@ -150,6 +149,7 @@ body {
 }
 .topic-tabs a.active {
 	color: inherit;
+	font-weight: bold;
 }
 
 
