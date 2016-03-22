@@ -12,8 +12,6 @@ ready = ->
   $(".formatting-link").hide()
   $(".block-form textarea").on 'focus', (e) ->
     $(".formatting-link").show()
-  $(".block-form textarea").on 'blur', (e) ->
-    $(".formatting-link").hide()
 
   $(".show-reply-form").on "click", (e) ->
     e.preventDefault()

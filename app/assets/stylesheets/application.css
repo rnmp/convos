@@ -450,7 +450,7 @@ input[type="submit"][disabled] {
 	padding-left: 0;
 }
 .select, .select a span {
-	color: #bbb;
+	color: #ababab;
 }
 .select a:hover {
 	text-decoration: none;
