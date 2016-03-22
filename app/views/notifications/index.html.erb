@@ -1,0 +1,11 @@
+<h1>notifications</h1>
+<% if !@notifications.blank? %>
+  <% for notification in @notifications %>
+	<article class="notification <%= " unread" unless notification.read %>">
+		<p><%= notification.message.html_safe %></p>
+		<p class="metadata"><%= (time_ago_in_words notification.created_at)+' ago' %><p>
+	</article>
+  <% end %>
+<% else %>
+  No notifications yet.
+<% end %>

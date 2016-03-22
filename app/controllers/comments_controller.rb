@@ -6,19 +6,31 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @notification = Notification.new
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
       @comment = parent.children.build(comment_params)
+      @notification.user_id = parent.user_id
     else
       @comment = Comment.new(comment_params)
+      @notification.user_id = @comment.convo.user_id
     end
     @comment.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @comment.save
         @convo = @comment.convo
+
         @comment.upvote(current_user)
-        format.html { redirect_to convo_path(@convo, anchor: "comment-#{@comment.id}") }
+
+        redirect_path = convo_slug_path(@convo.topic.slug, @convo.id, @convo.slug, anchor: "comment-#{@comment.id}")
+
+        @notification.message = \
+          "Someone replied to <a href='#{redirect_path}' target='_blank'>"\
+          "your #{ @comment.parent_id ? 'comment' : 'convo' }</a>.".html_safe
+        @notification.save unless @notification.user_id == current_user.id
+
+        format.html { redirect_to redirect_path }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
