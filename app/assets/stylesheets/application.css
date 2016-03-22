@@ -280,7 +280,8 @@ a.downvote {
 .metadata,
 .metadata a,
 .url-token,
-.url-token a {
+.url-token a,
+.formatting-link {
 	color: #93A2AB;
 }
 .url-token {
@@ -387,6 +388,7 @@ a.downvote {
 }
 
 .block-form {
+	position: relative;
 	background: #fff;
 }
 .block-form, .nicer-select {
@@ -459,6 +461,14 @@ input[type="submit"][disabled] {
 	list-style-type: none;
 	border-top: 1px dotted #eaeaea;
 	padding: 2px 0;
+}
+
+.formatting-link {
+	font-size: 12px;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 5px;
 }
 
 html.turbolinks-progress-bar::before {
