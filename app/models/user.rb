@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :convos
   has_many :comments
+  has_many :notifications
   validates :email, :password_digest, presence: true, unless: :guest?
   validates :password, confirmation: true
   has_secure_password(validations: false)

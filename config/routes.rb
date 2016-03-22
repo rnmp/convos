@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'convos#index'
 
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :topics
 
-  resources :convos, path: '' do
+  resources :convos do
     member do
       get 'upvote'
       get 'downvote'
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
   end
 
   get '/topics/:topic_slug/:id/:convo_slug', to: 'convos#show', as: :convo_slug
+
+  get '/notifications', to: 'notifications#index'
 
   resources :comments do
     member do
