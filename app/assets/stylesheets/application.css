@@ -37,9 +37,14 @@ a:hover {
 i {
 	font-style: normal;
 }
+h1, h2 {
+	margin-bottom: .5em;
+}
 h1 {
 	font-size: 24px;
-	margin-bottom: .5em;
+}
+h2 {
+	font-size: 18px;
 }
 
 small {
