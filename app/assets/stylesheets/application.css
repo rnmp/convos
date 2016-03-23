@@ -194,6 +194,7 @@ a.replies-link {
 	position: relative;
 	height: 90px;
 	overflow: hidden;
+	img { display: block }
 }
 .convo.truncate .user-content .expand-link {
 	position: absolute;
@@ -208,6 +209,7 @@ a.replies-link {
 	width: 100%;
 	bottom: 0;
 	pointer-events: none;
+	img { display: block }
 }
 .convo, .single-convo {
 	padding-left: 40px;
