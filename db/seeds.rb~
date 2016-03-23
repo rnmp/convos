@@ -8,7 +8,7 @@
 
 require 'securerandom'
 
-User.create(username: 'rnmp', email: 'rolando@bandd.co', password: 's3b45t14ng4y', admin: true)
+User.create(username: 'rnmp', email: 'rolando@bandd.co', password: 's3b45t14ng4y', is_admin: true)
 
 topic_names = ['random', 'feedback', 'politics & news', 'culture', 'lifestyle', 'fashion & style', 'science & tech', 'sports', 'international']
 topic_names.length.times do |topic_name|

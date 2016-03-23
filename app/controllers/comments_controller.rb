@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
 
   def edit
     redirect_to :back unless @comment.user && @comment.user == current_user
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   def create
@@ -42,10 +44,14 @@ class CommentsController < ApplicationController
   def upvote
     @comment.upvote(current_user)
     redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
   def downvote
     @comment.downvote(current_user)
     redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   def update

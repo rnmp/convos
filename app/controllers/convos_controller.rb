@@ -30,15 +30,21 @@ class ConvosController < ApplicationController
 
   def edit
     redirect_to :back unless @convo.user && @convo.user == current_user
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   def upvote
     @convo.upvote(current_user)
     redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
   def downvote
     @convo.downvote(current_user)
     redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   def create
@@ -76,7 +82,7 @@ class ConvosController < ApplicationController
       @convo.destroy
     end
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
