@@ -21,5 +21,8 @@
     <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)', style: 'marg' %>
     <%= f.submit submit_text %>
+    <% if current_user.admin? %>
+      <label class="by-admin"><%= f.check_box :by_admin %>flag as admin</label>
+    <% end %>
   </div>
 <% end %>

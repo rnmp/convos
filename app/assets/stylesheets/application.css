@@ -61,11 +61,7 @@ small {
 .field {
 	margin-bottom: 10px;
 }
-label {
-	font-style: italic;
-	color: #777;
-}
-label, input, textarea {
+input, textarea {
 	display: block;
 	color: #586166;
 }
@@ -283,19 +279,19 @@ a.downvote {
 	border-top: 8px solid #BACDD9;
 }
 
-.metadata,
-.url-token {
+.metadata {
 	font-size: 14px;
 }
 .metadata,
 .metadata a,
-.url-token,
-.url-token a,
 .formatting-link {
 	color: #93A2AB;
 }
-.url-token {
-	font-weight: normal;
+.admin-tag {
+	padding: 0 3px;
+	background: #B9CDDA;
+	color: #fff;
+	border-radius: 2px;
 }
 
 .thumbnail {
@@ -417,15 +413,13 @@ input[type="text"],
 	border: 0;
 	padding: 0;
 }
-.block-form:focus {
-	border-color: #F5565B;
-}
 .block-form input[type="text"]:focus,
 .block-form input[type="url"]:focus,
 .block-form textarea:focus {
 	outline: none;
 }
 .block-form .options {
+	position: relative;
 	border-top: 1px solid #eaeaea;
 	display: flex;
 	padding-top: 7px;
@@ -435,6 +429,19 @@ input[type="text"],
 	padding-left: 10px;
 	border-left: 1px dotted #eaeaea;
 	border-radius: 0;
+}
+.block-form .options .by-admin {
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #ababab;
+}
+.block-form .options .by-admin > input {
+	display: inline-block;
+	margin-right: 5px;
+	vertical-align: center;
 }
 .block-form textarea {
 	width: 100%;

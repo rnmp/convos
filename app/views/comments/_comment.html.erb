@@ -18,7 +18,20 @@
     <%= link_to time_ago_in_words(comment.created_at)+' ago', 
       "#comment-#{comment.id}", title: 'Permalink to comment' %>
     <% if comment.edited? %>(edited)<% end %>
-    by <% if comment.author? %><%= comment.author %><% else %>someone<% end %>
+    by
+    <% if comment.by_admin? %>
+      <span class="admin-tag">admin</span>
+    <% else %>
+      <% if comment.author? %>
+        <%= comment.author %>
+      <% else %>
+        <% if current_user.admin? and comment.user.admin? %>
+          <span class="admin-tag"><%= comment.user.username %></span>
+        <% else %>
+          someone
+        <% end %>
+      <% end %> 
+    <% end %>
     <% if comment.user && comment.user == current_user %>
       | <%= link_to 'edit', edit_comment_path(comment) %>
       | <%= link_to 'delete', comment, :method => :delete %>

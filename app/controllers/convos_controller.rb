@@ -87,6 +87,6 @@ class ConvosController < ApplicationController
     end
 
     def convo_params
-      params.require(:convo).permit(:convo, :author, :topic_id, :points)
+      params.require(:convo).permit(:convo, :author, :topic_id, :points, :by_admin)
     end
 end

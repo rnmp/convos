@@ -101,6 +101,9 @@
         });
       </script>
     <% end %>
+    <% if current_user.admin %>
+      <label class="by-admin"><%= f.check_box :by_admin %>flag as admin</label>
+    <% end %>
   </div>
   <a class="formatting-link" href="http://www.convos.org/topics/feedback/135/formatting" target="_blank">formatting help</a>
 <% end %>
