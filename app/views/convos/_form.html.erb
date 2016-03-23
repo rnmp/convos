@@ -101,7 +101,7 @@
         });
       </script>
     <% end %>
-    <% if current_user.admin %>
+    <% if current_user.admin? %>
       <label class="by-admin"><%= f.check_box :by_admin %>flag as admin</label>
     <% end %>
   </div>

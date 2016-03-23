@@ -8,6 +8,7 @@ class Convo < ActiveRecord::Base
 
   validates :convo, presence: true
   validates :topic, presence: true
+  validates :user, presence: true
 
   acts_as_voteable
   include VoteActions

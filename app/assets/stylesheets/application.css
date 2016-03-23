@@ -103,6 +103,9 @@ body {
 	margin: auto;
 	padding: 40px 30px 30px 50px;
 }
+main {
+	position: relative;
+}
 
 /** header **/
 .logo {
@@ -111,6 +114,7 @@ body {
 	position: absolute;
 	border-radius: 50em;
 	right: 100%;
+	margin-right: 50px;
 	overflow: hidden;
 }
 .logo img {
@@ -136,13 +140,17 @@ body {
 	border-top: 2px solid #F5565B;
 }
 
-/** topics **/
+/** navigation **/
+.user-tabs {
+	margin-bottom: 10px;
+}
 .topic-tabs {
 	position: absolute;
 	right: 100%;
 	text-align: right;
-	top: 120px;
+	top: 80px;
 	width: 150px;
+	margin-right: 50px;
 }
 .topic-tabs a {
 	display: block;
