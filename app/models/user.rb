@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :notifications
   validates :email, :password_digest, presence: true, unless: :guest?
+  validates :email, uniqueness: true
   validates :password, confirmation: true
   has_secure_password(validations: false)
   acts_as_voter

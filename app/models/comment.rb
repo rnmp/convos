@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :convo
   belongs_to :user
 
+  validates :user, presence: true
   validates :comment, presence: true
 
   acts_as_tree
