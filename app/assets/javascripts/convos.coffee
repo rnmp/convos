@@ -6,6 +6,18 @@
 # since an upvote is being destroyed and a downvote created (or vice
 # versa). currently votecount only changes in increment of 1.
 
+truncateContent = ->
+  $(".truncate-content").each ->
+    self = this
+    content = $('.user-content', this)
+    if content.height() > 90
+      $(self).addClass('truncate')
+      expand_link = $('<a>').addClass('expand-link').text('— expand —')
+      content.append(expand_link)
+      expand_link.on "click", () ->
+        $(self).removeClass('truncate')
+        $(this).remove()
+
 ready = ->
   $(".replies .block-form").hide()
 
@@ -17,16 +29,6 @@ ready = ->
     e.preventDefault()
     $($(this).attr 'href').toggle()
 
-  $(".truncate-content").each ->
-    self = this
-    content = $('.user-content', this)
-    if content.height() > 90
-      $(self).addClass('truncate')
-      expand_link = $('<a>').addClass('expand-link').text('— expand —')
-      content.append(expand_link)
-      expand_link.on "click", () ->
-        $(self).removeClass('truncate')
-        $(this).remove()
   
   autosize($('textarea'))
 
@@ -54,5 +56,10 @@ ready = ->
   $('.arrow').on "ajax:success", (e, data, status, xhr) ->
     $('.arrow', $(this).parent()).removeAttr('href').removeAttr('data-remote')    
 
+  truncateContent()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
+$(window).load ->
+  truncateContent()
+
