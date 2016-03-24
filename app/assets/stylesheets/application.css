@@ -231,9 +231,7 @@ a.replies-link {
 	bottom: 7px;
 	padding-right: 8px;
 	border-right: 1px dotted #eee;
-
 }
-
 
 .disabled a.arrow {
 	cursor: default;
@@ -252,6 +250,10 @@ a.arrow {
 	display: block;
 	text-indent: -9999px;
 	outline: 0;
+	border: 8px solid transparent;
+	-webkit-transition: border-color 0.2s;
+	-o-transition: border-color 0.2s;
+	transition: border-color 0.2s;
 }
 a.arrow::before {
 	content: '';
@@ -263,17 +265,15 @@ a.arrow::before {
 }
 a.arrow.upvote {
 	margin: 3px 0 8px;
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-bottom: 8px solid #BACDD9;
+	border-bottom-color: #BACDD9;
+	border-top: none;
 }
 a.arrow.upvote.active {
 	border-bottom-color: #F5565B;
 }
 a.downvote {
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-top: 8px solid #BACDD9;
+	border-top-color: #BACDD9;
+	border-bottom: none;
 }
 a.arrow.downvote.active {
 	border-top-color: #586166;
@@ -530,5 +530,15 @@ html.turbolinks-progress-bar::before {
 	.nicer-select {
 		width: auto;
 		margin-left: 1px;
+	}
+
+	.convo, .single-convo {
+		padding-left: 50px;
+	}
+	a.arrow {
+		border-width: 10px;
+	}
+	a.arrow.upvote {
+		margin-bottom: 10px;
 	}
 }
