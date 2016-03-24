@@ -194,7 +194,6 @@ a.replies-link {
 	position: relative;
 	height: 90px;
 	overflow: hidden;
-	img { display: block }
 }
 .convo.truncate .user-content .expand-link {
 	position: absolute;
@@ -209,8 +208,8 @@ a.replies-link {
 	width: 100%;
 	bottom: 0;
 	pointer-events: none;
-	img { display: block }
 }
+
 .convo, .single-convo {
 	padding-left: 40px;
 	word-wrap: break-word;
@@ -239,10 +238,23 @@ a.replies-link {
 	cursor: default;
 }
 .disabled a.arrow.upvote {
-	border-bottom-color: #eee;	
+	border-bottom-color: #eee;
 }
+.disabled a.arrow.upvote:not(.active) {
+	-webkit-transform: rotate(180deg) translate(0, -7px) scale(0.95);
+	-ms-transform: rotate(180deg) translate(0, -7px) scale(0.95);
+	-o-transform: rotate(180deg) translate(0, -7px) scale(0.95);
+	transform: rotate(180deg) translate(0, -7px) scale(0.95);
+}
+
 .disabled a.arrow.downvote {
 	border-top-color: #eee;	
+}
+.disabled a.arrow.downvote:not(.active) {
+	-webkit-transform: rotate(-180deg) translate(0, 7px) scale(0.95);
+	-ms-transform: rotate(-180deg) translate(0, 7px) scale(0.95);
+	-o-transform: rotate(-180deg) translate(0, 7px) scale(0.95);
+	transform: rotate(-180deg) translate(0, 7px) scale(0.95);
 }
 
 a.arrow {
@@ -253,9 +265,9 @@ a.arrow {
 	text-indent: -9999px;
 	outline: 0;
 	border: 8px solid transparent;
-	-webkit-transition: border-color 0.2s;
-	-o-transition: border-color 0.2s;
-	transition: border-color 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
 }
 a.arrow::before {
 	content: '';

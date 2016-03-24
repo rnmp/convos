@@ -2,9 +2,9 @@
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
     <span class="vote-links">
-      <%= link_to 'upvote', (current_user.voted_on?(comment) ? 'javascript:;' : upvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+      <%= link_to '', (current_user.voted_on?(comment) ? 'javascript:;' : upvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
         class: 'arrow upvote'+(' active' if current_user.voted_for?(comment)).to_s %>
-      <%= link_to 'downvote', (current_user.voted_on?(comment) ? 'javascript:;' : downvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+      <%= link_to '', (current_user.voted_on?(comment) ? 'javascript:;' : downvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
         class: 'arrow downvote'+(' active' if current_user.voted_against?(comment)).to_s %>
     </span>
 	  <% from_reply_form ||= nil %>
