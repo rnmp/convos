@@ -30,7 +30,7 @@ ready = ->
   
   autosize($('textarea'))
 
-  $('.convo').on "click", (e) ->
+  $('.convo, .single-convo').on "click", (e) ->
     if $(this).hasClass('disabled') 
       return
     if !$(e.target).hasClass('arrow')
