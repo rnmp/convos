@@ -1,13 +1,11 @@
-<article class="convo<%= ' hidden' if comment.points < -5 %>" id="comment-<%= comment.id %>">
+<article class="convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
-    <span class="vote-links<%= " disabled" if current_user && current_user.voted_on?(comment) %>">
-      <%= link_to 'upvote', upvote_comment_path(comment), remote: true, 
-        class: 'upvote'+(' active' if current_user && current_user.voted_for?(comment)).to_s, 
-        data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
-      <%= link_to 'downvote', downvote_comment_path(comment), remote: true, 
-        class: 'downvote'+(' active' if current_user && current_user.voted_against?(comment)).to_s, 
-        data: { item_type: comment.class.to_s.downcase, item_id: comment.id } %>
+    <span class="vote-links">
+      <%= link_to 'upvote', (current_user.voted_on?(comment) ? 'javascript:;' : upvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+        class: 'arrow upvote'+(' active' if current_user.voted_for?(comment)).to_s %>
+      <%= link_to 'downvote', (current_user.voted_on?(comment) ? 'javascript:;' : downvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+        class: 'arrow downvote'+(' active' if current_user.voted_against?(comment)).to_s %>
     </span>
 	  <% from_reply_form ||= nil %>
 	  <% unless from_reply_form %>

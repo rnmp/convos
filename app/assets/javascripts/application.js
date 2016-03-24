@@ -17,7 +17,14 @@
 //= require fastclick
 //= require_tree .
 
+String.prototype.pluralize = function(count, plural){
+	if (plural == null)
+	plural = this + 's';
+
+	return (count == 1 ? this : plural) 
+};
+
 $(function() {
-    FastClick.attach(document.body);
-    Turbolinks.enableProgressBar();
+	FastClick.attach(document.body);
+	Turbolinks.enableProgressBar();
 });

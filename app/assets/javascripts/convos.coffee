@@ -30,51 +30,29 @@ ready = ->
   
   autosize($('textarea'))
 
-  $("a[data-remote]").on "click", (e) ->
-    is_selected = $(this).hasClass('active')
-
-    $(this).parent().removeClass 'disabled'
-    $(this).parent().children().map (idx, el) ->
-      console.log("removing", el)
-      $(el).removeClass('active')
-
-    if is_selected
-      if $(this).hasClass('upvote')
-        item_points--
-      else
-        item_points++
-
-      item_type = $(this).attr('data-item-type')
-      item_id = $(this).attr('data-item-id')
-      $span = $('span[data-item-type='+item_type+'][data-item-id='+item_id+']')
-      item_points = $span.html()
-
-      if $(this).hasClass('upvote')
-        item_points--
-      else
-        item_points++
-
-      $span.html item_points
-
+  $('.convo').on "click", (e) ->
+    if $(this).hasClass('disabled') 
+      return
+    if !$(e.target).hasClass('arrow')
       return
 
-    console.log("keeps running")
-    item_type = $(this).attr('data-item-type')
-    item_id = $(this).attr('data-item-id')
-    $span = $('span[data-item-type='+item_type+'][data-item-id='+item_id+']')
-    item_points = $span.html()
+    $(this).addClass('disabled')
+    $(e.target).addClass('active')
 
-    console.log("removing points")
-    if $(this).hasClass('upvote')
-      item_points++
+    points = parseInt($('.point-count', this).text())
+
+    if $(e.target).hasClass('upvote')
+      points++
     else
-      item_points--
-    $span.html item_points
-    $(this).parent().addClass 'disabled'
-    $(this).addClass 'active'
+      points--
 
-    $(this).unbind()
+    $('.point-count', this).text(points)
+    $('.point-word', this).text(' point'.pluralize(points, ' points'))
 
+    $(this).off
+
+  $('.arrow').on "ajax:success", (e, data, status, xhr) ->
+    $('.arrow', $(this).parent()).removeAttr('href').removeAttr('data-remote')    
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

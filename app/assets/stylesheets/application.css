@@ -233,12 +233,19 @@ a.replies-link {
 	border-right: 1px dotted #eee;
 
 }
-.disabled.vote-links a {
+
+
+.disabled a.arrow {
 	cursor: default;
 }
+.disabled a.arrow.upvote {
+	border-bottom-color: #eee;	
+}
+.disabled a.arrow.downvote {
+	border-top-color: #eee;	
+}
 
-a.upvote, 
-a.downvote {
+a.arrow {
 	width: 0; 
 	height: 0; 
 	position: relative;
@@ -246,8 +253,7 @@ a.downvote {
 	text-indent: -9999px;
 	outline: 0;
 }
-a.upvote::before,  
-a.downvote::before {
+a.arrow::before {
 	content: '';
 	position: absolute;
 	top: -5px;
@@ -255,36 +261,22 @@ a.downvote::before {
 	bottom: -5px;
 	left: -5px;
 }
-
-a.upvote:hover,
-a.upvote.active,
-.disabled.vote-links a.upvote.active {
-	border-bottom-color: #F5565B;
-}
-.disabled.vote-links a.upvote {
-	border-bottom-color: #eee;	
-}
-
-a.downvote:hover,
-a.downvote.active,
-.disabled.vote-links a.downvote.active {
-	border-top-color: #586166;
-}
-.disabled.vote-links a.downvote {
-	border-top-color: #eee;	
-}
-
-a.upvote {
+a.arrow.upvote {
 	margin: 3px 0 8px;
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-bottom: 8px solid #BACDD9;
 }
-
+a.arrow.upvote.active {
+	border-bottom-color: #F5565B;
+}
 a.downvote {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-top: 8px solid #BACDD9;
+}
+a.arrow.downvote.active {
+	border-top-color: #586166;
 }
 
 .metadata {
