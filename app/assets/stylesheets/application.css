@@ -241,20 +241,20 @@ a.replies-link {
 	border-bottom-color: #eee;
 }
 .disabled a.arrow.upvote:not(.active) {
-	-webkit-transform: rotate(180deg) translate(0, -10px) scale(0.95);
-	-ms-transform: rotate(180deg) translate(0, -10px) scale(0.95);
-	-o-transform: rotate(180deg) translate(0, -10px) scale(0.95);
-	transform: rotate(180deg) translate(0, -10px) scale(0.95);
+	-webkit-transform: rotate(180deg) translate(0, -13px) scale(0.95);
+	-ms-transform: rotate(180deg) translate(0, -13px) scale(0.95);
+	-o-transform: rotate(180deg) translate(0, -13px) scale(0.95);
+	transform: rotate(180deg) translate(0, -13px) scale(0.95);
 }
 
 .disabled a.arrow.downvote {
 	border-top-color: #eee;	
 }
 .disabled a.arrow.downvote:not(.active) {
-	-webkit-transform: rotate(-180deg) translate(0, 10px) scale(0.95);
-	-ms-transform: rotate(-180deg) translate(0, 10px) scale(0.95);
-	-o-transform: rotate(-180deg) translate(0, 10px) scale(0.95);
-	transform: rotate(-180deg) translate(0, 10px) scale(0.95);
+	-webkit-transform: rotate(-180deg) translate(0, 13px) scale(0.95);
+	-ms-transform: rotate(-180deg) translate(0, 13px) scale(0.95);
+	-o-transform: rotate(-180deg) translate(0, 13px) scale(0.95);
+	transform: rotate(-180deg) translate(0, 13px) scale(0.95);
 }
 
 a.arrow {
@@ -284,10 +284,10 @@ a.arrow.upvote {
 }
 a.arrow.upvote.active {
 	border-bottom-color: #F5565B;
-	-webkit-transform: translate(0, -3px);
-	-ms-transform: translate(0, -3px);
-	-o-transform: translate(0, -3px);
-	transform: translate(0, -3px);
+	-webkit-transform: translate(0, -5px);
+	-ms-transform: translate(0, -5px);
+	-o-transform: translate(0, -5px);
+	transform: translate(0, -5px);
 }
 a.downvote {
 	border-top-color: #BACDD9;
@@ -295,10 +295,10 @@ a.downvote {
 }
 a.arrow.downvote.active {
 	border-top-color: #586166;
-	-webkit-transform: translate(0, 3px);
-	-ms-transform: translate(0, 3px);
-	-o-transform: translate(0, 3px);
-	transform: translate(0, 3px);
+	-webkit-transform: translate(0, 5px);
+	-ms-transform: translate(0, 5px);
+	-o-transform: translate(0, 5px);
+	transform: translate(0, 5px);
 }
 
 .metadata {
