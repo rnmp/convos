@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def can_post_new_convo?
-    if self.convos.empty?
+    if self.convos.any?
       (Time.now - self.convos.last.created_at) > 1.minute
     else
       true

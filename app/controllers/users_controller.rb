@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
+  def new
+    redirect_to root_path unless current_user.guest?
+    @user = User.new
+  end
+
   def create
-    @user = params[:user] ? User.new(user_params) : User.new_guest
+    @user = params[:user] ? current_user : User.new
+    @user.update(user_params)
+    @user.guest = false
+    @user.ip = nil
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/'
