@@ -25,9 +25,7 @@ class Convo < ActiveRecord::Base
     end
   end
 
-  protected
-
-  $our_epoch = Time.local(2005, 12, 8, 7, 46, 43).to_time
+  $our_epoch = Time.local(2015, 1, 1, 1, 1, 1).to_time
 
   def epoch_seconds(t)
     (t.to_i - $our_epoch.to_i).to_f
@@ -45,7 +43,7 @@ class Convo < ActiveRecord::Base
       0
     end
 
-    result = (displacement * sign.to_f) + ( epoch_seconds(created_at) / 45000 )
+    result = (displacement * sign.to_f * 10) + ( epoch_seconds(created_at) / 45000 )
     self.update_attribute(:weighted_score, result)
   end
 

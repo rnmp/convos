@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :convos
-  has_many :comments
-  has_many :notifications
+  has_many :convos, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
   validates :email, :password_digest, presence: true, unless: :guest?
   validates :email, uniqueness: true, unless: :guest?
   validates :password, confirmation: true
