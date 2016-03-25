@@ -22,7 +22,7 @@ ready = ->
   $(".replies .block-form").hide()
 
   $(".formatting-link").hide()
-  $(".block-form textarea").on 'focus', (e) ->
+  $(".block-form textarea").on 'input', (e) ->
     $(".formatting-link").show()
 
   $(".show-reply-form").on "click", (e) ->
