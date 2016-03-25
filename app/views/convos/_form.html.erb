@@ -71,7 +71,7 @@
     </script>
     <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)' %>
-    <%= f.submit submit_text, timeout: ((current_user.last_convo.created_at.to_f*1000) unless current_user.can_post_new_convo?), id: 'submit_convo' %>
+    <%= f.submit submit_text, timeout: ((current_user.convos.last.created_at.to_f*1000) unless current_user.can_post_new_convo?), id: 'submit_convo' %>
     <% if timeout %>
       <script>
         $('[timeout]').each(function(){
