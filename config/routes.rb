@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   root 'convos#index'
 
   resources :users
-  get '/signup' => 'users#new'
+  get '/signup', to: 'users#new'
   
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
-  get '/tos' => 'static_pages#tos'
+  get '/my_convos', to: 'users#show'
+
+  get '/tos', to: 'static_pages#tos'
 
   resources :topics
 

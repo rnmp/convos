@@ -12,6 +12,17 @@ class User < ActiveRecord::Base
     new { |u| u.guest = true }
   end
 
+  def total_points
+    total_points = 0
+    self.convos.each do |convo|
+      total_points += convo.points
+    end
+    self.comments.each do |comment|
+      total_points += comment.points
+    end
+    total_points
+  end
+
   def can_post_new_convo?
     if self.convos.any?
       (Time.now - self.convos.last.created_at) > 1.minute

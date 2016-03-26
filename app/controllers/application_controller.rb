@@ -9,24 +9,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def find_user_with_ip(ip)
-    User.find{|u| u.ip == ip }
-  end
-
   def assign_current_user
     ip = request.remote_ip
-    existing_user = find_user_with_ip(ip)
-    if existing_user
-      session[:user_id] = existing_user.id
-    else
-      new_user = User.new_guest
-      new_user.ip = ip
-      new_user.save!
-      session[:user_id] = new_user.id
+    matching_user = User.where(ip: ip.to_s, guest: true)[0]
+    unless matching_user
+      new_guest_user = User.new_guest
+      new_guest_user.ip = ip
+      new_guest_user.save!
+      matching_user = new_user
     end
-  end
-
-  def authorize
-    redirect_to '/login' unless current_user
+    session[:user_id] = matching_user.id
   end
 end

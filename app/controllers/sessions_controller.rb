@@ -17,9 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    unless current_user.guest?
-      session[:user_id] = nil
-    end
+    session[:user_id] = nil
     redirect_to :root
   end
 end

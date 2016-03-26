@@ -65,11 +65,11 @@ input, textarea {
 	display: block;
 	color: #586166;
 }
-input[type="text"], input[type="email"], 
-input[type="url"], input[type="password"], 
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
 textarea {
-	margin-top: 5px;
-	border: 1px solid #eee;
+	border: 0;
 }
 input, textarea, input[type="submit"] {
 	font: inherit;
@@ -98,7 +98,6 @@ input[type="submit"] {
 
 /* layout */
 body {
-	position: relative;
 	max-width: 700px;
 	margin: auto;
 	padding: 40px 30px 30px 50px;
@@ -122,7 +121,14 @@ main {
 	width: 100%;
 	opacity: 0.75;
 }
-.logo, .block-form, .nicer-select, .convo, .notification {
+.logo, 
+.block-form, 
+.nicer-select, 
+.convo, 
+.notification, 
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
 .convos-menu {
@@ -141,8 +147,12 @@ main {
 }
 
 /** navigation **/
-.user-tabs {
-	margin-bottom: 10px;
+.user-links {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+	font-size: 14px;
 }
 .topic-tabs {
 	position: absolute;
@@ -310,7 +320,8 @@ a.arrow.downvote.active {
 }
 .metadata,
 .metadata a,
-.formatting-link {
+.formatting-link,
+.user-links a {
 	color: #93A2AB;
 }
 .admin-tag {
@@ -432,12 +443,13 @@ label.redundant-label {
 	display: none;
 }
 .block-form .field,
-.block-form input[type="url"],
-input[type="text"],
+.block-form input[type="text"],
+.block-form input[type="email"],
+.block-form input[type="password"],
 .block-form textarea {
 	margin: 0;
-	border: 0;
 	padding: 0;
+	box-shadow: none;
 }
 .block-form input[type="text"]:focus,
 .block-form input[type="url"]:focus,
