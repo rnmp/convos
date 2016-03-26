@@ -1,19 +1,21 @@
 <h1>sign up</h1>
 <div class="user-content" >
 	<ul>
-		<li>keep score of how many votes you’ve received</li>
-		<li>track your recent convos and comments</li>
+		<li>keep score of your votes</li>
+		<li>find your recent convos and comments</li>
+		<li>more features coming soon!</li>
+		<br>
 		<li>this information is only available to you, and you can still be anonymous</li>
-		<li>registration is totally optional and not necessary to use most of the site’s features</li>
+		<li>registration is totally optional</li>
 	</ul>
 
 	<%= form_for @user do |f| %>
 
 		<p><%= f.email_field :email, placeholder: "email" %></p>
 		<p><%= f.password_field :password, placeholder: "password" %></p>
-		<p><%= f.password_field :password_confirmation, placeholder: "confirm" %></p>
+		<p><%= f.password_field :password_confirmation, placeholder: "confirm password" %></p>
 		<p><%= f.submit "submit" %></p>
 
 	<% end %>
-	<small class="metadata">By signing up, you agree to our <a href="/tos" class="highlight" target="_blank">Terms of Service</a></small>
+	<small class="metadata">By using this site, you agree to our <a href="/tos" class="highlight" target="_blank">Terms</a></small>
 </div>
