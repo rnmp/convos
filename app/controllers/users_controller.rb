@@ -8,13 +8,16 @@ class UsersController < ApplicationController
     @user = params[:user] ? current_user : User.new
     @user.update(user_params)
     @user.guest = false
-    @user.ip = nil
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/'
     else
       redirect_to '/signup'
     end
+  end
+
+  def show
+    @convos = current_user.convos
   end
   
   private

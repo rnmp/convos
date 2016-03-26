@@ -23,9 +23,13 @@
 		</script>
 	</head>
 	<body>
-		<% if current_user && !current_user.guest? %>
-			<nav class="user-tabs">hello, <strong><%= current_user.username %></strong> · <%= link_to "logout", logout_path %></nav>
-		<% end %>
+		<nav class="user-links">
+			<% if current_user && !current_user.guest? %>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>) · <%= link_to "logout", logout_path %>
+			<% else %>
+				<%= link_to "more features", signup_path %> ·
+				<%= link_to "login", login_path %>
+			<% end %>
+		</nav>
 		<main>
 			<%= link_to image_tag('logo.png', alt:'convos.org'), root_path, class:'logo' %>
 			<nav class="topic-tabs">
