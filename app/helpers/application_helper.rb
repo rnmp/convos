@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def markdown_for_title(text)
-    markdown(text).to_s.gsub!(/<[^>]*>/, "")
+    markdown(text).to_s.gsub!(/<[^>]*>/, "").html_safe
   end
 
   def cp(path)
