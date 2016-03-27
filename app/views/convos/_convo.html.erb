@@ -34,7 +34,7 @@
         in <%= link_to convo.topic.name, topic_path(convo.topic) %>
       <% end %>
     <% end %>
-    <% if convo.user && convo.user == current_user %>
+    <% if current_user.can_edit?(convo) %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 
       | <%= link_to 'delete', convo, :method => :delete %>
     <% end %>

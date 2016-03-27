@@ -30,7 +30,7 @@
         <% end %>
       <% end %> 
     <% end %>
-    <% if comment.user && comment.user == current_user %>
+    <% if current_user.can_edit?(comment) %>
       | <%= link_to 'edit', edit_comment_path(comment) %>
       | <%= link_to 'delete', comment, :method => :delete %>
     <% end %>
