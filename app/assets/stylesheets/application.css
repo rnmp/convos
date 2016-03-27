@@ -221,7 +221,7 @@ a.replies-link {
 }
 
 .convo, .single-convo {
-	padding-left: 40px;
+	padding-left: 50px;
 	word-wrap: break-word;
 }
 .convo:target, .active.convo, .unread.notification {
@@ -244,19 +244,16 @@ a.replies-link {
 	border-right: 1px dotted #eee;
 }
 
-.disabled a.arrow {
-	cursor: default;
-}
 .disabled a.arrow.upvote {
 	border-bottom-color: #eee;
 }
 .disabled a.arrow.upvote:not(.active) {
 	border-bottom-color: #586166;	
-	opacity: 0.075;	
-	-webkit-transform: rotate(180deg) translate(0, -13px);
-	-ms-transform: rotate(180deg) translate(0, -13px);
-	-o-transform: rotate(180deg) translate(0, -13px);
-	transform: rotate(180deg) translate(0, -13px);
+	opacity: 0.15;	
+	-webkit-transform: rotate(180deg) translate(0, -15px);
+	-ms-transform: rotate(180deg) translate(0, -15px);
+	-o-transform: rotate(180deg) translate(0, -15px);
+	transform: rotate(180deg) translate(0, -15px);
 }
 
 .disabled a.arrow.downvote {
@@ -264,11 +261,11 @@ a.replies-link {
 }
 .disabled a.arrow.downvote:not(.active) {
 	border-top-color: #F5565B;	
-	opacity: 0.1;	
-	-webkit-transform: rotate(-180deg) translate(0, 13px);
-	-ms-transform: rotate(-180deg) translate(0, 13px);
-	-o-transform: rotate(-180deg) translate(0, 13px);
-	transform: rotate(-180deg) translate(0, 13px);
+	opacity: 0.2;	
+	-webkit-transform: rotate(-180deg) translate(0, 15px);
+	-ms-transform: rotate(-180deg) translate(0, 15px);
+	-o-transform: rotate(-180deg) translate(0, 15px);
+	transform: rotate(-180deg) translate(0, 15px);
 }
 
 a.arrow {
@@ -278,7 +275,7 @@ a.arrow {
 	display: block;
 	text-indent: -9999px;
 	outline: 0;
-	border: 8px solid transparent;
+	border: 10px solid transparent;
 	-webkit-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
@@ -292,7 +289,7 @@ a.arrow::before {
 	left: -5px;
 }
 a.arrow.upvote {
-	margin: 12px 0 8px;
+	margin: 10px 0;
 	border-bottom-color: #BACDD9;
 	border-top: none;
 }
@@ -568,15 +565,5 @@ html.turbolinks-progress-bar::before {
 	.nicer-select {
 		width: auto;
 		margin-left: 1px;
-	}
-
-	.convo, .single-convo {
-		padding-left: 50px;
-	}
-	a.arrow {
-		border-width: 10px;
-	}
-	a.arrow.upvote {
-		margin-bottom: 10px;
 	}
 }
