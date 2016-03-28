@@ -36,6 +36,17 @@ class User < ActiveRecord::Base
     convo_or_comment.user == self || self.admin?
   end
 
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  # Returns a random token.
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
