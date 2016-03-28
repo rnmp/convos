@@ -1,11 +1,20 @@
 module VoteActions
   def upvote(user)
-    user.vote_for(self)
+    if user.voted_on?(self)
+      user.unvote_for(self)
+    else
+      user.vote_for(self)
+    end
     cache_points
     self.update_popularity
   end
+
   def downvote(user)
-    user.vote_against(self)
+    if user.voted_on?(self)
+      user.unvote_for(self)
+    else
+      user.vote_against(self)
+    end
     cache_points
     self.update_popularity
   end

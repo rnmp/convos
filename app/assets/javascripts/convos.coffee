@@ -33,28 +33,30 @@ ready = ->
   autosize($('textarea'))
 
   $('.convo, .single-convo').on "click", (e) ->
-    if $(this).hasClass('disabled') 
-      return
     if !$(e.target).hasClass('arrow')
       return
 
-    $(this).addClass('disabled')
-    $(e.target).addClass('active')
-
     points = parseInt($('.point-count', this).text())
 
-    if $(e.target).hasClass('upvote')
-      points++
+    if $(this).hasClass('disabled')
+      if $(this).hasClass('upvoted')
+        points--
+        $(this).removeClass('upvoted')
+      else
+        points++
+      $('.active', this).removeClass('active')
     else
-      points--
+      if $(e.target).hasClass('upvote')
+        points++
+        $(this).toggleClass('upvoted')
+      else
+        points--
+      $(e.target).toggleClass('active')
+
+    $(this).toggleClass('disabled')
 
     $('.point-count', this).text(points)
     $('.point-word', this).text(' point'.pluralize(points, ' points'))
-
-    $(this).off
-
-  $('.arrow').on "ajax:success", (e, data, status, xhr) ->
-    $('.arrow', $(this).parent()).removeAttr('href').removeAttr('data-remote')    
 
   truncateContent()
 

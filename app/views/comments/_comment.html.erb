@@ -1,10 +1,10 @@
-<article class="convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %>" id="comment-<%= comment.id %>">
+<article class="convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
     <span class="vote-links">
-      <%= link_to '', (current_user.voted_on?(comment) ? 'javascript:;' : upvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+      <%= link_to '', upvote_comment_path(comment), remote: true, 
         class: 'arrow upvote'+(' active' if current_user.voted_for?(comment)).to_s %>
-      <%= link_to '', (current_user.voted_on?(comment) ? 'javascript:;' : downvote_comment_path(comment)), remote: (true unless current_user.voted_on?(comment)), 
+      <%= link_to '', downvote_comment_path(comment), remote: true, 
         class: 'arrow downvote'+(' active' if current_user.voted_against?(comment)).to_s %>
     </span>
 	  <% from_reply_form ||= nil %>
@@ -30,7 +30,7 @@
         <% end %>
       <% end %> 
     <% end %>
-    <% if comment.user && comment.user == current_user %>
+    <% if current_user.can_edit?(comment) %>
       | <%= link_to 'edit', edit_comment_path(comment) %>
       | <%= link_to 'delete', comment, :method => :delete %>
     <% end %>

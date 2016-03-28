@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def edit
-    redirect_to :back unless @comment.user && @comment.user == current_user
+    redirect_to :back unless current_user.can_edit?(@comment)
   rescue ActionController::RedirectBackError
     redirect_to root_path
   end
@@ -66,7 +66,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.user && @comment.user = current_user
+    if current_user.can_edit?(@comment)
       @comment.destroy
       respond_to do |format|
         format.html { redirect_to :back }

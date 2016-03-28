@@ -29,7 +29,7 @@ class ConvosController < ApplicationController
   end
 
   def edit
-    redirect_to :back unless @convo.user && @convo.user == current_user
+    redirect_to :back unless current_user.can_edit?(@convo)
   rescue ActionController::RedirectBackError
     redirect_to root_path
   end
@@ -78,7 +78,7 @@ class ConvosController < ApplicationController
   end
 
   def destroy
-    if @convo.user && @convo.user = current_user
+    if current_user.can_edit?(@convo)
       @convo.destroy
     end
     respond_to do |format|
