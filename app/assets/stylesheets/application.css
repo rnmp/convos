@@ -20,10 +20,13 @@
 	margin: 0;
 	padding: 0;
 }
+.user-links,
+body {
+	background: #F2F8FC;
+}
 body {
 	font: 16px / 1.333 'Lato', Verdana, sans-serif;
 	color: #586166;
-	background: #F2F8FC;
 	/*ios*/
 	-webkit-text-size-adjust: 100%;
 }
@@ -156,7 +159,10 @@ input[type="password"] {
 	bottom: 0;
 	right: 0;
 	padding: 10px;
+	padding-left: 15px;
 	font-size: 14px;
+	z-index: 1;
+	border-top-left-radius: 2px;
 }
 .topic-tabs {
 	position: absolute;
@@ -189,7 +195,7 @@ a.replies-link {
 	border-top: 1px dotted #eee;
 }
 /* items (convos, comments) */
-.convo, .button, input[type="submit"], input, textarea, .select, .notification {
+.convo, .button, input[type="submit"], input, textarea, .select, .notification, .show-image-link {
 	padding: 5px 10px;
 	border-radius: 2px;
 }
@@ -204,6 +210,30 @@ a.replies-link {
 .convo, .convo.truncate .user-content::after, .notification {
 	background: #fff;
 }
+
+.show-hidden-post-link,
+.show-image-link,
+.convo.truncate .user-content .expand-link {
+	cursor: pointer;
+}
+.show-image-link {
+	display: inline-block;
+	margin-bottom: 5px;
+	background: #F5565B;
+	background: rgba(245, 86, 91, 0.1);
+}
+.convo.hidden {
+	display: none;
+}
+.show-hidden-post-link {
+	display: block;
+	margin: -1px 0 5px;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 2px;
+	background: #eee;
+	background: rgba(0,0,0,0.03);
+}
 .convo.truncate .user-content {
 	position: relative;
 	height: 90px;
@@ -213,7 +243,6 @@ a.replies-link {
 	position: absolute;
 	bottom: 0;
 	z-index: 1;
-	cursor: pointer;
 }
 .convo.truncate .user-content::after {
 	position: absolute;
@@ -322,7 +351,8 @@ a.arrow.downvote.active {
 .metadata,
 .metadata a,
 .formatting-link,
-.user-links a {
+.user-links a,
+a.show-hidden-post-link {
 	color: #93A2AB;
 }
 .admin-tag {

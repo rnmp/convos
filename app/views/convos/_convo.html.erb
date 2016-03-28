@@ -1,4 +1,4 @@
-<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group<%= ' disabled' if current_user.voted_on?(convo) %><%= ' upvoted' if current_user.voted_for?(convo) %><%= ' hidden' if convo.points < 5 %>">
+<article class="<%= 'active ' if notice == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group<%= ' disabled' if current_user.voted_on?(convo) %><%= ' upvoted' if current_user.voted_for?(convo) %><%= ' hidden' if convo.points < -5 %>">
   <div class="user-content">
     <%= highlight markdown(convo.convo), params[:search] %>
   </div>
