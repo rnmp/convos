@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       new_guest_user = User.new_guest
       new_guest_user.ip = ip
       new_guest_user.save!
-      matching_user = new_user
+      matching_user = new_guest_user
     end
     session[:user_id] = matching_user.id
   end

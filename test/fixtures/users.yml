@@ -4,6 +4,7 @@ one:
   username: MyString
   email: MyString
   password_digest: MyString
+  ip: '::1'
 
 two:
   username: MyString
