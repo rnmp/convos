@@ -32,6 +32,34 @@ ready = ->
   
   autosize($('textarea'))
 
+  $('.convo img').each ->
+    self = this
+    $(self).hide()
+    show_img_link = $('<a>')
+      .addClass('show-image-link')
+      .text('show image')
+    $(self).before(show_img_link)
+    show_img_link.on 'click', (e) ->
+      $(self).show()
+      show_img_link.remove()
+
+  $('.convo.hidden').each ->
+    self = this
+    link_text = ->
+      string = '— show hidden'
+      if $(self).hasClass('comment')
+        string += ' comment —'
+      else
+        string += ' convo —'
+      return string
+    show_convo_link = $('<a>')
+      .addClass('show-hidden-post-link')
+      .text(link_text)
+    $(self).before(show_convo_link)
+    show_convo_link.on 'click', (e) ->
+      $(self).show()
+      show_convo_link.remove()
+
   $('.convo, .single-convo').on "click", (e) ->
     if !$(e.target).hasClass('arrow')
       return
@@ -62,6 +90,4 @@ ready = ->
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
-$(window).load ->
-  truncateContent()
 

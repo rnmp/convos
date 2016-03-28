@@ -1,4 +1,4 @@
-<article class="convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
+<article class="comment convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
     <span class="vote-links">
