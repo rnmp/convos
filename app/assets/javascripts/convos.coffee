@@ -88,6 +88,15 @@ ready = ->
 
   truncateContent()
 
+  simplemde = new SimpleMDE(
+    autofocus: true
+    autosave:
+      enabled: true
+      uniqueId: 'MyUniqueID'
+      delay: 1000
+    spellChecker: false
+    status: false)
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 

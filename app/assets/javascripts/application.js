@@ -16,6 +16,7 @@
 //= require autosize
 //= require fastclick
 //= require_tree .
+//= require simplemde
 
 String.prototype.pluralize = function(count, plural){
 	if (plural == null)

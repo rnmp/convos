@@ -24,6 +24,5 @@ ready = ->
     $('#formatting_help_hide').fadeOut()
     $('#formatting_help_link').fadeIn()
 
-
 $(document).ready(ready)
 $(document).on('page:load', ready)
