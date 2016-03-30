@@ -24,13 +24,24 @@ ready = ->
   $(".formatting-link").hide()
   $(".block-form textarea").on 'input', (e) ->
     $(".formatting-link").show()
+    simplemde = new SimpleMDE(
+      autofocus: true
+      # autosave:
+      #   enabled: true
+      #   uniqueId: 'MyUniqueID'
+      #   delay: 1000
+      element: $(this)[0]
+      # toolbar: ["bold", "italic", "quote", "heading", "|", "image", "link","|", "code",  "table"],
+      spellChecker: false
+      status: false
+      tabSize: 4)
 
   $(".show-reply-form").on "click", (e) ->
     e.preventDefault()
     $($(this).attr 'href').toggle()
 
   
-  autosize($('textarea'))
+  # autosize($('textarea'))
 
   $('.convo img').each ->
     self = this
@@ -87,15 +98,6 @@ ready = ->
     $('.point-word', this).text(' point'.pluralize(points, ' points'))
 
   truncateContent()
-
-  simplemde = new SimpleMDE(
-    autofocus: true
-    autosave:
-      enabled: true
-      uniqueId: 'MyUniqueID'
-      delay: 1000
-    spellChecker: false
-    status: false)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
