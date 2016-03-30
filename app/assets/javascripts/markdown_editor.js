@@ -998,7 +998,7 @@
         },{
           name: 'cmdHeading',
           title: 'Heading',
-          btnText: 'H1',
+          btnText: 'H',
           btnClass: 'heading',
           hotkey: 'Ctrl+H',
           callback: function(e){
@@ -1052,17 +1052,17 @@
 
             link = prompt(e.__localize('URL'),'http://');
 
-            var urlRegex = new RegExp('^((http|https)://|(mailto:)|(//))[a-z0-9]', 'i');
-            if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
-              var sanitizedLink = $('<div>'+link+'</div>').text();
+            // var urlRegex = new RegExp('^((http|https)://|(mailto:)|(//))[a-z0-9]', 'i');
+            // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
+              // var sanitizedLink = $('<div>'+link+'</div>').text();
 
               // transform selection and set the cursor into chunked text
-              e.replaceSelection('['+chunk+']('+sanitizedLink+')');
+              e.replaceSelection('['+chunk+']('+link+')');
               cursor = selected.start+1;
 
               // Set the cursor
               e.setSelection(cursor,cursor+chunk.length);
-            }
+            // }
           }
         },{
           name: 'cmdImage',
@@ -1083,20 +1083,20 @@
 
             link = prompt(e.__localize('Image URL'),'http://');
 
-            var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
-            if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
-              var sanitizedLink = $('<div>'+link+'</div>').text();
+            // var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
+            // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
+              // var sanitizedLink = $('<div>'+link+'</div>').text();
 
               // transform selection and set the cursor into chunked text
-              e.replaceSelection('!['+chunk+']('+sanitizedLink+' "'+e.__localize('enter image title here')+'")');
+              e.replaceSelection('!['+chunk+']('+link+')');
               cursor = selected.start+2;
 
               // Set the next tab
-              e.setNextTab(e.__localize('enter image title here'));
+              // e.setNextTab(e.__localize('enter image title here'));
 
               // Set the cursor
               e.setSelection(cursor,cursor+chunk.length);
-            }
+            // }
           }
         }]
       },{
@@ -1105,7 +1105,7 @@
           name: 'cmdList',
           hotkey: 'Ctrl+U',
           title: 'Unordered List',
-          btnText: '* List',
+          btnText: 'List',
           callback: function(e){
             // Prepend/Give - surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent();
@@ -1305,7 +1305,7 @@
     ],
     additionalButtons:[], // Place to hook more buttons by code
     reorderButtonGroups:[],
-    hiddenButtons:['cmdPreview'], // Default hidden buttons
+    hiddenButtons:['cmdPreview', 'cmdListO'], // Default hidden buttons
     disabledButtons:[], // Default disabled buttons
     footer: '',
     fullscreen: {

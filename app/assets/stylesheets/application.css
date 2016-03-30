@@ -352,8 +352,7 @@ a.arrow.downvote.active {
 .metadata a,
 .formatting-link,
 .user-links a,
-a.show-hidden-post-link,
-.editor-header .button {
+a.show-hidden-post-link {
 	color: #93A2AB;
 }
 .admin-tag {
@@ -604,14 +603,15 @@ html.turbolinks-progress-bar::before {
 }
 .editor-header {
 	padding: 1px 0 2px;
-	border-top: 1px dotted #eaeaea;
+	/*border-top: 1px dotted #eaeaea;*/
 }
 .editor-header .button {
 	font-size: 14px;
 	background: transparent;
+	color: #ababab;
 }
-.editor-header .button:first-of-type {
-	padding-left: 5px;
+.editor-header .button.bold {
+	padding-left: 2px;
 }
 .editor-header .button[disabled] {
 	opacity: 0.3;
