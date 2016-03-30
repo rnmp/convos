@@ -23,7 +23,11 @@ ready = ->
 
   $(".formatting-link").hide()
   $(".block-form textarea").on 'input', (e) ->
+    self = this
     $(".formatting-link").show()
+      # .on 'click', (e) ->
+        # e.preventDefault()
+    $(self).markdown().focus()
 
   $(".show-reply-form").on "click", (e) ->
     e.preventDefault()

@@ -66,7 +66,7 @@ end
 gem 'kaminari'
 
 # URL validator cuz URI.regexp sucks
-gem 'valid_url'
+# gem 'valid_url'
 
 # Admin tools convos.org/admin
 gem 'rails_admin'

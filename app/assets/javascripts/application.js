@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require autosize
 //= require fastclick
+//= require markdown_editor
 //= require_tree .
 
 String.prototype.pluralize = function(count, plural){
