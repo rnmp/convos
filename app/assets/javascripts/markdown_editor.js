@@ -1305,7 +1305,7 @@
     ],
     additionalButtons:[], // Place to hook more buttons by code
     reorderButtonGroups:[],
-    hiddenButtons:['cmdPreview', 'cmdListO'], // Default hidden buttons
+    hiddenButtons:['cmdPreview', 'cmdListO', 'cmdCode'], // Default hidden buttons
     disabledButtons:[], // Default disabled buttons
     footer: '',
     fullscreen: {
