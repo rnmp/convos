@@ -22,10 +22,11 @@ ready = ->
   $(".replies .block-form").hide()
 
   $(".formatting-link").hide()
-  $(".block-form textarea").on 'input', (e) ->
+  $("#new_convo textarea").on 'input', (e) ->
     self = this
     $(".formatting-link").show()
     $(self).markdown().focus()
+  $("#new_comment textarea, form[id^='reply'] textarea").markdown().focus()
 
   $(".show-reply-form").on "click", (e) ->
     e.preventDefault()

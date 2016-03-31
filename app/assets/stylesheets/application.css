@@ -600,6 +600,10 @@ html.turbolinks-progress-bar::before {
 		width: auto;
 		margin-left: 1px;
 	}
+	.md-editor {
+		position: fixed;
+		bottom: 0;
+	}
 }
 .md-editor {
 	position: relative;
@@ -639,3 +643,9 @@ html.turbolinks-progress-bar::before {
 	font-style: italic;
 }
 .editor-header .button.quote {}
+#new_comment .editor-header, form[id^='reply'] .editor-header {
+	top: 100%;
+	margin-top: 10px;
+	bottom: inherit;
+	z-index: 2;
+}
