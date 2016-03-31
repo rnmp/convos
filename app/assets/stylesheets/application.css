@@ -107,7 +107,7 @@ input[type="submit"], .button {
 body {
 	max-width: 700px;
 	margin: auto;
-	padding: 40px 30px 30px 50px;
+	padding: 50px 30px 30px 50px;
 }
 main {
 	position: relative;
@@ -515,7 +515,7 @@ label.redundant-label {
 .block-form textarea {
 	width: 100%;
 	resize: none;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 }
 input[type="submit"][disabled] {
 	background: #BACDD9;
@@ -606,17 +606,18 @@ html.turbolinks-progress-bar::before {
 }
 .editor-header {
 	position: absolute;
-	bottom: 0;
+	bottom: 100%;
 	padding: 1px 0 2px;
+	margin-bottom: 10px;
+	margin-left: -10px;
 	opacity: 0;
-	/*border-top: 1px dotted #eaeaea;*/
 	-webkit-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
-	-webkit-transform: translate(10px,0);
-	-ms-transform: translate(10px,0);
-	-o-transform: translate(10px,0);
-	transform: translate(10px,0);
+	-webkit-transform: translate(0,10px);
+	-ms-transform: translate(0,10px);
+	-o-transform: translate(0,10px);
+	transform: translate(0,10px);
 }
 .md-editor.active .editor-header {
 	opacity: 1;
@@ -628,16 +629,13 @@ html.turbolinks-progress-bar::before {
 .editor-header .button {
 	font-size: 14px;
 	background: transparent;
-	color: #ababab;
+	color: #93A2AB;
 }
-.editor-header .button.bold {
-	padding-left: 2px;
-}
+.editor-header .button.bold {}
 .editor-header .button[disabled] {
 	opacity: 0.3;
 }
 .editor-header .button.italics {
 	font-style: italic;
 }
-.editor-header .button.quote {
-}
+.editor-header .button.quote {}

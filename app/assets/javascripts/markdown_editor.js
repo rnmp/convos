@@ -945,7 +945,7 @@
 
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('strong text');
+              chunk = e.__localize('bold');
             } else {
               chunk = selected.text;
             }
@@ -976,7 +976,7 @@
 
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('emphasized text');
+              chunk = e.__localize('italics');
             } else {
               chunk = selected.text;
             }
@@ -1046,7 +1046,7 @@
 
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('enter link description here');
+              chunk = e.__localize('link title');
             } else {
               chunk = selected.text;
             }
@@ -1109,7 +1109,7 @@
             // transform selection and set the cursor into chunked text
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('list text here');
+              chunk = e.__localize('list item');
 
               e.replaceSelection('* '+chunk);
               // Set the cursor
@@ -1156,7 +1156,7 @@
             // transform selection and set the cursor into chunked text
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('list text here');
+              chunk = e.__localize('list item');
               e.replaceSelection('1. '+chunk);
               // Set the cursor
               cursor = selected.start+3;
@@ -1200,7 +1200,7 @@
 
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('code text here');
+              chunk = e.__localize('code syntax');
             } else {
               chunk = selected.text;
             }
@@ -1241,7 +1241,7 @@
             // transform selection and set the cursor into chunked text
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('quote here');
+              chunk = e.__localize('quote');
 
               e.replaceSelection('> '+chunk);
 
