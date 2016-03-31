@@ -515,7 +515,7 @@ label.redundant-label {
 .block-form textarea {
 	width: 100%;
 	resize: none;
-	padding-bottom: 21px;
+	padding-bottom: 30px;
 }
 input[type="submit"][disabled] {
 	background: #BACDD9;
@@ -613,10 +613,10 @@ html.turbolinks-progress-bar::before {
 	-webkit-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
-	-webkit-transform: translate(0,10px);
-	-ms-transform: translate(0,10px);
-	-o-transform: translate(0,10px);
-	transform: translate(0,10px);
+	-webkit-transform: translate(10px,0);
+	-ms-transform: translate(10px,0);
+	-o-transform: translate(10px,0);
+	transform: translate(10px,0);
 }
 .md-editor.active .editor-header {
 	opacity: 1;

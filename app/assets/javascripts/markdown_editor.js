@@ -1009,7 +1009,7 @@
               // Give extra word
               chunk = e.__localize('heading');
             } else {
-              chunk = selected.text + '\n';
+              chunk = selected.text + (selected.length === 0 ? '\n' : '');
             }
 
             // transform selection and set the cursor into chunked text
@@ -1019,12 +1019,13 @@
               e.replaceSelection(chunk);
               cursor = selected.start-pointer;
             } else if (selected.start > 0 && (prevChar = content.substr(selected.start-1,1), !!prevChar && prevChar != '\n')) {
-              e.replaceSelection('\n\n# '+chunk);
-              cursor = selected.start+4;
+              e.replaceSelection('\n# '+chunk);
+              cursor = selected.start+3;
             } else {
               // Empty string before element
               e.replaceSelection('# '+chunk);
               cursor = selected.start+2;
+              console.log('yolo')
             }
 
             // Set the cursor
@@ -1074,12 +1075,7 @@
             // Give ![] surround the selection and prepend the image link
             var chunk, cursor, selected = e.getSelection(), content = e.getContent(), link;
 
-            if (selected.length === 0) {
-              // Give extra word
-              chunk = e.__localize('enter image description here');
-            } else {
-              chunk = selected.text;
-            }
+            chunk = selected.length === 0 ? '' : selected.text;
 
             link = prompt(e.__localize('Image URL'),'http://');
 
