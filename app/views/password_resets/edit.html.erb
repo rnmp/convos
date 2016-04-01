@@ -1,0 +1,14 @@
+<% provide(:title, 'reset password') %>
+<h1>reset password</h1>
+
+<div class="user-content" >
+
+	<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+
+		<p><%= hidden_field_tag :email, @user.email %></p>
+		<p><%= f.password_field :password, placeholder: "password" %></p>
+		<p><%= f.password_field :password_confirmation, placeholder: "confirm password" %></p>
+		<p><%= f.submit "update password" %></p>
+
+	<% end %>
+</div>
