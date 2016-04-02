@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160328200443) do
     t.boolean  "guest"
     t.string   "ip"
     t.boolean  "admin",           default: false
-    t.string   "remember_digest"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
   end

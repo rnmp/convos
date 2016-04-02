@@ -27,11 +27,8 @@
 			<% if current_user && !current_user.guest? %>
 				hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>) · <%= link_to "logout", logout_path %>
 			<% else %>
-				<% if false %>
-					<!-- Hidden for now -->
-					<%= link_to "more features", signup_path %> ·
-					<%= link_to "login", login_path %>
-				<% end %>
+				<%= link_to "more features", signup_path %> ·
+				<%= link_to "login", login_path %>
 			<% end %>
 		</nav>
 		<main>
