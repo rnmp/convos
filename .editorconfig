@@ -1,6 +1,6 @@
 root = true
 
-[*.{rb,js,coffee}]
+[*.{rb,js,coffee,rake}]
 indent_style = space
 indent_size  = 2
 
