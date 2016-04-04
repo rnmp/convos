@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/my_convos', to: 'users#show'
+  get '/activity', to: 'users#show'
 
   get '/tos', to: 'static_pages#tos'
 

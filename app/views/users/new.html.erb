@@ -31,4 +31,10 @@
 
 	<% end %>
 	<small class="metadata">By using this site, you agree to our <a href="/tos" class="highlight" target="_blank">Terms</a></small>
+
+<!-- Status message after password reset submit. This doesn't work right now -->
+	<% flash.each do |key, value| %>
+		<div class="flash <%= key %>"><%= value %></div>
+	<% end %>
+
 </div>

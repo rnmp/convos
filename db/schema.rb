@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160328200443) do
     t.boolean  "guest"
     t.string   "ip"
     t.boolean  "admin",           default: false
-    t.string   "remember_digest"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
   end
@@ -119,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160328200443) do
   end
 
   add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true, using: :btree
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   add_foreign_key "comments", "convos"

@@ -17,7 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @convos = current_user.convos
+    if current_user.guest?
+      redirect_to root_path 
+    else
+    @activity = (current_user.convos + current_user.comments).sort_by(&:created_at).reverse
+    end
   end
   
   private
