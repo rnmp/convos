@@ -18,15 +18,15 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  protected
-
   def update_popularity
     if points == 0
         return 0
     end
-    z = 1.96
-    phat = 1.0*upvotes/points
-    result = (phat + z*z/(2*points) - z * Math.sqrt((phat*(1-phat)+z*z/(4*points))/points))/(1+z*z/points)
+    z = 1.281551565545 # 80% confidence
+    n = upvotes + downvotes
+    phat = 1.0*upvotes/n
+    result = (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+
     self.update_attribute(:weighted_score, result)
   end
 end
