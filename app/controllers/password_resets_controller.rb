@@ -27,9 +27,8 @@ class PasswordResetsController < ApplicationController
       @user.errors.add(:password, "can't be empty")
       render 'edit'
     elsif @user.update_attributes(user_params)
-      log_in @user
       flash[:success] = "Password has been reset."
-      redirect_to @user
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -45,6 +44,12 @@ class PasswordResetsController < ApplicationController
 
     def get_user
       @user = User.find_by(email: params[:email])
+    end
+
+    def valid_user
+      unless @user
+        redirect_to root_url
+      end
     end
 
     # Checks expiration of reset token.
