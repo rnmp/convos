@@ -32,6 +32,9 @@
 			<% end %>
 		</nav>
 		<main>
+			<% flash.each do |key, value| %>
+				<aside class="alert alert-<%= key %>"><%= value %></aside>
+			<% end %>
 			<%= link_to image_tag('logo.png', alt:'convos.org'), root_path, class:'logo' %>
 			<nav class="topic-tabs">
 				<%= unread_notifications_link %>
