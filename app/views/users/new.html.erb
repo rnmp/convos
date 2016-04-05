@@ -1,35 +1,23 @@
 <h1>sign up</h1>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="user-content" >
-	<ul>
-		<li>keep score of your votes</li>
-		<li>find your recent convos and comments</li>
-		<li>more features coming soon!</li>
-		<br>
-		<li>this information is only available to you, and you can still be anonymous</li>
-		<li>registration is totally optional</li>
-	</ul>
-
-	<%= form_for @user do |f| %>
-
+<%= form_for @user, html: {class:'user-content registration-form _group'} do |f| %>
+	<div>
 		<p><%= f.email_field :email, placeholder: "email" %></p>
+		<%= errors_for f, :email, 'email' %>
 		<p><%= f.password_field :password, placeholder: "password" %></p>
+		<%= errors_for f, :password, 'password' %>
 		<p><%= f.password_field :password_confirmation, placeholder: "confirm password" %></p>
+		<%= errors_for f, :password_confirmation, 'password confirmation' %>
 		<p><%= f.submit "submit" %></p>
+	</div>
 
-	<% end %>
-	<small class="metadata">By using this site, you agree to our <a href="/tos" class="highlight" target="_blank">Terms</a></small>
+	<aside>
+		<ul>
+			<li>keep score of your votes</li>
+			<li>find your recent convos and comments</li>
+			<li>more features coming soon!</li>
+		</ul>
+		<small class="metadata">this information is only available to you. registration is optional and you can still post anonymously. by using this site you agree to our <a href="/tos" class="highlight" target="_blank">terms of service</a>.</small>
+	</aside>
 
-</div>
+<% end %>

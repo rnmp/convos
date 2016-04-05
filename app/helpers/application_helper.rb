@@ -32,6 +32,10 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
+  def errors_for(form, attribute, name)
+    content_tag(:p, "#{name} #{form.object.errors[attribute].join("and ")}.", class: 'error') if form.object.errors[attribute].any?
+  end
+
   def pluralized_points_for(item)
     ['<span class="point-count">', item.points,'</span>','<span class="point-word">',' point'.pluralize(item.points),'</span>'].join('').html_safe
   end

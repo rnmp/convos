@@ -556,6 +556,18 @@ input[type="submit"][disabled] {
 	right: 0;
 	margin-top: 5px;
 }
+.registration-form > div {
+	float: left;
+	width: 40%;
+	padding-right: 20px;
+}
+.registration-form > aside {
+}
+.error {
+	margin-top: -5px;
+	/*color: #c10000;*/
+	font-size: 12px;
+}
 
 html.turbolinks-progress-bar::before {
   background-color: #F5565B !important;

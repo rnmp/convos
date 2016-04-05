@@ -27,7 +27,7 @@
 			<% if current_user && !current_user.guest? %>
 				<a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> · <%= link_to "logout", logout_path %>
 			<% else %>
-				<%= link_to "more features", signup_path %> ·
+				<%= link_to "sign up (optional)", signup_path %> ·
 				<%= link_to "login", login_path %>
 			<% end %>
 		</nav>
