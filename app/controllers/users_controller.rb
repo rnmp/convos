@@ -20,7 +20,21 @@ class UsersController < ApplicationController
     if current_user.guest?
       redirect_to root_path 
     else
-    @activity = (current_user.convos + current_user.comments).sort_by(&:created_at).reverse
+      @activity = (current_user.convos + current_user.comments).sort_by(&:created_at).reverse
+    end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params)
+    if @user.save
+      format.html { redirect_to :back }
+    else
+      redirect_to '/settings'
     end
   end
   

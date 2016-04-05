@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/activity', to: 'users#show'
+  get '/settings', to: 'users#edit'
 
   get '/tos', to: 'static_pages#tos'
 
