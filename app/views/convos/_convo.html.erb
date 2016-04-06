@@ -15,7 +15,7 @@
     <% end %>
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo_slug_path(convo.topic.slug, convo.id, convo.slug) %>
     <% if convo.edited? %>(edited)<% end %>
-    <% unless cp(account_activity_path) %>
+    <% unless cp(activity_path) %>
       by 
       <% if convo.by_admin? %>
         <span class="admin-tag">admin</span>
@@ -38,7 +38,7 @@
     <% end %>
     <% if current_user.can_edit?(convo) %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 
-      | <%= link_to 'delete', convo, :method => :delete %>
+      | <%= link_to 'delete', convo, :method => :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </p>
 </article>

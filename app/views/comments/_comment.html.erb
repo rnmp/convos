@@ -1,4 +1,4 @@
-<% if cp(account_activity_path) %>
+<% if cp(activity_path) %>
   <article class="comment-reference">
     You commented in:
     <%= render comment.convo %>
@@ -13,7 +13,7 @@
         <%= link_to '', downvote_comment_path(comment), remote: true, 
           class: 'arrow downvote'+(' active' if current_user.voted_against?(comment)).to_s %>
       </span>
-      <% unless cp(account_activity_path) %>
+      <% unless cp(activity_path) %>
         <% from_reply_form ||= nil %>
         <% unless from_reply_form %>
           <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> |
@@ -24,7 +24,7 @@
       <%= link_to time_ago_in_words(comment.created_at)+' ago', 
         "#comment-#{comment.id}", title: 'Permalink to comment' %>
       <% if comment.edited? %>(edited)<% end %>
-      <% unless cp(account_activity_path) %>
+      <% unless cp(activity_path) %>
         by
         <% if comment.by_admin? %>
           <span class="admin-tag">admin</span>
