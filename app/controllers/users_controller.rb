@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
   def new
     redirect_to root_path unless current_user.guest?
-    @user = User.new
+    @user = current_user
   end
 
   def create
-    @user = params[:user] ? current_user : User.new
+    @user = current_user
     @user.update(user_params)
     @user.guest = false
     if @user.save
-      session[:user_id] = @user.id
       redirect_to '/'
     else
+      @user.guest = true
       render 'new'
     end
   end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     if @user.save
-      format.html { redirect_to :back }
+      render 'edit'
     else
       redirect_to '/settings'
     end
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
   
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :guest)
     end
 end
