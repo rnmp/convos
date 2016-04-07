@@ -1,3 +1,8 @@
+<% if cp(activity_path) %>
+  <p class="post-reference metadata">
+    <span>you posted a convo</span>
+  </p>
+<% end %>
 <article class="<%= 'active ' if params[:convo].to_i == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group<%= ' disabled' if current_user.voted_on?(convo) %><%= ' upvoted' if current_user.voted_for?(convo) %><%= ' hidden' if convo.points < -5 %>">
   <div class="user-content">
     <%= highlight markdown(convo.convo), params[:search] %>

@@ -20,7 +20,12 @@ class UsersController < ApplicationController
     if current_user.guest?
       redirect_to root_path 
     else
-      @activity = (current_user.convos + current_user.comments).sort_by(&:created_at).reverse
+      @activity = Kaminari.paginate_array(
+        if params[:show] == 'popular' 
+          (current_user.convos + current_user.comments).sort_by(&:points).reverse
+        else
+          (current_user.convos + current_user.comments).sort_by(&:created_at).reverse
+        end).page(params[:page]).per(25)
     end
   end
 

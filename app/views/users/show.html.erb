@@ -1,6 +1,12 @@
 <h1>my activity</h1>
+<ul class="horizontal-menu _group">
+  <li>sort by</li>
+  <li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
+  <li><%= link_to 'points', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
+</ul>
 <% if @activity.present? %>
 	<%= render @activity %>
 <% else %>
 	<p>No activity yet.</p>
 <% end %>
+<%= paginate @activity %>
