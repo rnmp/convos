@@ -23,12 +23,15 @@
 		</script>
 	</head>
 	<body>
-		<nav class="user-links">
+		<nav class="user-links metadata">
 			<% if current_user && !current_user.guest? %>
-				<a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> · <%= link_to "logout", logout_path %>
+				<%= unread_notifications_link %>
+				<a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> · 
+				<%= link_to "settings", settings_path %> ·
+				<%= link_to "logout", logout_path %>
 			<% else %>
-				<%= link_to "sign up (optional)", signup_path %> ·
-				<%= link_to "log in", login_path %>
+				<%= link_to "log in", login_path %> ·
+				<%= link_to "sign up (optional)", signup_path, class: 'highlight' %>
 			<% end %>
 		</nav>
 		<main>
@@ -37,7 +40,6 @@
 			<% end %>
 			<%= link_to image_tag('logo.png', alt:'convos.org'), root_path, class:'logo' %>
 			<nav class="topic-tabs">
-				<%= unread_notifications_link %>
 				<%= link_to "all convos", root_path, class: cp(root_path) %>
 				<% for topic in topics_list %>
 					<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
