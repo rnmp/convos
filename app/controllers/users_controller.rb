@@ -4,18 +4,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def create
-    @user = current_user
-    @user.update(user_params)
-    @user.guest = false
-    if @user.save
-      redirect_to '/'
-    else
-      @user.guest = true
-      render 'new'
-    end
-  end
-
   def show
     if current_user.guest?
       redirect_to root_path 
@@ -36,15 +24,20 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    @user.guest = false
     if @user.save
-      render 'edit'
+      redirect_to '/'
     else
-      redirect_to '/settings'
+      if @user.valid?
+        render 'edit'
+      else
+        render 'new'
+      end
     end
   end
   
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :guest)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end

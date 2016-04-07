@@ -420,7 +420,7 @@ a.show-hidden-post-link {
 	background: #fafafa;
 }
 
-.user-content p, .user-content ul, .user-content ol {
+.user-content p, .user-content ul, .user-content ol, .alert {
 	margin-bottom: .75em;
 	line-height: 1.4;
 }

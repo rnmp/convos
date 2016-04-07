@@ -1,5 +1,7 @@
 <h1>log in</h1>
-
+<% flash.each do |key, value| %>
+	<aside class="alert alert-<%= key %>"><%= value %></aside>
+<% end %>
 <%= form_tag '/login' do |f| %>
 
 	<div class="user-content">

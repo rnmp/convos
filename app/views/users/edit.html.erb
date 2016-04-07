@@ -1,8 +1,14 @@
-	<%= form_for @user do |f| %>
+<h1>settings</h1>
+<%= form_for @user do |f| %>
 
+	<div class="user-content">
 		<p><%= f.email_field :email, placeholder: "email" %></p>
+		<%= errors_for f, :email, 'email' %>
 		<p><%= f.password_field :password, placeholder: "password" %></p>
+		<%= errors_for f, :password, 'password' %>
 		<p><%= f.password_field :password_confirmation, placeholder: "confirm password" %></p>
+		<%= errors_for f, :password_confirmation, 'password confirmation' %>
 		<p><%= f.submit "submit" %></p>
+	</div>
 
-	<% end %>
+<% end %>

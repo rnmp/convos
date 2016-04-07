@@ -1,6 +1,6 @@
 <% if cp(activity_path) %>
   <p class="post-reference metadata">
-    <span>you commented in <%= link_to truncate(markdown_for_title comment.convo.convo), convo_slug_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug), class: 'highlight' %></span>
+    <span>you commented on <%= link_to truncate(markdown_for_title comment.convo.convo), convo_slug_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug), class: 'highlight' %></span>
   </p>
 <% end %>
 <article class="comment convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
