@@ -1,14 +1,19 @@
 class User < ActiveRecord::Base
   attr_accessor :reset_token
+
   has_many :convos, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
-  validates :email, :password_digest, presence: true, unless: :guest?
-  validates :email, uniqueness: true, unless: :guest?
-  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, unless: :guest?
-  validates :password, confirmation: true, :length => { :minimum => 6}, unless: :guest?
-  has_secure_password(validations: false)
+
   acts_as_voter
+
+  has_secure_password(validations: false)
+
+  validates :email, presence: true, uniqueness: true, unless: :guest?
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, unless: :guest?
+
+  validates :password_digest, presence: true, unless: :guest?
+  validates :password, confirmation: true, :length => { :minimum => 6}, unless: :guest?
 
   def self.new_guest
     new { |u| u.guest = true }

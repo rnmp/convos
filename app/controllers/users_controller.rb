@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     @user.guest = false
     if @user.save
-      redirect_to '/'
+      redirect_to root_path
     else
       if @user.valid?
         render 'edit'
