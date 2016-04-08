@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       if @user.valid?
         render 'edit'
       else
+        @user.guest = true
         render 'new'
       end
     end

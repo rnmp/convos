@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :notifications, :dependent => :destroy
   validates :email, :password_digest, presence: true, unless: :guest?
   validates :email, uniqueness: true, unless: :guest?
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, unless: :guest?
   validates :password, confirmation: true, :length => { :minimum => 6}, unless: :guest?
   has_secure_password(validations: false)
   acts_as_voter

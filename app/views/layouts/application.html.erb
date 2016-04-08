@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<nav class="user-links metadata">
-			<% if !current_user.guest? && current_page?(signup_path) == false # TODO: this is a hack to prevent links to show to guests %>
+			<% if !current_user.guest? %>
 				<%= unread_notifications_link %>
 				<a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> · 
 				<%= link_to "settings", settings_path %> ·
@@ -46,7 +46,7 @@
 			<%= yield %>
 		</main>
 		<footer class="site-footer">
-			<p class="copyright">&copy; 2016. All rights reserved. <a href="/tos" style="float: right;">Terms of service</a></p> 
+			<p class="copyright">&copy; 2016. all rights reserved. <a href="/tos" style="float: right;">terms of service</a></p> 
 		</footer>
 	</body>
 </html>
