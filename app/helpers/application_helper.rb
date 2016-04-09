@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def errors_for(form, attribute, name)
-    content_tag(:p, "#{name} #{form.object.errors[attribute].join("and ")}.", class: 'error') if form.object.errors[attribute].any?
+    content_tag(:p, "#{name} #{form.object.errors[attribute].join(" and ")}.", class: 'error') if form.object.errors[attribute].any?
   end
 
   def pluralized_points_for(item)
