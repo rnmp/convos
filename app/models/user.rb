@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, unless: :guest?
 
   validates :password_digest, presence: true, unless: :guest?
-  validates :password, confirmation: true, :length => { :minimum => 6}, unless: :guest?
+  validates :password, length: { minimum: 6}, unless: :guest?
 
   def self.new_guest
     new { |u| u.guest = true }
