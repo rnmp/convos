@@ -489,7 +489,6 @@ label.redundant-label {
 	outline: none;
 }
 .block-form .options {
-	position: relative;
 	border-top: 1px solid #eaeaea;
 	display: flex;
 	padding-top: 7px;
@@ -523,7 +522,6 @@ input[type="submit"][disabled] {
 	cursor: default;
 }
 .select {
-	position: relative;
 	padding-left: 0;
 }
 .select, .select a span {
@@ -534,10 +532,9 @@ input[type="submit"][disabled] {
 }
 .nicer-select {
 	position: absolute;
-	top: 100%;
-	left: -16px;
+	left: 0;
 	z-index: 9999;
-	background: #FCFEFF;
+	background: #fff;
 	border-top: none;
 	width: 300px;
 	border-radius: 0 0 2px 2px;
@@ -631,6 +628,5 @@ html.turbolinks-progress-bar::before {
 	}
 	.nicer-select {
 		width: auto;
-		margin-left: 1px;
 	}
 }
