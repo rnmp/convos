@@ -64,6 +64,7 @@ small {
 	background: #F5565B;
 	color: #FCFEFF;
 	cursor: pointer;
+	font-weight: bold;
 }
 
 .field {

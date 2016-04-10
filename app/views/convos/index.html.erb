@@ -1,3 +1,6 @@
+<% flash.each do |key, value| %>
+	<aside class="alert alert-<%= key %>"><%= value %></aside>
+<% end %>
 <%= render partial: 'form', locals: { convo: @new_convo, submit_text: '+ start a convo', timeout: true } %>
 <ul class="horizontal-menu _group">
   <li>sort by</li>
@@ -7,6 +10,6 @@
 <% if @convos.present? %>
 	<%= render @convos %>
 <% else %>
-	<p>No convos found.</p>
+	<p>no convos found.</p>
 <% end %>
 <%= paginate @convos %>

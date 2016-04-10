@@ -1,19 +1,21 @@
 class User < ActiveRecord::Base
-  attr_accessor :reset_token
+  attr_accessor :reset_token, :current_password
 
-  has_many :convos, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
-  has_many :notifications, :dependent => :destroy
+  has_many :convos, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   acts_as_voter
 
-  has_secure_password(validations: false)
+  has_secure_password validations: false
 
-  validates :email, presence: true, uniqueness: true, unless: :guest?
+  validates :email, presence: true, unless: :guest?
+  validates :email, uniqueness: true, unless: lambda { |user| user.email.blank? }
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, unless: :guest?
 
   validates :password_digest, presence: true, unless: :guest?
-  validates :password, length: { minimum: 6}, unless: :guest?
+  validates :password, length: { minimum: 6}, on: :create, unless: :guest?
+  validates :password, length: { minimum: 6}, on: :update, unless: lambda { |user| user.password.blank? }
 
   def self.new_guest
     new { |u| u.guest = true }
@@ -28,6 +30,13 @@ class User < ActiveRecord::Base
       total_points += comment.points
     end
     total_points
+  end
+
+  def transfer_items_to(user)
+    convos.update_all(user_id: user.id)
+    comments.update_all(user_id: user.id)
+    notifications.update_all(user_id: user.id)
+    votes.update_all(voter_id: user.id)
   end
 
   def can_post_new_convo?
