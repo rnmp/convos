@@ -55,7 +55,8 @@ class ConvosController < ApplicationController
       respond_to do |format|
         if @convo.save
           @convo.upvote(current_user)
-          format.html { redirect_to :back, notice: @convo.id }
+          env["HTTP_REFERER"] += "?convo=#{@convo.id}"
+          format.html { redirect_to :back }
           format.json { render :show, status: :created, location: @convo }
         else
           format.html { render :new }

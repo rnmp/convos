@@ -1,3 +1,8 @@
+<% if cp(activity_path) %>
+  <p class="post-reference metadata">
+    <span>you commented on <%= link_to truncate(markdown_for_title comment.convo.convo), convo_slug_path(comment.convo.topic.slug, comment.convo.id, comment.convo.slug), class: 'highlight' %></span>
+  </p>
+<% end %>
 <article class="comment convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
   <div class="user-content"><%= markdown comment.comment %></div>
   <p class="metadata">
@@ -7,28 +12,32 @@
       <%= link_to '', downvote_comment_path(comment), remote: true, 
         class: 'arrow downvote'+(' active' if current_user.voted_against?(comment)).to_s %>
     </span>
-	  <% from_reply_form ||= nil %>
-	  <% unless from_reply_form %>
-	    <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> |
+    <% unless cp(activity_path) %>
+      <% from_reply_form ||= nil %>
+      <% unless from_reply_form %>
+        <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> |
+      <% end %>
     <% end %>
     <%= link_to pluralized_points_for(comment), 
       "#comment-#{comment.id}", title: 'Permalink to comment' %> |
     <%= link_to time_ago_in_words(comment.created_at)+' ago', 
       "#comment-#{comment.id}", title: 'Permalink to comment' %>
     <% if comment.edited? %>(edited)<% end %>
-    by
-    <% if comment.by_admin? %>
-      <span class="admin-tag">admin</span>
-    <% else %>
-      <% if comment.author? %>
-        <%= comment.author %>
+    <% unless cp(activity_path) %>
+      by
+      <% if comment.by_admin? %>
+        <span class="admin-tag">admin</span>
       <% else %>
-        <% if current_user.admin? and comment.user.admin? %>
-          <span class="admin-tag"><%= comment.user.username %></span>
+        <% if comment.author? %>
+          <%= comment.author %>
         <% else %>
-          someone
-        <% end %>
-      <% end %> 
+          <% if current_user.admin? and comment.user.admin? %>
+            <span class="admin-tag"><%= comment.user.username %></span>
+          <% else %>
+            someone
+          <% end %>
+        <% end %> 
+      <% end %>
     <% end %>
     <% if current_user.can_edit?(comment) %>
       | <%= link_to 'edit', edit_comment_path(comment) %>

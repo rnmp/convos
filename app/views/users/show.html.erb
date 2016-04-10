@@ -1,6 +1,13 @@
-<h1>my convos</h1>
-<% if @convos.present? %>
-	<%= render @convos %>
+<h1>my activity</h1>
+<ul class="horizontal-menu _group">
+  <li>sort by</li>
+  <li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
+  <li><%= link_to 'top', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
+</ul>
+<% if @activity.present? %>
+	<%= render @activity %>
 <% else %>
-	<p>No convos found.</p>
+	<p>no activity yet.</p>
+	<p style="margin-top: 15px"><%= link_to '+ start a convo', root_path, class: 'button' %></p>
 <% end %>
+<%= paginate @activity %>
