@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def can_edit?(convo_or_comment)
-    convo_or_comment.user == self || self.admin?
+    convo_or_comment.user == self # || self.admin?
   end
 
   def User.digest(string)
