@@ -240,6 +240,9 @@ a.unread-link {
 	height: 90px;
 	overflow: hidden;
 }
+.comment.truncate .user-content {
+	height: 350px;
+}
 .convo.truncate .user-content .expand-link {
 	position: absolute;
 	bottom: 0;
@@ -258,7 +261,11 @@ a.unread-link {
 	padding-left: 50px;
 	word-wrap: break-word;
 }
-.convo:target, .active.convo, .unread.notification {
+.convo:target, 
+.convo.truncate:target .user-content::after,
+.active.convo, 
+.active.convo.truncate .user-content::after,
+.unread.notification {
 	background: #fcfaf0;
 }
 .user-content a:visited {

@@ -10,7 +10,12 @@ truncateContent = ->
   $(".truncate-content").each ->
     self = this
     content = $('.user-content', this)
-    if content.height() > 90
+    threshold = ->
+      if $(self).hasClass('comment')
+        return 350 
+      else
+        return 90
+    if content.height() > threshold()
       $(self).addClass('truncate')
       expand_link = $('<a>').addClass('expand-link').text('— expand —')
       content.append(expand_link)
