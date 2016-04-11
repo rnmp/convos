@@ -41,6 +41,7 @@
 				<% for topic in topics_list %>
 					<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
 				<% end %>
+				<hr>
 				<%= link_to "all comments", comments_path, class: cp(comments_path) %>
 			</nav>
 			<%= yield %>

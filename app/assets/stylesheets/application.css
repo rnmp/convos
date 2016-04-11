@@ -164,6 +164,13 @@ input[type="password"] {
 	display: block;
 	margin-bottom: 3px;
 }
+.topic-tabs hr {
+	width: 30%;
+	margin: 10px 0 5px;
+	margin-left: auto;
+	border: dotted #bacdd9;
+	border-width: 1px 0 0;
+}
 .topic-tabs a.active {
 	color: inherit;
 	font-weight: bold;
@@ -620,6 +627,14 @@ html.turbolinks-progress-bar::before {
 	.topic-tabs a {
 		display: inline-block;
 		margin: 0 3px;
+	}
+	.topic-tabs hr {
+		display: inline-block;
+		width: 1px;
+		margin: 0 2px;
+		height: 0.75em;
+		vertical-align: middle;
+		border-width: 0 0 0 1px;
 	}
 	.block-form .options {
 		flex-direction: column;
