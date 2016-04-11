@@ -1,4 +1,4 @@
-<% if cp(activity_path) %>
+<% unless @convo %>
   <p class="post-reference metadata">
     <span>you started a convo</span>
   </p>
@@ -20,7 +20,7 @@
     <% end %>
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo_slug_path(convo.topic.slug, convo.id, convo.slug) %>
     <% if convo.edited? %>(edited)<% end %>
-    <% unless cp(activity_path) %>
+    <% if @convo %>
       by 
       <% if convo.by_admin? %>
         <span class="admin-tag">admin</span>
