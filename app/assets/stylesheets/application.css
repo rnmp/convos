@@ -21,6 +21,7 @@
 	padding: 0;
 }
 .user-links,
+.post-reference > span,
 body {
 	background: #F2F8FC;
 }
@@ -63,6 +64,7 @@ small {
 	background: #F5565B;
 	color: #FCFEFF;
 	cursor: pointer;
+	font-weight: bold;
 }
 
 .field {
@@ -138,20 +140,6 @@ input[type="email"],
 input[type="password"] {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
-.convos-menu {
-	margin-bottom: 10px;
-}
-.convos-menu li {
-	float: left;
-	margin-right: 20px;
-	list-style-type: none;
-}
-.convos-menu a {
-	font-weight: bold;
-}
-.convos-menu a.active {
-	border-top: 2px solid #F5565B;
-}
 
 /** navigation **/
 .user-links {
@@ -176,14 +164,34 @@ input[type="password"] {
 	display: block;
 	margin-bottom: 3px;
 }
+.topic-tabs hr {
+	width: 30%;
+	margin: 10px 0 5px;
+	margin-left: auto;
+	border: dotted #bacdd9;
+	border-width: 1px 0 0;
+}
 .topic-tabs a.active {
 	color: inherit;
 	font-weight: bold;
 }
-a.replies-link {
-	display: block;
+a.unread-link {
 	font-weight: bold;
-	margin-bottom: 13px;
+}
+
+.horizontal-menu {
+	margin-bottom: 10px;
+}
+.horizontal-menu li {
+	float: left;
+	margin-right: 20px;
+	list-style-type: none;
+}
+.horizontal-menu a {
+	font-weight: bold;
+}
+.horizontal-menu a.active {
+	border-top: 2px solid #F5565B;
 }
 
 
@@ -239,6 +247,9 @@ a.replies-link {
 	height: 90px;
 	overflow: hidden;
 }
+.comment.truncate .user-content {
+	height: 350px;
+}
 .convo.truncate .user-content .expand-link {
 	position: absolute;
 	bottom: 0;
@@ -257,7 +268,11 @@ a.replies-link {
 	padding-left: 50px;
 	word-wrap: break-word;
 }
-.convo:target, .active.convo, .unread.notification {
+.convo:target, 
+.convo.truncate:target .user-content::after,
+.active.convo, 
+.active.convo.truncate .user-content::after,
+.unread.notification {
 	background: #fcfaf0;
 }
 .user-content a:visited {
@@ -420,7 +435,7 @@ a.show-hidden-post-link {
 	background: #fafafa;
 }
 
-.user-content p, .user-content ul, .user-content ol {
+.user-content p, .user-content ul, .user-content ol, .alert {
 	margin-bottom: .75em;
 	line-height: 1.4;
 }
@@ -488,7 +503,6 @@ label.redundant-label {
 	outline: none;
 }
 .block-form .options {
-	position: relative;
 	border-top: 1px solid #eaeaea;
 	display: flex;
 	padding-top: 7px;
@@ -522,7 +536,6 @@ input[type="submit"][disabled] {
 	cursor: default;
 }
 .select {
-	position: relative;
 	padding-left: 0;
 }
 .select, .select a span {
@@ -533,10 +546,9 @@ input[type="submit"][disabled] {
 }
 .nicer-select {
 	position: absolute;
-	top: 100%;
-	left: -16px;
+	left: 0;
 	z-index: 9999;
-	background: #FCFEFF;
+	background: #fff;
 	border-top: none;
 	width: 300px;
 	border-radius: 0 0 2px 2px;
@@ -555,6 +567,38 @@ input[type="submit"][disabled] {
 	top: 100%;
 	right: 0;
 	margin-top: 5px;
+}
+.registration-form > div {
+	float: left;
+	width: 40%;
+	padding-right: 20px;
+}
+.registration-form > aside {
+}
+.error {
+	margin-top: -5px;
+	font-size: 12px;
+}
+
+.post-reference {
+	margin-bottom: 2px;
+	position: relative;
+}
+.post-reference > span {
+	position: relative;
+	padding-right: 10px;
+	z-index: 2;
+}
+.post-reference::after {
+	content: '';
+	display: block;
+	position: absolute;
+	opacity: 0.3;
+	width: 100%;
+	top: 50%;
+	margin-top: 1px;
+	z-index: 1;
+	border-top: 1px dotted currentColor;
 }
 
 html.turbolinks-progress-bar::before {
@@ -584,6 +628,14 @@ html.turbolinks-progress-bar::before {
 		display: inline-block;
 		margin: 0 3px;
 	}
+	.topic-tabs hr {
+		display: inline-block;
+		width: 1px;
+		margin: 0 2px;
+		height: 0.75em;
+		vertical-align: middle;
+		border-width: 0 0 0 1px;
+	}
 	.block-form .options {
 		flex-direction: column;
 	}
@@ -598,7 +650,6 @@ html.turbolinks-progress-bar::before {
 	}
 	.nicer-select {
 		width: auto;
-		margin-left: 1px;
 	}
 	.md-editor {
 		position: fixed;

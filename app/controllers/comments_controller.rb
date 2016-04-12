@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
+  def index
+    @comments = 
+      if params[:show] == 'popular'
+        Comment.order('weighted_score DESC').page(params[:page]).per(25)
+      else
+        Comment.order('created_at DESC').page(params[:page]).per(25)
+      end
+  end
+
   def edit
     redirect_to :back unless current_user.can_edit?(@comment)
   rescue ActionController::RedirectBackError

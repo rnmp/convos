@@ -1,10 +1,12 @@
-<% meta title: @title %>
-<h1><%= @title %></h1>
-<%= render partial: 'convos/form', locals: { convo: @new_convo, submit_text: '+ start a convo', timeout: true } %>
+<h1>all comments</h1>
 <ul class="horizontal-menu _group">
   <li>sort by</li>
   <li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
   <li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
 </ul>
-<%= render @convos %>
-<%= paginate @convos %>
+<% if !@comments.blank? %>
+  <%= render @comments %>
+<% else %>
+  no comments yet.
+<% end %>
+<%= paginate @comments %>

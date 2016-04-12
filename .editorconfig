@@ -1,0 +1,9 @@
+root = true
+
+[*.{rb,js,coffee,rake}]
+indent_style = space
+indent_size  = 2
+
+[*.{css,html}]
+indent_style = tab
+indent_size  = 4

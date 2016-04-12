@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'convos#index'
 
@@ -10,7 +14,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/my_convos', to: 'users#show'
+  get '/activity', to: 'users#show'
+  get '/settings', to: 'users#edit'
 
   get '/tos', to: 'static_pages#tos'
 
@@ -33,4 +38,7 @@ Rails.application.routes.draw do
       get 'downvote'
     end
   end
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
 end

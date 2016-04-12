@@ -1,4 +1,4 @@
-<% meta title: truncate(markdown_for_title @convo.convo) %>
+<% meta title: truncate(markdown_for_title(@convo.convo), length: 70) %>
 <p id="notice"><%= notice %></p>
 <%= render @convo %>
 

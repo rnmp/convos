@@ -1,0 +1,26 @@
+<h1>settings</h1>
+<% flash.each do |key, value| %>
+	<aside class="alert alert-<%= key %>"><%= value %></aside>
+<% end %>
+<h2>change email</h2>
+<%= form_for @user do |f| %>
+
+	<div class="user-content">
+		<p><%= f.email_field :email, placeholder: "email" %></p>
+		<%= errors_for f, :email, 'email' %>
+		<p><%= f.password_field :current_password, placeholder: "current password" %></p>
+		<p><%= f.submit "submit" %></p>
+	</div>
+
+<% end %>
+<h2>change password</h2>
+<%= form_for @user do |f| %>
+
+	<div class="user-content">
+		<p><%= f.password_field :password, placeholder: "new password" %></p>
+		<%= errors_for f, :password, 'password' %>
+		<p><%= f.password_field :current_password, placeholder: "current password" %></p>
+		<p><%= f.submit "submit" %></p>
+	</div>
+
+<% end %>
