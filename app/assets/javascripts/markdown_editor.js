@@ -1102,6 +1102,7 @@
           hotkey: 'Ctrl+U',
           title: 'Unordered List',
           btnText: 'List',
+          btnClass: 'list',
           callback: function(e){
             // Prepend/Give - surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent();

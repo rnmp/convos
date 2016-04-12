@@ -665,31 +665,55 @@ html.turbolinks-progress-bar::before {
 	bottom: 0;
 	padding: 1px 0 2px;
 	margin-bottom: 0;
-	margin-left: -10px;
-	opacity: 0;
-	-webkit-transition: all 0.2s;
-	-o-transition: all 0.2s;
-	transition: all 0.2s;
-	-webkit-transform: translate(0,10px);
-	-ms-transform: translate(0,10px);
-	-o-transform: translate(0,10px);
-	transform: translate(0,10px);
-}
-.md-editor.active .editor-header {
-	opacity: 1;
-	-webkit-transform: translate(0,0);
-	-ms-transform: translate(0,0);
-	-o-transform: translate(0,0);
-	transform: translate(0,0);
+	margin-left: -7px;
 }
 .editor-header .button {
 	font-size: 14px;
-	background: transparent;
-	color: #ccc;
+	background: transparent no-repeat center center;
+	opacity: 0.25;
+	text-indent: -9999px;
+	margin: 0 2px;
 }
-.editor-header .button.bold {}
+.editor-header .button.bold {
+	background-image: url('editor/bold.png');
+	background-size: 10px;
+}
+.editor-header .button.italics {
+	background-image: url('editor/italics.png');
+	background-size: 12px;
+}
+.editor-header .button.heading {
+	background-image: url('editor/heading.png');
+	background-size: 9px;
+}
+.editor-header .button.link {
+	background-image: url('editor/link.png');
+	background-size: 20px;
+	position: relative;
+	top: 1px;
+	margin: 0 5px;
+}
+.editor-header .button.image {
+	background-image: url('editor/image.png');
+	background-size: 14px;
+}
+.editor-header .button.list {
+	background-image: url('editor/list.png');
+	background-size: 14px;
+	position: relative;
+	top: 1px;
+}
+.editor-header .button.quote {
+	background-image: url('editor/quote.png');
+	background-size: 16px;
+	position: relative;
+	top: 3px;
+}
+.editor-header .button:active {
+	opacity: 0.9;
+}
 .editor-header .button[disabled] {
-	opacity: 0.3;
+	opacity: 0.1;
 }
 .editor-header .button.italics {
 	font-style: italic;

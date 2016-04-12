@@ -26,11 +26,7 @@ truncateContent = ->
 ready = ->
   $(".replies .block-form").hide()
 
-  $(".formatting-link").hide()
-  $(".block-form textarea").on 'input', (e) ->
-    self = this
-    $(".formatting-link").show()
-    $(self).markdown().focus()
+  $(".block-form textarea").markdown().focus()
 
   $(".show-reply-form").on "click", (e) ->
     e.preventDefault()
