@@ -1091,7 +1091,7 @@
               // e.setNextTab(e.__localize('enter image title here'));
 
               // Set the cursor
-              e.setSelection(cursor,cursor+chunk.length);
+              e.setSelection(cursor+chunk.length+link.length+5,cursor+chunk.length+link.length+5);
             // }
           }
         }]

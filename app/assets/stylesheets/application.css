@@ -658,12 +658,13 @@ html.turbolinks-progress-bar::before {
 }
 .md-editor {
 	position: relative;
+	padding-bottom: 15px;
 }
 .editor-header {
 	position: absolute;
-	bottom: 100%;
+	bottom: 0;
 	padding: 1px 0 2px;
-	margin-bottom: 10px;
+	margin-bottom: 0;
 	margin-left: -10px;
 	opacity: 0;
 	-webkit-transition: all 0.2s;
@@ -684,7 +685,7 @@ html.turbolinks-progress-bar::before {
 .editor-header .button {
 	font-size: 14px;
 	background: transparent;
-	color: #93A2AB;
+	color: #ccc;
 }
 .editor-header .button.bold {}
 .editor-header .button[disabled] {
@@ -694,9 +695,9 @@ html.turbolinks-progress-bar::before {
 	font-style: italic;
 }
 .editor-header .button.quote {}
-#new_comment .editor-header, form[id^='reply'] .editor-header {
+/*#new_comment .editor-header, form[id^='reply'] .editor-header {
 	top: 100%;
 	margin-top: 10px;
 	bottom: inherit;
 	z-index: 2;
-}
+}*/
