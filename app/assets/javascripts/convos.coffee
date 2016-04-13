@@ -91,6 +91,10 @@ ready = ->
 
   truncateContent()
 
+  $('.report-link').on "ajax:success", (e) ->
+    $(this).after('thank you')
+    $(this).remove()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 

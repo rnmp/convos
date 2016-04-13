@@ -17,8 +17,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6}, on: :create, unless: :guest?
   validates :password, length: { minimum: 6}, on: :update, unless: lambda { |user| user.password.blank? }
 
+
   def self.new_guest
     new { |u| u.guest = true }
+  end
+
+  def self.admins
+    where(admin: true)
   end
 
   def total_points

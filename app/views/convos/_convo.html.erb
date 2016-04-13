@@ -41,6 +41,9 @@
         in <%= link_to convo.topic.name, topic_path(convo.topic) %>
       <% end %>
     <% end %>
+    <% unless convo.user == current_user %>
+    | <%= link_to 'report', reports_path(type: :convo, id: convo.id), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
+    <% end %>
     <% if current_user.can_edit?(convo) %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 
       | <%= link_to 'delete', convo, :method => :delete, data: { confirm: "Are you sure?" } %>

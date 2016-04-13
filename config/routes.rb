@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :topics
 
+  resources :reports
+
   resources :convos do
     member do
       get 'upvote'
