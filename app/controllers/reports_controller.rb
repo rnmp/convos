@@ -19,6 +19,7 @@ class ReportsController < ApplicationController
         msg = { status: "ok", message: "Success!", html: "Success" }
         format.json { render json: msg }
       end
+      return
     end
   end
   private
