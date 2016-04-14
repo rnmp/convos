@@ -1,6 +1,6 @@
 class Convo < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :convo, use: [:slugged, :finders]
+  friendly_id :title, use: [:slugged, :finders]
 
   belongs_to :topic
   belongs_to :user
@@ -16,7 +16,8 @@ class Convo < ActiveRecord::Base
   include ApplicationHelper
 
   def normalize_friendly_id(string)
-    super[0..40]
+    duplicates = Convo.where("slug like ?", "%#{string}%")
+    super+"-#{('a'..'z').to_a[duplicates.count+1]}" if duplicates.any?
   end
 
   def title
