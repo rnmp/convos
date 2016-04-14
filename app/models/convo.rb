@@ -13,8 +13,14 @@ class Convo < ActiveRecord::Base
   acts_as_voteable
   include VoteActions
 
+  include ApplicationHelper
+
   def normalize_friendly_id(string)
     super[0..40]
+  end
+
+  def title
+    markdown(convo).gsub!(/<[^>]*>/, "").html_safe.truncate(70)
   end
 
   def self.search(search)

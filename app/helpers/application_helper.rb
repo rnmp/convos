@@ -24,10 +24,6 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def markdown_for_title(text)
-    markdown(text).to_s.gsub!(/<[^>]*>/, "").html_safe
-  end
-
   def cp(path)
     "active" if current_page?(path)
   end
