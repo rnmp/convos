@@ -20,7 +20,12 @@ class Convo < ActiveRecord::Base
   end
 
   def title
-    markdown(convo).gsub!(/<[^>]*>/, "").html_safe.truncate(70)
+    # matches first HTML tag and uses it's content as title
+    # e.g. if convo.convo is `<p>Hello</p><p>How are you?</p>`
+    # `convo.title` would result in `Hello`
+    # TODO: use for convo.slug
+    # TODO: what if convo starts with image/multimedia? (use `alt`?)
+    /<.*>/.match(markdown(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
   end
 
   def self.search(search)
