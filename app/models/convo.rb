@@ -16,8 +16,12 @@ class Convo < ActiveRecord::Base
   include ApplicationHelper
 
   def normalize_friendly_id(string)
-    duplicates = Convo.where("slug like ?", "%#{string}%")
-    super+"-#{('a'..'z').to_a[duplicates.count+1]}" if duplicates.any?
+    duplicates = Convo.where("slug like ?", "%#{super}%")
+    if duplicates.any?
+      super+"-#{('a'..'z').to_a[duplicates.count]}" 
+    else
+      super
+    end
   end
 
   def title
