@@ -15,8 +15,8 @@ class ReportsController < ApplicationController
         "Someone reported <a href='#{redirect_path}' target='_blank'>a #{params[:type]}</a>.".html_safe)
       @notification.user_id = admin.id
       @notification.save
-      render json: { message: "all cool" }, status: 201 and return
     end
+    render json: { message: "Successfully delivered" }, status: 201
   end
   private
     def set_params
