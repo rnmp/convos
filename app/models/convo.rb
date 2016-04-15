@@ -25,7 +25,7 @@ class Convo < ActiveRecord::Base
   end
 
   def title
-    # matches first HTML tag and uses it's content as title
+    # matches first HTML tag and uses its content as title
     # e.g. if convo.convo is `<p>Hello</p><p>How are you?</p>`
     # `convo.title` would result in `Hello`
     # TODO: use for convo.slug
