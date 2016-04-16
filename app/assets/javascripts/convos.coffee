@@ -89,6 +89,9 @@ ready = ->
     $('.point-count', this).text(points)
     $('.point-word', this).text(' point'.pluralize(points, ' points'))
 
+  $('.convo, .single-convo').on "ajax:success", (e) ->
+    ga('send', 'pageview', $(e.target).attr('href'))
+
   truncateContent()
 
   $('.report-link').on "ajax:success", (e) ->
