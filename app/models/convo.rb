@@ -12,6 +12,7 @@ class Convo < ActiveRecord::Base
 
   acts_as_voteable
   include VoteActions
+  include Report
 
   include ApplicationHelper
 

@@ -42,7 +42,7 @@
       <% end %>
     <% end %>
     <% unless convo.user == current_user %>
-    | <%= link_to 'report', reports_path(type: :convo, id: convo.id), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
+    | <%= link_to 'report', report_convo_path(convo), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
     <% end %>
     <% if current_user.can_edit?(convo) %>
       | <%= link_to 'edit', edit_convo_path(convo) %> 

@@ -21,12 +21,12 @@ Rails.application.routes.draw do
 
   resources :topics
 
-  resources :reports
 
   resources :convos do
     member do
       get 'upvote'
       get 'downvote'
+      post 'report'
     end
   end
 
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     member do
       get 'upvote'
       get 'downvote'
+      post 'report'
     end
   end
 

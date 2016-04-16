@@ -40,7 +40,7 @@
       <% end %>
     <% end %>
     <% unless comment.user == current_user %>
-    | <%= link_to 'report', reports_path(type: :comment, id: comment.id), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
+    | <%= link_to 'report', report_comment_path(comment), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
     <% end %>
     <% if current_user.can_edit?(comment) %>
       | <%= link_to 'edit', edit_comment_path(comment) %>

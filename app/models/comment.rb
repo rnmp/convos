@@ -9,6 +9,7 @@ class Comment < ActiveRecord::Base
 
   acts_as_voteable
   include VoteActions
+  include Report
 
   def self.search(search)
     if search

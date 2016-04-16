@@ -1,5 +1,5 @@
 class ConvosController < ApplicationController
-  before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :report]
 
   def index
     @new_convo = Convo.new
@@ -40,6 +40,11 @@ class ConvosController < ApplicationController
   end
   def downvote
     @convo.downvote(current_user)
+    render json: { message: "Successfully delivered" }, status: 201
+  end
+
+  def report
+    @convo.report(convo_slug_path(@convo.topic.slug, @convo.id, @convo.slug))
     render json: { message: "Successfully delivered" }, status: 201
   end
 

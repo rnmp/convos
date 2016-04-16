@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :report]
 
   def index
     @comments = 
@@ -53,6 +53,11 @@ class CommentsController < ApplicationController
   end
   def downvote
     @comment.downvote(current_user)
+    render json: { message: "Successfully delivered" }, status: 201
+  end
+
+  def report
+    @comment.report(convo_slug_path(@comment.convo.topic.slug, @comment.convo.id, @comment.convo.slug, anchor: "comment-#{@comment.id}"))
     render json: { message: "Successfully delivered" }, status: 201
   end
 
