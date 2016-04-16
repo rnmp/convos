@@ -1051,7 +1051,7 @@
               chunk = selected.text;
             }
 
-            link = prompt(e.__localize('URL'),'http://');
+            link = prompt(e.__localize('URL'),'http://') || "";
 
             // var urlRegex = new RegExp('^((http|https)://|(mailto:)|(//))[a-z0-9]', 'i');
             // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
@@ -1077,7 +1077,7 @@
 
             chunk = selected.length === 0 ? '' : selected.text;
 
-            link = prompt(e.__localize('Image URL'),'http://') || "yolo";
+            link = prompt(e.__localize('Image URL'),'http://') || "";
 
             // var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
             // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
