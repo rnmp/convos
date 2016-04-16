@@ -98,6 +98,9 @@ ready = ->
     $(this).after('thank you')
     $(this).remove()
 
+  # fix google analytics with turbolinks
+  ga('send', 'pageview')
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
