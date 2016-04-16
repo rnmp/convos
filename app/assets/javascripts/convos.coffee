@@ -99,7 +99,7 @@ ready = ->
     $(this).remove()
 
   # fix google analytics with turbolinks
-  ga('send', 'pageview')
+  ga('send', 'pageview', location.pathname)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
