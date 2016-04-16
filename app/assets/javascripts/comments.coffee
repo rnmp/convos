@@ -14,6 +14,11 @@ ready = ->
     $('#formatting_help_hide').fadeOut()
     $('#formatting_help_link').fadeIn()
 
+  $('form').on 'submit', (event) ->
+    if $('#comment_comment', this).val() == ''
+      event.preventDefault()
+      alert 'This can’t be blank.'
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

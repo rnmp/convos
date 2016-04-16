@@ -1077,7 +1077,7 @@
 
             chunk = selected.length === 0 ? '' : selected.text;
 
-            link = prompt(e.__localize('Image URL'),'http://');
+            link = prompt(e.__localize('Image URL'),'http://') || "yolo";
 
             // var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
             // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
