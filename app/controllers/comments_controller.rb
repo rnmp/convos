@@ -49,15 +49,11 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment.upvote(current_user)
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    render json: { message: "Successfully delivered" }, status: 201
   end
   def downvote
     @comment.downvote(current_user)
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    render json: { message: "Successfully delivered" }, status: 201
   end
 
   def update

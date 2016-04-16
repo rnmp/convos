@@ -36,15 +36,11 @@ class ConvosController < ApplicationController
 
   def upvote
     @convo.upvote(current_user)
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    render json: { message: "Successfully delivered" }, status: 201
   end
   def downvote
     @convo.downvote(current_user)
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    render json: { message: "Successfully delivered" }, status: 201
   end
 
   def create
