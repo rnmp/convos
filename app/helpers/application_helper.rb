@@ -1,4 +1,44 @@
 module ApplicationHelper
+  class ConvosRenderer < Redcarpet::Render::HTML
+    def autolink(link, link_type)
+      case link_type
+        when :url then url_link(link)
+        when :email then email_link(link)
+      end
+    end
+    def url_link(link)
+      case link
+        when /https?:\/\/(www\.)?youtube\.com\// then youtube_link(link)
+        when /https?:\/\/(www\.)?vimeo\.com\// then vimeo_link(link)
+        when /(png|gif|jpg|jpeg)/ then image_link(link)
+        else normal_link(link)
+      end
+    end
+    def multimedia_link(html_class, link, type)
+      "<span class='#{html_class} multimedia'>"+
+        "<a class='embed-link' href='javascript:;'>show #{type}</a> "+normal_link(link)+
+      "</span>"
+    end
+    def youtube_link(link)
+      multimedia_link('youtube', link, 'video')
+    end
+    def vimeo_link(link)
+      multimedia_link('vimeo', link, 'video')
+    end
+    def image_link(link)
+      multimedia_link('image', link, 'image')
+    end
+    def image(link, title, alt_text)
+      multimedia_link('image', link, 'image')
+    end
+    def normal_link(link)
+      "<a href='#{link}' target='_blank' rel='nofollow'>#{link}</a>"
+    end
+    def email_link(email)
+      "<a href=\"mailto:#{email}\">#{email}</a>"
+    end
+  end
+
   def markdown(text)
     options = {
       filter_html:     true,
@@ -18,7 +58,7 @@ module ApplicationHelper
       strikethrough: true
     }
 
-    renderer = Redcarpet::Render::HTML.new(options)
+    renderer = ConvosRenderer.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
     markdown.render(text).html_safe
