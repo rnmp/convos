@@ -455,6 +455,7 @@ a.show-hidden-post-link {
 	margin-bottom: 0;
 }
 .user-content img,
+.user-content iframe,
 .single-convo img {
 	max-width: 100%;
 }

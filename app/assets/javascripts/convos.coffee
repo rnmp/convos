@@ -35,16 +35,22 @@ ready = ->
   
   autosize($('textarea'))
 
-  $('.convo img').each ->
-    self = this
-    $(self).hide()
-    show_img_link = $('<a>')
-      .addClass('show-image-link')
-      .text('show image')
-    $(self).before(show_img_link)
-    show_img_link.on 'click', (e) ->
-      $(self).show()
-      show_img_link.remove()
+  $('.multimedia').on 'click', (e) ->
+    if $(e.target).hasClass('embed-link')
+      if $(this).is('.image')
+        $item = $('<img alt />')
+        $item.attr('src', $(this).attr('data-link'))
+      else if $(this).is('.youtube')
+        $item = $('<iframe width="640" height="360" frameborder="0" allowfullscreen></iframe>')
+        embed_url = $(this).attr('data-link').split('&')[0].split('=')[1]
+        $item.attr('src', "https://www.youtube.com/embed/#{embed_url}")
+      else if $(this).is('.vimeo')
+        $item = $('<iframe width="640" height="360" frameborder="0" allowfullscreen></iframe>')
+        arr = $(this).attr('data-link').split('/')
+        embed_url = arr[arr.length - 1]
+        $item.attr('src', "https://player.vimeo.com/video/#{embed_url}?portrait=0")
+      $(this).parent().after($item)
+      $('.embed-link', this).remove()
 
   $('.convo.hidden').each ->
     self = this

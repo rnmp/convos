@@ -15,7 +15,7 @@ module ApplicationHelper
       end
     end
     def multimedia_link(html_class, link, type)
-      "<span class='#{html_class} multimedia'>"+
+      "<span class='#{html_class} multimedia' data-link='#{link}'>"+
         "<a class='embed-link' href='javascript:;'>show #{type}</a> "+normal_link(link)+
       "</span>"
     end
