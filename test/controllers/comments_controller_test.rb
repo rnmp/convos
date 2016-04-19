@@ -21,7 +21,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should update comment" do
     patch :update, id: @comment, comment: { author: @comment.author, comment: @comment.comment, votes: @comment.votes }
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_response :success
   end
 
   test "should destroy comment" do

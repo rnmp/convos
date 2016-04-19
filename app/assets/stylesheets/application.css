@@ -215,7 +215,7 @@ input[type="password"] {
 	border-top: 1px dotted #eee;
 }
 /* items (convos, comments) */
-.convo, .button, input[type="submit"], input, textarea, .select, .notification, .show-image-link {
+.convo, .button, input[type="submit"], input, textarea, .select, .notification, .embed-link {
 	padding: 5px 10px;
 	border-radius: 2px;
 }
@@ -232,13 +232,15 @@ input[type="password"] {
 }
 
 .show-hidden-post-link,
-.show-image-link,
+.embed-link,
 .convo.truncate .user-content .expand-link {
 	cursor: pointer;
 }
-.show-image-link {
+.embed-link {
 	display: inline-block;
 	margin-bottom: 5px;
+	padding: 2px 4px;
+	font-size: 12px;
 	background: #F5565B;
 	background: rgba(245, 86, 91, 0.1);
 }
