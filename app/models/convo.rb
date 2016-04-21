@@ -10,6 +10,8 @@ class Convo < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
 
+  before_save :handle_polls
+
   acts_as_voteable
   include VoteActions
   include Report
@@ -39,6 +41,21 @@ class Convo < ActiveRecord::Base
       where("title LIKE ? OR comment LIKE ?", "%#{search}%", "%#{search}%")
     else
       all
+    end
+  end
+
+  def handle_polls
+    polls = convo.scan(/\(\) ?.*(?:\n\(\) ?.*)+/)
+    if polls.any?
+      polls.each do |poll|
+        # create poll in db and associate with convo
+        poll_string = []
+        poll.scan(/\(\) ?(.*)/) do |item|
+          poll_string.push(item[0])
+        end
+        # replace this poll with new poll id in text with `[poll {id}]`
+        convo.gsub!(poll, poll_string.to_s)
+      end
     end
   end
 

@@ -26,6 +26,11 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
   #   full_document
   # end
 
+  # def postprocess(full_document)
+  #   full_document.gsub!(/\[poll.*\]/, Poll.render(2))
+  #   full_document
+  # end
+
   private
     # custom methods
     def url_link(link, content)
