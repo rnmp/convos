@@ -1,0 +1,16 @@
+<figure class="poll">
+	<% poll.options.each do |option| %>
+		<%= link_to_unless !current_user.can_vote_in_poll?(poll), option.name, vote_on_poll_path(poll.id, option.id), remote: true, method: :post do |link| %>
+			<span class="poll-option">
+				<i class="percentage<%= ' hidden' if current_user.can_vote_in_poll?(poll) %>">
+					<i style="width: <%= number_to_percentage(option.percentage_of_votes, precision: 2) %>"></i>
+				</i>
+				<%= link %>
+				<span class="<%= ' hidden' if current_user.can_vote_in_poll?(poll) %>">
+					<%= "(#{number_to_percentage(option.percentage_of_votes, precision: 2)})" if poll.votes > 0 %>
+				</span>
+			</span>
+		<% end %>
+	<% end %>
+	<figcaption><%= poll.votes.to_s + ' vote'.pluralize(poll.votes) %></figcaption>
+</figure>

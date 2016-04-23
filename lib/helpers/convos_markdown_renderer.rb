@@ -1,9 +1,27 @@
+require 'render_anywhere'
 class ConvosMarkdownRenderer < Redcarpet::Render::HTML
   VALID_YOUTUBE_URL = /https?:\/\/(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:\S+)?/
   VALID_VIMEO_URL = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/
   VALID_DIRECT_IMAGE_URL = /\.(png|gif|jpg|jpeg)$/
 
   include Redcarpet::Render::SmartyPants
+  include RenderAnywhere
+
+  def initialize(options)
+    super
+    # HACK
+    @user = options[:current_user]
+  end
+
+  class RenderingController < RenderAnywhere::RenderingController
+    # include custom modules here, define accessors, etc. For example:
+    attr_accessor :current_user
+    helper_method :current_user
+  end
+
+  def rendering_controller
+    @rendering_controller ||= self.class.const_get("RenderingController").new
+  end
 
   def autolink(link, link_type)
     case link_type
@@ -26,12 +44,18 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
   #   full_document
   # end
 
-  # def postprocess(full_document)
-  #   full_document.gsub!(/\[poll.*\]/, Poll.render(2))
-  #   full_document
-  # end
+  def postprocess(full_document)
+    rendering_controller.current_user = @user
 
-  private
+    full_document.gsub!(/\(poll:(\d+)\)/) do |poll_match| 
+      poll_id = /\d+/.match(poll_match)[0].to_i
+      @poll = Poll.find(poll_id)
+      render @poll
+    end
+    full_document
+  end
+
+  private 
     # custom methods
     def url_link(link, content)
       case link

@@ -16,8 +16,6 @@ class Convo < ActiveRecord::Base
   include VoteActions
   include Report
 
-  include ApplicationHelper
-
   def normalize_friendly_id(string)
     duplicates = Convo.where("slug like ?", "%#{super}%")
     if duplicates.any?
@@ -33,7 +31,8 @@ class Convo < ActiveRecord::Base
     # `convo.title` would result in `Hello`
     # TODO: use for convo.slug
     # TODO: what if convo starts with image/multimedia? (use `alt`?)
-    /<.*>/.match(markdown(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
   end
 
   def self.search(search)
@@ -49,12 +48,13 @@ class Convo < ActiveRecord::Base
     if polls.any?
       polls.each do |poll|
         # create poll in db and associate with convo
-        poll_string = []
+        poll_options = []
         poll.scan(/\(\) ?(.*)/) do |item|
-          poll_string.push(item[0])
+          poll_options.push(item[0])
         end
-        # replace this poll with new poll id in text with `[poll {id}]`
-        convo.gsub!(poll, poll_string.to_s)
+        @poll = Poll.create_with_options(poll_options)
+        # replace this poll with new poll id in text with `(poll:{id})`
+        convo.gsub!(poll, "(poll:#{@poll.id})")
       end
     end
   end

@@ -411,6 +411,34 @@ a.show-hidden-post-link {
 	margin-bottom: 3px;
 }
 
+/* polls */
+.poll {
+	width: 50%;
+}
+.poll-option {
+	display: block;
+	margin-bottom: 5px;
+}
+.poll-option > span {
+	font-size: 14px;
+}
+.poll .percentage,
+.poll .percentage > i {
+	display: block;
+	height: 2px;
+	border-radius: 2px;
+	background: #eee;
+}
+.poll .percentage > i {
+	background: #F3585F;
+}
+
+.poll > figcaption {
+	color: #ababab;
+	border-top: 1px dotted #f4f4f4;
+	font-size: 14px;
+}
+
 /* single convo */
 .single-convo {
 	position: relative;

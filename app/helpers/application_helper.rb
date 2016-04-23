@@ -1,11 +1,12 @@
 module ApplicationHelper
   require './lib/helpers/convos_markdown_renderer'
-  def markdown(content)
+  def markdown(content, user)
     options = {
       filter_html:     true,
       hard_wrap:       true, 
       link_attributes: { rel: 'nofollow', target: "_blank" },
-      with_toc_data: true
+      with_toc_data: true,
+      current_user: user # HACK for Polls (issue-40)
     }
 
     extensions = {
@@ -25,8 +26,8 @@ module ApplicationHelper
     @markdown.render(content).html_safe
   end
 
-  def markdown_content_for(content)
-    content_tag(:div, markdown(content), class: 'user-content')
+  def markdown_content_for(content, user)
+    content_tag(:div, markdown(content, user), class: 'user-content')
   end
 
   def cp(path)

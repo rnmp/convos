@@ -158,6 +158,8 @@ GEM
       json (~> 1.4)
     redcarpet (3.3.2)
     remotipart (1.2.1)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     safe_yaml (1.0.4)
     sass (3.4.18)
     sass-rails (5.0.4)
@@ -218,6 +220,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin
   redcarpet
+  render_anywhere
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

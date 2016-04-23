@@ -4,7 +4,7 @@
   </p>
 <% end %>
 <article class="<%= 'active ' if params[:convo].to_i == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group<%= ' disabled' if current_user.voted_on?(convo) %><%= ' upvoted' if current_user.voted_for?(convo) %><%= ' hidden' if convo.points < -5 %>">
-  <%= markdown_content_for(convo.convo) %>
+  <%= markdown_content_for(convo.convo, current_user) %>
   <p class="metadata">
     <span class="vote-links">
       <%= link_to '', upvote_convo_path(convo), remote: true, 

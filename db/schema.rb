@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328200443) do
+ActiveRecord::Schema.define(version: 20160421125404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,23 @@ ActiveRecord::Schema.define(version: 20160328200443) do
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
+  create_table "poll_options", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "poll_options", ["poll_id"], name: "index_poll_options_on_poll_id", using: :btree
+
+  create_table "polls", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "polls", ["user_id"], name: "index_polls_on_user_id", using: :btree
+
   create_table "scrapes", force: :cascade do |t|
     t.string   "url"
     t.string   "title"
@@ -118,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160328200443) do
   end
 
   add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true, using: :btree
   add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
   add_foreign_key "comments", "convos"
@@ -126,4 +144,6 @@ ActiveRecord::Schema.define(version: 20160328200443) do
   add_foreign_key "convos", "topics"
   add_foreign_key "convos", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "poll_options", "polls"
+  add_foreign_key "polls", "users"
 end
