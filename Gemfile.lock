@@ -102,6 +102,7 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.17.1)
+    puma (3.4.0)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -214,6 +215,7 @@ DEPENDENCIES
   migration_data
   newrelic_rpm
   pg
+  puma
   rails (= 4.2.4)
   rails-assets-autosize!
   rails-assets-fastclick!
