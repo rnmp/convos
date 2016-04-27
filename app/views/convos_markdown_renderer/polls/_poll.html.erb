@@ -6,7 +6,7 @@
 			</i>
 			<%= link_to_unless !current_user.can_vote_in_poll?(poll), option.name, vote_on_poll_path(poll.id, option.id), remote: true, method: :post %>
 			<span class="<%= ' hidden' if current_user.can_vote_in_poll?(poll) %>">
-				<%= "(#{number_to_percentage(option.percentage_of_votes, precision: 2)})" if poll.votes > 0 %>
+				<%= "(#{number_to_percentage(option.percentage_of_votes, precision: 1)})" if poll.votes > 0 %>
 			</span>
 		</span>
 	<% end %>
