@@ -415,7 +415,10 @@ a.show-hidden-post-link {
 /*.convo*/.poll {
 	width: 50%;
 	padding-left: 10px;
-	border: 1px solid #DCE0E3;
+}
+.convo /*.convo*/.poll {
+	border: 1px solid #eee;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.025);
 }
 .poll-option {
 	display: block;
@@ -747,9 +750,15 @@ html.turbolinks-progress-bar::before {
 	top: 1px;
 	margin: 0 5px;
 }
-.editor-header .button.image {
+.editor-header .button.image,
+.editor-header .button.poll-icon {
 	background-image: url('editor/image.png');
 	background-size: 14px;
+}
+.editor-header .button.poll-icon {
+	background-image: url('editor/poll.png');
+	position: relative;
+	top: 1px;
 }
 .editor-header .button.list {
 	background-image: url('editor/list.png');
