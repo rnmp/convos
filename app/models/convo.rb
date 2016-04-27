@@ -15,6 +15,7 @@ class Convo < ActiveRecord::Base
   acts_as_voteable
   include VoteActions
   include Report
+  include PollsHandler
 
   def normalize_friendly_id(string)
     duplicates = Convo.where("slug like ?", "%#{super}%")
@@ -44,19 +45,7 @@ class Convo < ActiveRecord::Base
   end
 
   def handle_polls
-    polls = convo.scan(/\(\) ?.*(?:\n\(\) ?.*)+/)
-    if polls.any?
-      polls.each do |poll|
-        # create poll in db and associate with convo
-        poll_options = []
-        poll.scan(/\(\) ?(.*)/) do |item|
-          poll_options.push(item[0])
-        end
-        @poll = Poll.create_with_options(poll_options)
-        # replace this poll with new poll id in text with `(poll:{id})`
-        convo.gsub!(poll, "(poll:#{@poll.id})")
-      end
-    end
+    polls_handler(convo)
   end
 
   $our_epoch = Time.local(2015, 1, 1, 1, 1, 1).to_time

@@ -412,8 +412,10 @@ a.show-hidden-post-link {
 }
 
 /* polls */
-.poll {
+/*.convo*/.poll {
 	width: 50%;
+	padding-left: 10px;
+	border: 1px solid #DCE0E3;
 }
 .poll-option {
 	display: block;
@@ -429,14 +431,15 @@ a.show-hidden-post-link {
 	border-radius: 2px;
 	background: #eee;
 }
+.poll .percentage.hidden > i{
+	opacity: 0;
+}
 .poll .percentage > i {
 	background: #F3585F;
 }
 
 .poll > figcaption {
-	color: #ababab;
-	border-top: 1px dotted #f4f4f4;
-	font-size: 14px;
+	margin-top: 5px;
 }
 
 /* single convo */
@@ -691,6 +694,7 @@ html.turbolinks-progress-bar::before {
 	.select {
 		border-bottom: 1px dotted #eaeaea;
 	}
+	/*.convo*/.poll, 
 	.nicer-select {
 		width: auto;
 	}
@@ -699,6 +703,13 @@ html.turbolinks-progress-bar::before {
 		bottom: 0;
 	}
 }
+
+.js-loading {
+	position: relative;
+	opacity: 0.5;
+	pointer-events: none;
+}
+
 .md-editor {
 	position: relative;
 	padding-bottom: 15px;

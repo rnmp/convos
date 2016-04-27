@@ -5,11 +5,14 @@ class Comment < ActiveRecord::Base
   validates :user, presence: true
   validates :comment, presence: true
 
+  before_save :handle_polls
+
   acts_as_tree
 
   acts_as_voteable
   include VoteActions
   include Report
+  include PollsHandler
 
   def self.search(search)
     if search
@@ -17,6 +20,10 @@ class Comment < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def handle_polls
+    polls_handler(comment)
   end
 
   def update_popularity
