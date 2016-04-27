@@ -215,7 +215,15 @@ input[type="password"] {
 	border-top: 1px dotted #eee;
 }
 /* items (convos, comments) */
-.convo, .button, input[type="submit"], input, textarea, .select, .notification, .embed-link {
+.convo, 
+.button, 
+input[type="submit"], 
+input, 
+textarea, 
+.select, 
+.notification, 
+.user-content pre,
+.embed-link {
 	padding: 5px 10px;
 	border-radius: 2px;
 }
@@ -483,7 +491,11 @@ a.show-hidden-post-link {
 	background: #fafafa;
 }
 
-.user-content p, .user-content ul, .user-content ol, .alert {
+.user-content p, 
+.user-content ul, 
+.user-content ol, 
+.user-content pre, 
+.alert {
 	margin-bottom: .75em;
 	line-height: 1.4;
 }
@@ -494,6 +506,17 @@ a.show-hidden-post-link {
 .user-content iframe,
 .single-convo img {
 	max-width: 100%;
+}
+
+.user-content pre {
+	background: #BACDD9;
+	color: #fff;
+	border-radius: 2px;
+	padding: 10px;
+	font-family: Monaco, monospace;
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1)
 }
 
 /* comments */
