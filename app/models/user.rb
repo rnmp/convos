@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :convos, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :polls, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   acts_as_voter
@@ -49,6 +50,14 @@ class User < ActiveRecord::Base
       (Time.now - self.convos.last.created_at) > 1.minute
     else
       true
+    end
+  end
+
+  def can_vote_in_poll?(poll)
+    poll.options.each do |option|
+      if self.voted_on?(option)
+        return false
+      end
     end
   end
 

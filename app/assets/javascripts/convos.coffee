@@ -96,6 +96,13 @@ ready = ->
   # fix google analytics with turbolinks
   ga('send', 'pageview', location.pathname)
 
+  $('.poll').on "ajax:send", (e) ->
+    $(this).addClass('js-loading')
+
+  $('.poll').on "ajax:success", (e, xhr, status, error) ->
+    $(this).after(xhr.html)
+    $(this).remove()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 

@@ -31,6 +31,9 @@ gem 'redcarpet'
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
 
+# Originated from Polls (issue-40)
+gem 'render_anywhere', :require => false
+
 # Data migration
 gem 'migration_data'
 

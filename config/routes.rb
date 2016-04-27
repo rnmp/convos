@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/tos', to: 'static_pages#tos'
 
+  post '/poll/:poll_id/:id/vote', to: 'polls#vote', as: :vote_on_poll
+
   resources :topics
 
 

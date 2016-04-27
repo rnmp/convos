@@ -10,11 +10,12 @@ class Convo < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
 
+  before_save :handle_polls
+
   acts_as_voteable
   include VoteActions
   include Report
-
-  include ApplicationHelper
+  include PollsHandler
 
   def normalize_friendly_id(string)
     duplicates = Convo.where("slug like ?", "%#{super}%")
@@ -31,7 +32,8 @@ class Convo < ActiveRecord::Base
     # `convo.title` would result in `Hello`
     # TODO: use for convo.slug
     # TODO: what if convo starts with image/multimedia? (use `alt`?)
-    /<.*>/.match(markdown(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
   end
 
   def self.search(search)
@@ -40,6 +42,10 @@ class Convo < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def handle_polls
+    polls_handler(convo)
   end
 
   $our_epoch = Time.local(2015, 1, 1, 1, 1, 1).to_time

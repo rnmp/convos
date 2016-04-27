@@ -411,6 +411,40 @@ a.show-hidden-post-link {
 	margin-bottom: 3px;
 }
 
+/* polls */
+/*.convo*/.poll {
+	width: 50%;
+	padding-left: 10px;
+}
+.convo /*.convo*/.poll {
+	border: 1px solid #eee;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.025);
+}
+.poll-option {
+	display: block;
+	margin-bottom: 5px;
+}
+.poll-option > span {
+	font-size: 14px;
+}
+.poll .percentage,
+.poll .percentage > i {
+	display: block;
+	height: 2px;
+	border-radius: 2px;
+	background: #eee;
+}
+.poll .percentage.hidden > i{
+	opacity: 0;
+}
+.poll .percentage > i {
+	background: #F3585F;
+}
+
+.poll > figcaption {
+	margin-top: 5px;
+}
+
 /* single convo */
 .single-convo {
 	position: relative;
@@ -663,6 +697,7 @@ html.turbolinks-progress-bar::before {
 	.select {
 		border-bottom: 1px dotted #eaeaea;
 	}
+	/*.convo*/.poll, 
 	.nicer-select {
 		width: auto;
 	}
@@ -671,6 +706,13 @@ html.turbolinks-progress-bar::before {
 		bottom: 0;
 	}
 }
+
+.js-loading {
+	position: relative;
+	opacity: 0.5;
+	pointer-events: none;
+}
+
 .md-editor {
 	position: relative;
 	padding-bottom: 15px;
@@ -708,9 +750,15 @@ html.turbolinks-progress-bar::before {
 	top: 1px;
 	margin: 0 5px;
 }
-.editor-header .button.image {
+.editor-header .button.image,
+.editor-header .button.poll-icon {
 	background-image: url('editor/image.png');
 	background-size: 14px;
+}
+.editor-header .button.poll-icon {
+	background-image: url('editor/poll.png');
+	position: relative;
+	top: 1px;
 }
 .editor-header .button.list {
 	background-image: url('editor/list.png');

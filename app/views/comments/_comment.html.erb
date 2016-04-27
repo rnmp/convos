@@ -4,7 +4,7 @@
   </p>
 <% end %>
 <article class="truncate-content comment convo<%= ' hidden' if comment.points < -5 %><%= " disabled" if current_user && current_user.voted_on?(comment) %><%= " upvoted" if current_user.voted_for?(comment) %>" id="comment-<%= comment.id %>">
-  <%= markdown_content_for comment.comment %>
+  <%= markdown_content_for(comment.comment, current_user) %>
   <p class="metadata">
     <span class="vote-links">
       <%= link_to '', upvote_comment_path(comment), remote: true, 

@@ -1136,13 +1136,13 @@
                 chunk = list[0];
 
                 $.each(list,function(k,v) {
-                  list[k] = '- '+v;
+                  list[k] = '* '+v;
                 });
 
-                e.replaceSelection('\n\n'+list.join('\n'));
+                e.replaceSelection(list.join('\n'));
 
                 // Set the cursor
-                cursor = selected.start+4;
+                cursor = selected.start+2;
               }
             }
 
@@ -1272,10 +1272,57 @@
                   list[k] = '> '+v;
                 });
 
-                e.replaceSelection('\n\n'+list.join('\n'));
+                e.replaceSelection(list.join('\n'));
 
                 // Set the cursor
-                cursor = selected.start+4;
+                cursor = selected.start+2;
+              }
+            }
+
+            // Set the cursor
+            e.setSelection(cursor,cursor+chunk.length);
+          }
+        },
+        {
+          name: 'cmdPoll',
+          // hotkey: 'Ctrl+U',
+          title: 'Poll',
+          btnText: 'Poll',
+          btnClass: 'poll-icon',
+          callback: function(e){
+            // Prepend/Give - surround the selection
+            var chunk, cursor, selected = e.getSelection(), content = e.getContent();
+
+            // transform selection and set the cursor into chunked text
+            if (selected.length === 0) {
+              // Give extra word
+              chunk = e.__localize('poll option');
+
+              e.replaceSelection('() '+chunk);
+              // Set the cursor
+              cursor = selected.start+3;
+            } else {
+              if (selected.text.indexOf('\n') < 0) {
+                chunk = selected.text;
+
+                e.replaceSelection('() '+chunk);
+
+                // Set the cursor
+                cursor = selected.start+3;
+              } else {
+                var list = [];
+
+                list = selected.text.split('\n');
+                chunk = list[0];
+
+                $.each(list,function(k,v) {
+                  list[k] = '() '+v;
+                });
+
+                e.replaceSelection(list.join('\n'));
+
+                // Set the cursor
+                cursor = selected.start+3;
               }
             }
 
