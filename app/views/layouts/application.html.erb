@@ -42,6 +42,13 @@
 				<% end %>
 				<hr>
 				<%= link_to "all comments", comments_path, class: cp(comments_path) %>
+
+				<% if current_user.is_test_user? %>
+					<%= form_tag '/yolo' do |f| %>
+						<%= collection_select(:user, :id, User.test_users, :id, :email,	{ selected: current_user.id}) %>
+						<%= submit_tag "submit" %>
+					<% end %>
+				<% end %>
 			</nav>
 			<%= yield %>
 		</main>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  post '/yolo', to: 'sessions#create_for_test_user'
   get '/logout', to: 'sessions#destroy'
 
   get '/activity', to: 'users#show'

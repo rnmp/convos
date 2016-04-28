@@ -27,6 +27,14 @@ class User < ActiveRecord::Base
     where(admin: true)
   end
 
+  def self.test_users
+    where("email ~ ?", '^testuser\d*@convos.org$')
+  end
+
+  def is_test_user?
+    email =~ /^testuser\d*@convos.org$/
+  end
+
   def total_points
     total_points = 0
     self.convos.each do |convo|
