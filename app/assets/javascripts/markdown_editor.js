@@ -1298,9 +1298,9 @@
               // Give extra word
               chunk = e.__localize('poll option');
 
-              e.replaceSelection('() '+chunk);
+              e.replaceSelection('\n'+'() '+chunk);
               // Set the cursor
-              cursor = selected.start+3;
+              cursor = selected.start+4;
             } else {
               if (selected.text.indexOf('\n') < 0) {
                 chunk = selected.text;
