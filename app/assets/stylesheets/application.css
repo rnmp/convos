@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
  *= require_tree .
  *= require_self
  *= stub scaffolds
@@ -146,13 +135,42 @@ input[type="password"] {
 /** navigation **/
 .user-links {
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	right: 0;
+	font-size: 14px;
+	z-index: 3;
 	padding: 10px;
 	padding-left: 15px;
-	font-size: 14px;
-	z-index: 1;
-	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+@media screen and (max-width: 700px) {
+	.site-footer {
+		margin-bottom: 45px;
+	}
+	.user-links {
+		display: flex;
+		justify-content: center;
+		height: 45px;
+		top: inherit;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 0;
+	}
+	.user-links > * {
+		align-self: center;
+		height: 100%;
+		line-height: 45px;
+		padding: 0 10px;
+	}
+	.user-links > span {
+		display: none;
+	}
+
+	.unread-link::first-letter {
+		margin-top: 13px;
+	}
 }
 .topic-tabs {
 	position: absolute;
@@ -170,7 +188,7 @@ input[type="password"] {
 	width: 30%;
 	margin: 10px 0 5px;
 	margin-left: auto;
-	border: dotted #bacdd9;
+	border: dotted #BBCDD8;
 	border-width: 1px 0 0;
 }
 .topic-tabs a.active {
@@ -459,6 +477,7 @@ a.show-hidden-post-link {
 }
 .single-convo .vote-links {
 	bottom: 5px;
+	border-color: #BBCDD8;
 }
 .pages span {
 	color: #eee;
@@ -513,8 +532,10 @@ a.show-hidden-post-link {
 	color: #fff;
 	border-radius: 2px;
 	padding: 10px;
+}
+.user-content pre code {
 	font-family: Monaco, monospace;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: bold;
 	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1)
 }
@@ -522,10 +543,6 @@ a.show-hidden-post-link {
 /* comments */
 .comments {
 	margin-top: 20px;
-	border-top: 1px dotted #eee;
-}
-.comments form {
-	margin: 20px 0;
 }
 .replies {
 	margin-left: 2px;
@@ -665,12 +682,11 @@ input[type="submit"][disabled] {
 	content: '';
 	display: block;
 	position: absolute;
-	opacity: 0.3;
 	width: 100%;
 	top: 50%;
 	margin-top: 1px;
 	z-index: 1;
-	border-top: 1px dotted currentColor;
+	border-top: 1px dotted #BBCDD8;
 }
 
 html.turbolinks-progress-bar::before {

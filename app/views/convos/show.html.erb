@@ -3,9 +3,16 @@
 <%= render @convo %>
 
 <section class="comments">
+  <% if @comments.any? %>
+    <h2><%= pluralized_comments_for @convo %></h2>
+  <% end %>
   <%= render partial: 'comments/form', locals: { comment: @comment, submit_text: 'submit', placeholder: 'leave a comment...', form_id: 'new_comment' } %>
-  <% if @comments.count > 0 %>
-    <h2><%= pluralized_comments_for @convo %>  <%= link_to "top", convo_path(@convo) %> <%= link_to "recent", convo_path(@convo)+'?show=recent' %> </h2>
+  <% if @comments.any? %>
+    <ul class="horizontal-menu _group">
+      <li>sort by</li>
+      <li><%= link_to 'top', '?show=top', class: ("active" if params[:show] != 'recent') %></li>
+      <li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] == 'recent') %></li>
+    </ul>
     <%= comments_tree_for @comments, @comments_order %>
   <% end %>
 </section>
