@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<%= metamagic site: "convos.org", title: [:title, :site], separator: " | ",
+		<%= metamagic site: "convos", title: [:title, :site], separator: " | ",
 			description: "An anonymous message board. Share your thoughts, comment and vote. No registration required.",
 			keywords: %w(anonymous forum reddit 4chan alternative) %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -34,7 +34,7 @@
 			<% end %>
 		</nav>
 		<main>
-			<%= link_to image_tag('logo.png', alt:'convos.org'), root_path, class:'logo' %>
+			<%= link_to image_tag('logo.png', alt:'convos'), root_path, class:'logo' %>
 			<nav class="topic-tabs">
 				<%= link_to "all convos", root_path, class: cp(root_path) %>
 				<% for topic in topics_list %>
