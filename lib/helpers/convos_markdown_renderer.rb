@@ -4,7 +4,6 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
   VALID_VIMEO_URL = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/
   VALID_DIRECT_IMAGE_URL = /\.(png|gif|jpg|jpeg)$/
 
-  include Redcarpet::Render::SmartyPants
   include RenderAnywhere
 
   def initialize(options)
@@ -52,7 +51,7 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
       @poll = Poll.find(poll_id)
       render @poll
     end
-    full_document
+    Redcarpet::Render::SmartyPants.render(full_document)
   end
 
   private 
