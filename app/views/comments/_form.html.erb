@@ -1,4 +1,6 @@
 <%= form_for comment, html: {id: form_id, class: 'block-form comment-form'} do |f| %>
+  <%= invisible_captcha %>
+  
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -18,19 +20,6 @@
     <%= f.text_area :comment, placeholder: placeholder, :maxlength => 10000 %>
   </div>
   <div class="options">
-    <!-- guerilla antispam 😾✌🏼👉🏼 -->
-    <input type="text" class="hidden not-really-your-website" placeholder="do not fill" />
-    <script>
-      $(function(){
-        $('.block-form.comment-form').on('submit', function(){
-          if ($('.not-really-your-website', this).val().length != 0){
-            return false;
-          }
-        });
-      });
-    </script>
-    <!-- i would integrate this into main code but bots ain't deserve it -->
-
     <%= f.label :author, 'sign it (optional)', class: 'redundant-label' %>
     <%= f.text_field :author, placeholder: '— sign it (optional)', style: 'marg' %>
     <%= f.submit submit_text %>

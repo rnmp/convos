@@ -43,6 +43,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Puma as the app server
 gem 'puma'
 
+# Combat spam 😾
+gem 'invisible_captcha'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
