@@ -125,6 +125,7 @@ main {
 .block-form, 
 .nicer-select, 
 .convo, 
+.page,
 .notification, 
 input[type="text"], 
 input[type="email"], 
@@ -253,7 +254,7 @@ textarea,
 	border-width: 0 0 1px 0;
 	word-wrap: break-word;
 }
-.convo, .convo.truncate .user-content::after, .notification {
+.convo, .convo.truncate .user-content::after, .notification, .page {
 	background: #fff;
 }
 
@@ -407,7 +408,8 @@ a.arrow.downvote.active {
 .metadata a,
 .formatting-link,
 .user-links a,
-a.show-hidden-post-link {
+a.show-hidden-post-link,
+.pagination {
 	color: #93A2AB;
 }
 .admin-tag {
@@ -683,6 +685,21 @@ input[type="submit"][disabled] {
 	margin-top: 1px;
 	z-index: 1;
 	border-top: 1px dotted #BBCDD8;
+}
+
+.pagination {
+	margin-top: 20px;
+	font-weight: bold;
+	text-transform: lowercase;
+	color: #aaa;
+	line-height: 30px;
+	text-align: center;
+}
+.pagination .page {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
 }
 
 html.turbolinks-progress-bar::before {
