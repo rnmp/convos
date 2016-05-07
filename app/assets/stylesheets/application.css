@@ -260,6 +260,7 @@ textarea,
 
 .show-hidden-post-link,
 .embed-link,
+.convo.truncate .user-content,
 .convo.truncate .user-content .expand-link {
 	cursor: pointer;
 }
@@ -285,7 +286,7 @@ textarea,
 }
 .convo.truncate .user-content {
 	position: relative;
-	height: 200px;
+	height: 160px;
 	overflow: hidden;
 }
 .comment.truncate .user-content {
@@ -293,16 +294,20 @@ textarea,
 }
 .convo.truncate .user-content .expand-link {
 	position: absolute;
-	bottom: 0;
+	bottom: -2px;
 	z-index: 1;
 }
 .convo.truncate .user-content::after {
 	position: absolute;
 	content: '';
-	height: 21px;
+	height: 60px;
 	width: 100%;
 	bottom: 0;
 	pointer-events: none;
+	background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+    background: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+    background: -o-linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
 }
 
 .convo, .single-convo {
@@ -401,7 +406,8 @@ a.arrow.downvote.active {
 	transform: translate(0, 5px);
 }
 
-.metadata {
+.metadata,
+.convo.truncate .user-content .expand-link {
 	font-size: 14px;
 }
 .metadata,

@@ -17,8 +17,11 @@ truncateContent = ->
         return 200
     if content.height() > threshold()
       $(self).addClass('truncate')
-      expand_link = $('<a>').addClass('expand-link').text('— expand —')
+      expand_link = $('<a>').addClass('expand-link').text('expand')
       content.append(expand_link)
+      $(self).on "click", () ->
+        $(self).removeClass('truncate')
+        expand_link.remove()
       expand_link.on "click", () ->
         $(self).removeClass('truncate')
         $(this).remove()
