@@ -418,6 +418,9 @@ a.show-hidden-post-link,
 	color: #fff;
 	border-radius: 2px;
 }
+.separator {
+	opacity: 0.25;
+}
 
 .thumbnail {
 	float: right;
@@ -756,6 +759,12 @@ html.turbolinks-progress-bar::before {
 	.md-editor {
 		position: fixed;
 		bottom: 0;
+	}
+
+	.registration-form > div {
+		float: none;
+		width: auto;
+		padding-right: none;
 	}
 }
 
