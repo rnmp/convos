@@ -14,7 +14,7 @@ truncateContent = ->
       if $(self).hasClass('comment')
         return 350 
       else
-        return 90
+        return 200
     if content.height() > threshold()
       $(self).addClass('truncate')
       expand_link = $('<a>').addClass('expand-link').text('— expand —')

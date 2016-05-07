@@ -285,7 +285,7 @@ textarea,
 }
 .convo.truncate .user-content {
 	position: relative;
-	height: 90px;
+	height: 200px;
 	overflow: hidden;
 }
 .comment.truncate .user-content {
