@@ -36,6 +36,11 @@ class Convo < ActiveRecord::Base
     /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
   end
 
+  def thumbnails
+    # TODO: this may be replaced with a more fancy shit
+    /https?:\/\/.*\.(png|gif|jpg|jpeg)/.match(convo).to_a
+  end
+
   def self.search(search)
     if search
       where("title LIKE ? OR comment LIKE ?", "%#{search}%", "%#{search}%")

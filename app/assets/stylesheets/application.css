@@ -418,20 +418,16 @@ a.show-hidden-post-link {
 }
 
 .thumbnail {
-	float: left;
-	max-height: 75px;
+	float: right;
+	height: 60px;
+	width: 60px;
+	margin: -3px;
+	margin-left: 10px;
 	overflow: hidden;
-	margin: -4px;
-	margin-left: -6px;
-	margin-right: 8px;
-	margin-bottom: -6px;
-	border-radius: 0 2px 2px 0;
+	border-radius: 1.5px;
 	background: #f9f9f9;
-	position: relative;
-}
-.thumbnail > img {
-	width: 75px;
-	position: relative;
+	background-size: cover;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
 .user-content {
 	margin-bottom: 3px;

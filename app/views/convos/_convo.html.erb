@@ -4,6 +4,14 @@
   </p>
 <% end %>
 <article class="<%= 'active ' if params[:convo].to_i == convo.id %><%= @convo ? 'single-convo' : 'convo truncate-content' %> _group<%= ' disabled' if current_user.voted_on?(convo) %><%= ' upvoted' if current_user.voted_for?(convo) %><%= ' hidden' if convo.points < -5 %>">
+  <% if convo.thumbnails.any? && !@convo %>
+    <a 
+      class="thumbnail" 
+      href="<%= convo.thumbnails.first %>"
+      style="background-image: url('<%= convo.thumbnails.first %>');" >
+      <%= image_tag convo.thumbnails.first, style: 'display: none' %>
+    </a>
+  <% end %>
   <%= markdown_content_for(convo.convo, current_user) %>
   <p class="metadata">
     <span class="vote-links">

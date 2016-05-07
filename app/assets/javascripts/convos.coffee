@@ -39,6 +39,7 @@ ready = ->
   $('.multimedia').on 'click', (e) ->
     if $(e.target).hasClass('embed-link')
       $('.embed-code', this).show()
+      $('.thumbnail', $(this).closest('.convo')).remove()
       $(e.target).remove()
 
   $('.convo.hidden').each ->
