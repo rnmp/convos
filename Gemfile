@@ -26,7 +26,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Nested comments
 gem 'closure_tree'
+
+# Markdown
 gem 'redcarpet'
+
+# Amazon S3
+gem 'aws-sdk', '~> 2'
 
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
