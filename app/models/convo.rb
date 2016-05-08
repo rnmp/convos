@@ -33,7 +33,9 @@ class Convo < ActiveRecord::Base
     # TODO: use for convo.slug
     # TODO: what if convo starts with image/multimedia? (use `alt`?)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').html_safe.truncate(70)
+    Redcarpet::Render::SmartyPants.render(
+      /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').truncate(70)
+      ).html_safe
   end
 
   def thumbnails

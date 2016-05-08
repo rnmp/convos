@@ -20,9 +20,9 @@
       <%= link_to '', downvote_convo_path(convo), remote: true, 
         class: 'arrow downvote'+(' active' if current_user.voted_against?(convo)).to_s %>
     </span>
-    <%= link_to_unless @convo, pluralized_points_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> |
+    <%= link_to_unless @convo, pluralized_points_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">•</span>
     <% unless @convo %>
-      <%= link_to pluralized_comments_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> |
+      <%= link_to pluralized_comments_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">•</span>
     <% end %>
     <%= link_to_unless @convo, (time_ago_in_words convo.created_at)+' ago', convo_slug_path(convo.topic.slug, convo.id, convo.slug) %>
     <% if convo.edited? %>(edited)<% end %>
@@ -48,11 +48,11 @@
       <% end %>
     <% end %>
     <% unless convo.user == current_user %>
-    | <%= link_to 'report', report_convo_path(convo), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
+    <span class="separator">•</span> <%= link_to 'report', report_convo_path(convo), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
     <% end %>
     <% if current_user.can_edit?(convo) %>
-      | <%= link_to 'edit', edit_convo_path(convo) %> 
-      | <%= link_to 'delete', convo, :method => :delete, data: { confirm: "Are you sure?" } %>
+      <span class="separator">•</span> <%= link_to 'edit', edit_convo_path(convo) %> 
+      <span class="separator">•</span> <%= link_to 'delete', convo, :method => :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </p>
 </article>
