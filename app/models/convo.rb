@@ -16,6 +16,7 @@ class Convo < ActiveRecord::Base
   include VoteActions
   include Report
   include PollsHandler
+  include ActionView::Helpers::SanitizeHelper
 
   def normalize_friendly_id(string)
     duplicates = Convo.where("slug like ?", "%#{super}%")
@@ -30,12 +31,17 @@ class Convo < ActiveRecord::Base
     # matches first HTML tag and uses its content as title
     # e.g. if convo.convo is `<p>Hello</p><p>How are you?</p>`
     # `convo.title` would result in `Hello`
-    # TODO: use for convo.slug
     # TODO: what if convo starts with image/multimedia? (use `alt`?)
+    
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    Redcarpet::Render::SmartyPants.render(
-      /<.*>/.match(markdown.render(convo))[0].gsub!(/<[^>]*>/, '').truncate(70)
-      ).html_safe
+
+    @title = strip_tags(markdown.render(convo.gsub(/\n.*$/, '')))
+
+    if @title.blank?
+      'untitled'
+    else
+      Redcarpet::Render::SmartyPants.render(@title).html_safe 
+    end
   end
 
   def thumbnails
