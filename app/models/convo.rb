@@ -12,6 +12,8 @@ class Convo < ActiveRecord::Base
 
   before_save :handle_polls
 
+  attr_accessor :img_url
+
   acts_as_voteable
   include VoteActions
   include Report
