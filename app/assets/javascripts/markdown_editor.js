@@ -1112,6 +1112,9 @@
             $imageWizard.append($urlButton);
             $form.append($imageWizard);
 
+            // HACK: only way i can think of for now
+            setTimeout(function(){$urlInput.select()}, 0)
+
             var $progressBar  = $("<div class='progress-bar'></div>");
             $imageWizard.prepend($progressBar);
 
