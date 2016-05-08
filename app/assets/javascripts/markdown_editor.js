@@ -1299,8 +1299,8 @@
             // transform selection and set the cursor into chunked text
             if (selected.length === 0) {
               // Give extra word
-              chunk = "name your poll"
-              e.replaceSelection('name your poll\n\n() poll option a\n() poll option b\n() etc.');
+              chunk = "Name your poll here, options below"
+              e.replaceSelection('Name your poll here, options below\n\n() Enter poll option...\n() Enter poll option...\n() Etc.');
               // Set the cursor
               cursor = selected.start;
             } else {
