@@ -1029,7 +1029,6 @@
               // Empty string before element
               e.replaceSelection('# '+chunk);
               cursor = selected.start+2;
-              console.log('yolo')
             }
 
             // Set the cursor
