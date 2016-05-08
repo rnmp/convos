@@ -1142,7 +1142,8 @@
                 insertImageLink(decodeURIComponent($(data.jqXHR.responseXML).find("Location").text()));
               },
               fail: function(e, data) {
-                insertImageLink('ERROR');
+                $progressBar.css('width', '0%')
+                alert('Please upload an image…');
               }
             });
 
