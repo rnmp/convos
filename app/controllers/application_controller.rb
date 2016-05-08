@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :assign_current_user, unless: :current_user
+  before_action :set_s3_direct_post
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::Base
       matching_user = new_guest_user
     end
     session[:user_id] = matching_user.id
+  end
+
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
   end
 end

@@ -16,6 +16,8 @@
 //= require autosize
 //= require fastclick
 //= require markdown_editor
+//= require jquery.ui.widget
+//= require jquery.fileupload
 //= require_tree .
 
 String.prototype.pluralize = function(count, plural){
