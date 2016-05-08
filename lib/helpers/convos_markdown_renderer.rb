@@ -34,7 +34,7 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
   end
 
   def image(link, title, alt_text)
-    multimedia_link(link, :image, "<img src='#{link}' title='#{title}' alt='#{alt_text}' />", link)
+    multimedia_link(link, :image, "<img src='#{link}' title='#{title}' alt='#{alt_text}' />", alt_text || link.split('/').last)
   end
 
   # For future reference:
