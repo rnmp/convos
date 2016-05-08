@@ -622,6 +622,10 @@
 
       var e = this.$textarea[0];
 
+      var evt = document.createEvent('Event');
+      evt.initEvent('autosize:update', true, false);
+      e.dispatchEvent(evt);
+
       return (
 
           ('selectionStart' in e && function() {
@@ -1025,7 +1029,6 @@
               // Empty string before element
               e.replaceSelection('# '+chunk);
               cursor = selected.start+2;
-              console.log('yolo')
             }
 
             // Set the cursor
@@ -1296,11 +1299,10 @@
             // transform selection and set the cursor into chunked text
             if (selected.length === 0) {
               // Give extra word
-              chunk = e.__localize('poll option');
-
-              e.replaceSelection('\n'+'() '+chunk);
+              chunk = "name your poll"
+              e.replaceSelection('name your poll\n\n() poll option a\n() poll option b\n() etc.');
               // Set the cursor
-              cursor = selected.start+4;
+              cursor = selected.start;
             } else {
               if (selected.text.indexOf('\n') < 0) {
                 chunk = selected.text;
