@@ -901,24 +901,34 @@ a.close-button {
 		border-width: 0 0 0 1px;
 	}
 	.img-wizard {
-		position: fixed;
 		border: none;
 		flex-direction: column;
-		z-index: 4;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.img-wizard .option {
+		padding: 0;
+	}
+	.img-wizard .option p {
+		position: inherit;
+		bottom: inherit;
 	}
 	.img-wizard .or {
-		height: inherit;
+		display: none;
+	}
+	.img-wizard .option:last-of-type p::before {
+		content: 'or ';
+	}
+	.img-wizard .button {
+		margin: 0;
+		margin-bottom: 10px;
+		align-self: inherit;
 	}
 	.img-wizard .close-button {
 		top: 10px;
 		right: 10px;
-	}
-	.img-wizard .or::before {
-		content: 'or';
-	}
-	.img-wizard .button {
-		margin: 0;
-		margin-bottom: 30px;
 	}
 	.block-form .options {
 		flex-direction: column;

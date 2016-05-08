@@ -1086,7 +1086,6 @@
           btnClass: 'image',
           hotkey: 'Ctrl+G',
           callback: function(e){
-
             // Give ![] surround the selection and prepend the image link
             var chunk = '', cursor, selected = e.getSelection(), content = e.getContent();
 
