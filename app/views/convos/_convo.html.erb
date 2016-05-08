@@ -21,6 +21,9 @@
         class: 'arrow downvote'+(' active' if current_user.voted_against?(convo)).to_s %>
     </span>
     <%= link_to_unless @convo, pluralized_points_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">•</span>
+    <% unless @convo || convo.user == current_user %>
+      <%= link_to 'reply', "#reply_to_convo_#{convo.id}", class: 'show-reply-form' %> <span class="separator">•</span>
+    <% end %>
     <% unless @convo %>
       <%= link_to pluralized_comments_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">•</span>
     <% end %>
@@ -56,3 +59,8 @@
     <% end %>
   </p>
 </article>
+<% unless @convo || convo.user == current_user %>
+  <div class="replies">
+    <%= render partial: 'comments/form', locals: { comment: Comment.new(convo_id: convo.id), submit_text: 'submit', placeholder: 'leave a comment...', form_id: "reply_to_convo_#{convo.id}" } %>
+  </div>
+<% end %>
