@@ -1,6 +1,5 @@
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :report]
-  before_action :set_s3_direct_post, only: [:index, :edit, :create, :update]
   
   invisible_captcha only: [:create, :update]
 
@@ -99,9 +98,5 @@ class ConvosController < ApplicationController
 
     def convo_params
       params.require(:convo).permit(:convo, :author, :topic_id, :points, :by_admin)
-    end
-
-    def set_s3_direct_post
-      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 end

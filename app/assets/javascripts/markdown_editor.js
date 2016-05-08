@@ -1079,29 +1079,90 @@
           hotkey: 'Ctrl+G',
           callback: function(e){
             // Give ![] surround the selection and prepend the image link
-            var chunk, cursor, selected = e.getSelection(), content = e.getContent(), link;
+            var chunk = '', cursor, selected = e.getSelection(), content = e.getContent(), link;
 
-            chunk = selected.length === 0 ? '' : selected.text;
 
-            link = prompt(e.__localize('Image URL'),'http://');
-            if (link === null) {
-              return;
-            }
+            var $form = e.$textarea.closest('.block-form');
+            var $fileInput = $('<input accept="image/*" type="file" />');
+            var $urlInput = $('<input type="text" />');
+            var $urlButton = $('<a class="button">done</a>')
+            var $browser = $('<div class="img-wizard"></div>');
 
-            // var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
-            // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
-              // var sanitizedLink = $('<div>'+link+'</div>').text();
+            $browser.append($fileInput);
+            $browser.append($urlInput);
+            $browser.append($urlButton);
+            $form.append($browser);
 
-              // transform selection and set the cursor into chunked text
+            var progressBar  = $("<div class='bar'></div>");
+            var barContainer = $("<div class='progress'></div>").append(progressBar);
+            $browser.prepend(barContainer);
+
+            $fileInput.fileupload({
+              fileInput:       $fileInput,
+              url:             $form.data('url'),
+              type:            'POST',
+              autoUpload:      true,
+              formData:        $form.data('form-data'),
+              paramName:       'file',
+              dataType:        'XML',
+              replaceFileInput: false,
+              progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                progressBar.css('width', progress + '%')
+              },
+              start: function (e) {
+
+                progressBar.
+                  css('background', 'green').
+                  css('display', 'block').
+                  css('width', '0%').
+                  text("Loading...");
+              },
+              done: function(event, data) {
+                progressBar.text("Uploading done");
+                var url = decodeURIComponent($(data.jqXHR.responseXML).find("Location").text());
+
+                link = url;
+                $browser.remove();
+                e.replaceSelection('!['+chunk+']('+link+')');
+              },
+              fail: function(e, data) {
+
+                progressBar.
+                  css("background", "red").
+                  text("Failed");
+              }
+            });
+
+            $urlButton.on('click', function(){
+              link = $urlInput.val();
               e.replaceSelection('!['+chunk+']('+link+')');
-              cursor = selected.start+2;
+              $browser.remove();
+            });
 
-              // Set the next tab
-              // e.setNextTab(e.__localize('enter image title here'));
+            e.setSelection(cursor+chunk.length+link.length+5,cursor+chunk.length+link.length+5);
 
-              // Set the cursor
-              e.setSelection(cursor+chunk.length+link.length+5,cursor+chunk.length+link.length+5);
+            // chunk = selected.length === 0 ? '' : selected.text;
+
+            // // link = prompt(e.__localize('Image URL'),'http://');
+            // link = e.imgWizard();
+            // if (link === null) {
+            //   return;
             // }
+
+            // // var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
+            // // if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
+            //   // var sanitizedLink = $('<div>'+link+'</div>').text();
+
+            //   // transform selection and set the cursor into chunked text
+            //   e.replaceSelection('!['+chunk+']('+link+')');
+            //   cursor = selected.start+2;
+
+            //   // Set the next tab
+            //   // e.setNextTab(e.__localize('enter image title here'));
+
+            //   // Set the cursor
+            // // }
           }
         }]
       },{
