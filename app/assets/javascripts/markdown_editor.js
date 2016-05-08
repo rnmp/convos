@@ -1115,12 +1115,19 @@
             var $progressBar  = $("<div class='progress-bar'></div>");
             $imageWizard.prepend($progressBar);
 
+            var policyData = JSON.parse(JSON.stringify($form.data('form-data')))
+
             $fileInput.fileupload({
+              add: function(e, data){
+                policyData['Content-Type'] = data.files[0].type;
+                data.formData = policyData;
+                data.submit()
+              },
               fileInput:       $fileInput,
               url:             $form.data('url'),
               type:            'POST',
               autoUpload:      true,
-              formData:        $form.data('form-data'),
+              formData:        policyData,
               paramName:       'file',
               dataType:        'XML',
               replaceFileInput: false,

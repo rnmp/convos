@@ -1,11 +1,11 @@
 <%= form_for convo, html: { class: 'block-form', 
   data: { 
-    'form-data' => (@s3_direct_post.fields), 
+    'form-data' => @s3_direct_post.fields, 
     'url' => @s3_direct_post.url, 
     'host' => URI.parse(@s3_direct_post.url).host 
   } } do |f| %>
   <%= invisible_captcha %>
-  
+
   <% if convo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(convo.errors.count, "error") %> prohibited this convo from being saved:</h2>

@@ -31,7 +31,7 @@ gem 'closure_tree'
 gem 'redcarpet'
 
 # Amazon S3
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk'
 
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'

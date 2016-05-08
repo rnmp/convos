@@ -1,4 +1,5 @@
-<%= form_for comment, html: {id: form_id, class: 'block-form comment-form',
+<%= form_for comment, html: {
+  id: form_id, class: 'block-form comment-form',
   data: { 
     'form-data' => (@s3_direct_post.fields), 
     'url' => @s3_direct_post.url, 

@@ -214,7 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 2)
+  aws-sdk
   bcrypt (~> 3.1.7)
   byebug
   closure_tree
