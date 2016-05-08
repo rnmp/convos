@@ -1,6 +1,6 @@
 class Convo < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :to_slug, use: [:slugged, :finders]
 
   belongs_to :topic
   belongs_to :user
@@ -29,6 +29,12 @@ class Convo < ActiveRecord::Base
     end
   end
 
+  def to_slug
+    @slug = title
+    @slug.gsub!(/&\w*;/, '')
+    @slug
+  end
+
   def title
     # matches first HTML tag and uses its content as title
     # e.g. if convo.convo is `<p>Hello</p><p>How are you?</p>`
@@ -42,7 +48,7 @@ class Convo < ActiveRecord::Base
     if @title.blank?
       'untitled'
     else
-      Redcarpet::Render::SmartyPants.render(@title).html_safe 
+      Redcarpet::Render::SmartyPants.render(@title).html_safe.truncate(70)
     end
   end
 
