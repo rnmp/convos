@@ -439,6 +439,7 @@ a.show-hidden-post-link,
 	border-radius: 1.5px;
 	background: #f9f9f9;
 	background-size: cover;
+	background-position: center;
 }
 .thumbnail,
 .img-wizard input {
