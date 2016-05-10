@@ -40,6 +40,7 @@ ready = ->
 
   $('.convo .embed-code').hide()
   $('.single-convo .embed-link').hide()
+  
   $('.multimedia').on 'click', (e) ->
     if $(e.target).hasClass('embed-link')
       $('.embed-code', this).show()

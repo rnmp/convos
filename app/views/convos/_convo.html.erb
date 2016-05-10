@@ -1,4 +1,4 @@
-﻿<% if cp(activity_path) %>
+<% if cp(activity_path) %>
   <p class="post-reference metadata">
     <span>you started a convo</span>
   </p>
@@ -59,8 +59,3 @@
     <% end %>
   </p>
 </article>
-<% unless @convo || convo.user == current_user %>
-  <div class="replies">
-    <%= render partial: 'comments/form', locals: { comment: Comment.new(convo_id: convo.id), submit_text: 'submit', placeholder: 'leave a comment...', form_id: "reply_to_convo_#{convo.id}" } %>
-  </div>
-<% end %>
