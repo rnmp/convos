@@ -59,3 +59,8 @@
     <% end %>
   </p>
 </article>
+<% unless @convo || convo.user == current_user %>
+  <div class="replies">
+    <%= render partial: 'comments/form', locals: { comment: Comment.new(convo_id: convo.id), submit_text: 'submit', placeholder: 'leave a comment...', form_id: "reply_to_convo_#{convo.id}" } %>
+  </div>
+<% end %>
