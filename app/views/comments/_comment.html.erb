@@ -33,10 +33,12 @@
         <% else %>
           <% if current_user.admin? and comment.user.admin? %>
             <span class="admin-tag"><%= comment.user.username %></span>
+          <% elsif comment.user == comment.convo.user %>
+            <abbr class="op-tag" title="convo’s author">author</abbr>
           <% else %>
             someone
           <% end %>
-        <% end %> 
+        <% end %>
       <% end %>
     <% end %>
     <% unless comment.user == current_user %>

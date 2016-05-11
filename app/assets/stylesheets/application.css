@@ -20,6 +20,9 @@ body {
 	/*ios*/
 	-webkit-text-size-adjust: 100%;
 }
+abbr {
+	cursor: help;
+}
 a, .metadata a.highlight {
 	color: #F5565B;
 	text-decoration: none;
@@ -424,6 +427,9 @@ a.show-hidden-post-link,
 	background: #B9CDDA;
 	color: #fff;
 	border-radius: 2px;
+}
+.op-tag {
+	font-weight: bold;
 }
 .separator {
 	opacity: 0.25;
