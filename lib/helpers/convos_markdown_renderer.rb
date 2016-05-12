@@ -67,8 +67,8 @@ class ConvosMarkdownRenderer < Redcarpet::Render::HTML
 
     def multimedia_link(link, type, embed_code, content)
       "<span class='multimedia'>" + 
-        "#{normal_link(link, content)} <a class='embed-link' href='javascript:;'>show #{type}</a>" +
         "<span class='embed-code'>#{embed_code}</span>" +
+        "#{normal_link(link, content)} <a class='embed-link' href='javascript:;'>show #{type}</a>" +
       "</span>"
     end
 

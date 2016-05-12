@@ -501,6 +501,11 @@ a.show-hidden-post-link,
 	color: #eee;
 }
 
+.user-content img,
+.user-content iframe {
+	display: block;
+	margin-bottom: 5px;
+}
 .user-content li {
 	margin-left: 1.5em;
 }
