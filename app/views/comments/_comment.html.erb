@@ -25,20 +25,20 @@
     <% if comment.edited? %>(edited)<% end %>
     <% if @convo %>
       by
-      <% if comment.by_admin? %>
-        <span class="admin-tag">admin</span>
-      <% else %>
-        <% if comment.author? %>
-          <%= comment.author %>
+      <% if comment.user == comment.convo.user %>
+        <abbr class="op-tag" title="the author of the convo">
+      <% end %>
+        <% if comment.by_admin? %>
+          <span class="admin-tag">admin</span>
         <% else %>
-          <% if current_user.admin? and comment.user.admin? %>
-            <span class="admin-tag"><%= comment.user.username %></span>
-          <% elsif current_user.admin? and comment.user == comment.convo.user %>
-            <abbr class="op-tag" title="the author of the convo">author</abbr>
+          <% if comment.author? %>
+              <%= comment.author %>
           <% else %>
-            someone
+            <%= comment.user == comment.convo.user ? 'author' : 'someone' %>
           <% end %>
         <% end %>
+      <% if comment.user == comment.convo.user %>
+        </abbr>
       <% end %>
     <% end %>
     <% unless comment.user == current_user %>
