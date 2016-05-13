@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
         redirect_path = convo_slug_path(@convo.topic.slug, @convo.id, @convo.slug, anchor: "comment-#{@comment.id}")
 
         @notification.message = \
-          "Someone replied to <a href='#{redirect_path}' target='_blank'>"\
+          "Someone replied to <a href='#{redirect_path}'>"\
           "your #{ @comment.parent_id ? 'comment' : 'convo' }</a>.".html_safe
         @notification.save unless @notification.user_id == current_user.id
 
