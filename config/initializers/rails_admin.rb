@@ -1,8 +1,6 @@
 RailsAdmin.config do |config|
-  config.authenticate_with do
-    authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == 'sdh-admin' && password == 'r0l4nd0 g4yl0rd'
-    end
+  config.authorize_with do
+    redirect_to '/' unless current_user.admin?
   end
 
   ### Popular gems integration
