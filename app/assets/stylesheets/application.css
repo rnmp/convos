@@ -432,7 +432,9 @@ a.show-hidden-post-link,
 	font-weight: bold;
 }
 .separator {
-	opacity: 0.25;
+	display: inline-block;
+	opacity: 0;
+	width: 5px;
 }
 
 .thumbnail {

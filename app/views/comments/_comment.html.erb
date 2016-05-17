@@ -15,11 +15,11 @@
     <% if @convo %>
       <% from_reply_form ||= nil %>
       <% unless from_reply_form %>
-        <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> <span class="separator">•</span>
+        <a href="#reply_to_<%= comment.id %>" class="highlight show-reply-form">reply</a> <span class="separator"> |</span>
       <% end %>
     <% end %>
     <%= link_to pluralized_points_for(comment), 
-      "#comment-#{comment.id}", title: 'Permalink to comment' %> <span class="separator">•</span>
+      "#comment-#{comment.id}", title: 'Permalink to comment' %> <span class="separator">|</span>
     <%= link_to time_ago_in_words(comment.created_at)+' ago', 
       "#comment-#{comment.id}", title: 'Permalink to comment' %>
     <% if comment.edited? %>(edited)<% end %>
@@ -42,11 +42,11 @@
       <% end %>
     <% end %>
     <% unless comment.user == current_user %>
-   <span class="separator">•</span> <%= link_to 'report', report_comment_path(comment), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
+   <span class="separator">|</span> <%= link_to 'report', report_comment_path(comment), remote: true, method: :post, class: 'report-link', data: { confirm: "Are you sure?" } %>
     <% end %>
     <% if current_user.can_edit?(comment) %>
-     <span class="separator">•</span> <%= link_to 'edit', edit_comment_path(comment) %>
-     <span class="separator">•</span> <%= link_to 'delete', comment, :method => :delete %>
+     <span class="separator">|</span> <%= link_to 'edit', edit_comment_path(comment) %>
+     <span class="separator">|</span> <%= link_to 'delete', comment, :method => :delete %>
     <% end %>
   </p>
 </article>

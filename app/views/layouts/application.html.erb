@@ -30,12 +30,12 @@
 		<nav class="user-links metadata">
 			<%= unread_notifications_link %>
 			<% if current_user.guest? %>
-				<%= link_to "log in", login_path %> <span class="separator">•</span>
+				<%= link_to "log in", login_path %> <span class="separator">|</span>
 				<%= link_to "sign up (optional)", signup_path, class: 'highlight' %>
 			<% else %>
-				<!-- <a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> <span class="separator">•</span>  -->
-				<a href='/activity'>my activity (<%= current_user.total_points %>)</a> <span class="separator">•</span> 
-				<%= link_to "settings", settings_path %> <span class="separator">•</span>
+				<!-- <a href='/activity'>hello, <strong><%= current_user.email %></strong> (<%= current_user.total_points %>)</a> <span class="separator">|</span>  -->
+				<a href='/activity'>my activity (<%= current_user.total_points %>)</a> <span class="separator">|</span> 
+				<%= link_to "settings", settings_path %> <span class="separator">|</span>
 				<%= link_to "logout", logout_path %>
 			<% end %>
 		</nav>
