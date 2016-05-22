@@ -19,7 +19,7 @@ truncateContent = ->
       $(self).addClass('truncate')
       expand_link = $('<a>').addClass('expand-link').text('expand')
       content.append(expand_link)
-      $(self).on "click", () ->
+      $('.user-content', self).on "click", () ->
         $(self).removeClass('truncate')
         expand_link.remove()
       expand_link.on "click", () ->
