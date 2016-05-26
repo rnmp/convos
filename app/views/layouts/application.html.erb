@@ -48,6 +48,7 @@
 				<% end %>
 				<hr>
 				<%= link_to "all comments", comments_path, class: cp(comments_path) %>
+				<%= link_to "[new] convos on Twitter", "https://twitter.com/convosorg", :target => "_blank" %>
 
 				<% if current_user.is_test_user? %>
 					<%= form_tag '/yolo' do |f| %>

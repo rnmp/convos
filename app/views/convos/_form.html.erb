@@ -1,4 +1,4 @@
-<%= form_for convo, html: { class: 'block-form', 
+﻿<%= form_for convo, html: { class: 'block-form', 
   data: { 
     'form-data' => @s3_direct_post.fields, 
     'url' => @s3_direct_post.url, 
@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label :convo, 'message', class: 'redundant-label' %>
-    <%= f.text_area :convo, placeholder: 'share a thought, story, or anything…', :maxlength => 10000 %>
+    <%= f.text_area :convo, placeholder: 'what's on your mind?', :maxlength => 10000 %>
   </div>
 
   <div class="options">
