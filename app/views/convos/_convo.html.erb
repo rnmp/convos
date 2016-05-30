@@ -21,7 +21,7 @@
         class: 'arrow downvote'+(' active' if current_user.voted_against?(convo)).to_s %>
     </span>
     <%= link_to_unless @convo, pluralized_points_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">|</span>
-    <% unless @convo %>
+    <% unless @convo || convo.comments.blank? %>
       <%= link_to pluralized_comments_for(convo), convo_slug_path(convo.topic.slug, convo.id, convo.slug) %> <span class="separator">|</span>
     <% end %>
     <% unless @convo || convo.user == current_user %>

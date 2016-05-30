@@ -41,7 +41,7 @@
 		</nav>
 		<main>
 			<%= link_to image_tag('logo.png', alt:'convos'), root_path, class:'logo' %>
-			<% if current_user.guest? %>
+			<% if current_user.guest? && cp(root_path) %>
 				<p class="site-headline">the anonymous newsfeed anyone can post to</p>
 			<% end %>
 			<nav class="topic-tabs">
@@ -51,7 +51,7 @@
 				<% end %>
 				<hr>
 				<%= link_to "all comments", comments_path, class: cp(comments_path) %>
-				<%= link_to "[new] convos on Twitter", "https://twitter.com/convosorg", :target => "_blank" %>
+				<%= link_to "convos on Twitter", "https://twitter.com/convosorg", :target => "_blank" %>
 
 				<% if current_user.is_test_user? %>
 					<%= form_tag '/yolo' do |f| %>
