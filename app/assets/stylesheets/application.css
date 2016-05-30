@@ -137,6 +137,12 @@ input[type="password"] {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
+.site-headline {
+	margin-bottom: .5em;
+	font-size: 18px;
+	color: #93A2AB;
+}
+
 /** navigation **/
 .user-links {
 	position: fixed;
@@ -885,6 +891,11 @@ a.close-button {
 
 
 @media screen and (max-width: 700px) {
+	.site-headline {
+		margin-top: 1em;
+		font-size: 16px;
+		text-align: center;
+	}
 	body {
 		max-width: 700px;
 		margin: 0;

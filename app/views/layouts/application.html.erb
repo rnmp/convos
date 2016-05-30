@@ -41,8 +41,11 @@
 		</nav>
 		<main>
 			<%= link_to image_tag('logo.png', alt:'convos'), root_path, class:'logo' %>
+			<% if current_user.guest? %>
+				<p class="site-headline">the anonymous newsfeed anyone can post to</p>
+			<% end %>
 			<nav class="topic-tabs">
-				<%= link_to "all convos", root_path, class: cp(root_path) %>
+				<%= link_to "all topics", root_path, class: cp(root_path) %>
 				<% for topic in topics_list %>
 					<%= link_to topic.name, topic_path(topic, show: params[:show]), class: cp(topic_path(topic)) %>
 				<% end %>
