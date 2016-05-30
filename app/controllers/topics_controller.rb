@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :comments]
 
   def show
     @title = "#{@topic.name}"
@@ -11,6 +11,15 @@ class TopicsController < ApplicationController
       @convos = @topic.convos.order('created_at DESC').page(params[:page]).per(25)
     end
 
+  end
+
+  def comments
+    @comments = 
+      if params[:show] == 'popular'
+        Comment.find_by_topic_id(@topic).order('weighted_score DESC').page(params[:page]).per(25)
+      else
+        Comment.find_by_topic_id(@topic).order('created_at DESC').page(params[:page]).per(25)
+      end
   end
 
   private

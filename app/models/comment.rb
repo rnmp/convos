@@ -14,6 +14,8 @@ class Comment < ActiveRecord::Base
   include Report
   include PollsHandler
 
+  scope :find_by_topic_id, lambda { |topic_id| joins(:convo).where('convos.topic_id = ?', topic_id) }
+
   def self.search(search)
     if search
       where("comment LIKE ?", "%#{search}%")

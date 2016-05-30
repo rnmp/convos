@@ -1,0 +1,12 @@
+<nav class="content-filters _group">
+	<ul class="horizontal-menu" style="float: left;">
+		<li>sort by</li>
+		<li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
+		<li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
+	</ul>
+	<ul class="horizontal-menu" style="float: right;">
+		<li>browse</li>
+		<li><%= link_to 'convos', browse_convos_path, class: ("active" if cp(browse_convos_path)) %></li>
+		<li><%= link_to 'comments', browse_comments_path, class: ("active" if cp(browse_comments_path)) %></li>
+	</ul>
+</nav>

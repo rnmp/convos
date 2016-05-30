@@ -2,11 +2,10 @@
 	<aside class="alert alert-<%= key %>"><%= value %></aside>
 <% end %>
 <%= render partial: 'form', locals: { convo: @new_convo, submit_text: '+ start a convo', timeout: true } %>
-<ul class="horizontal-menu _group">
-	<li>sort by</li>
-	<li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
-	<li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
-</ul>
+<%= render partial: 'convos/content_filters', locals: {
+	browse_convos_path: root_path,
+	browse_comments_path: comments_path
+	} %>
 <% if @convos.present? %>
 	<%= render @convos %>
 <% else %>

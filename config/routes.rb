@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resources :topics
 
+  get '/topics/:id/comments', to: 'topics#comments', as: :topic_comments
+
 
   resources :convos do
     member do
