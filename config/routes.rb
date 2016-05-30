@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/activity', to: 'users#show'
   get '/settings', to: 'users#edit'
 
+  get '/about', to: 'static_pages#about'
   get '/tos', to: 'static_pages#tos'
 
   post '/poll/:poll_id/:id/vote', to: 'polls#vote', as: :vote_on_poll

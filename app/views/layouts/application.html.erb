@@ -42,7 +42,7 @@
 		<main>
 			<%= link_to image_tag('logo.png', alt:'convos'), root_path, class:'logo' %>
 			<% if current_user.guest? && cp(root_path) %>
-				<p class="site-headline">the anonymous newsfeed anyone can post to</p>
+				<p class="site-headline">the anonymous newsfeed anyone can post to.</p>
 			<% end %>
 			<nav class="topic-tabs">
 				<%= link_to "all topics", root_path, class: cp(root_path) %>
