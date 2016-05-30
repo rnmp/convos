@@ -6,9 +6,9 @@ class NotificationsController < ApplicationController
   private
     def set_notifications
       @notifications = Notification.where(user_id: current_user).order('created_at DESC')
+      @unread = Notification.where(user_id: current_user, read: false)
     end
     def mark_notifications_as_read
-      @unread = Notification.where(user_id: current_user, read: false)
       @unread.each do |n|
         n.read = true
         n.save

@@ -108,6 +108,12 @@ ready = ->
     $(this).after(xhr.html)
     $(this).remove()
 
+  checkNotifications = ->
+    $.getJSON '/notifications', (data) ->
+      console.log data
+
+  setInterval checkNotifications, 1000
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
