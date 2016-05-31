@@ -57,6 +57,10 @@ class Convo < ActiveRecord::Base
     /https?:\/\/.*\.(png|gif|jpg|jpeg)/.match(convo).to_a
   end
 
+  def commenters
+    comments.map(&:user).uniq
+  end
+
   def self.search(search)
     if search
       where("title LIKE ? OR comment LIKE ?", "%#{search}%", "%#{search}%")

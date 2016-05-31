@@ -19,14 +19,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @notification = Notification.new
+    @reply_notification = Notification.new
+
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
       @comment = parent.children.build(comment_params)
-      @notification.user_id = parent.user_id
+      @reply_notification.user_id = parent.user_id
     else
       @comment = Comment.new(comment_params)
-      @notification.user_id = @comment.convo.user_id
+      @reply_notification.user_id = @comment.convo.user_id
     end
     @comment.user_id = current_user.id if current_user
 
@@ -38,10 +39,22 @@ class CommentsController < ApplicationController
 
         redirect_path = convo_slug_path(@convo.topic.slug, @convo.id, @convo.slug, anchor: "comment-#{@comment.id}")
 
-        @notification.message = \
-          "Someone replied to <a href='#{redirect_path}'>"\
-          "your #{ @comment.parent_id ? 'comment' : 'convo' }</a>.".html_safe
-        @notification.save unless @notification.user_id == current_user.id
+        @reply_notification.message = \
+          "someone replied to your #{ @comment.parent_id ? 'comment on' : 'convo' } <a href='#{redirect_path}'>"\
+          "#{@comment.convo.title}</a>.".html_safe
+        @reply_notification.save unless @reply_notification.user_id == current_user.id
+
+        @commenters = @comment.convo.commenters - [current_user, @comment.convo.user]
+        if @commenters.any? && @comment.parent_id.nil?
+          @commenters.each do |commenter|
+            Notification.create(
+              user: commenter,
+              message:  \
+                "someone also commented on <a href='#{redirect_path}'>"\
+                "#{@comment.convo.title}</a>.".html_safe
+              )
+          end
+        end
 
         format.html { redirect_to redirect_path }
         format.json { render :show, status: :created, location: @comment }
