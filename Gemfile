@@ -7,7 +7,7 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -32,6 +32,8 @@ gem 'redcarpet'
 
 # Amazon S3
 gem 'aws-sdk'
+
+gem 'twitter'
 
 # Vote system
 gem 'thumbs_up', github: 'bouchard/thumbs_up'
