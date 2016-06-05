@@ -1,3 +1,4 @@
+require 'open-uri'
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :report]
   
@@ -58,7 +59,18 @@ class ConvosController < ApplicationController
       respond_to do |format|
         if @convo.save
           @convo.upvote(current_user)
+
           env["HTTP_REFERER"] += "?convo=#{@convo.id}"
+
+          @twitter_bot = Twitter::REST::Client.new do |config|
+            config.consumer_key        = "vx8fJAq7WNny2LS773rJAeBEo"
+            config.consumer_secret     = "z1IrJON5ziI9lqfjiiGKtGXVH8RdC4OhPAN6OF8ZBQnPHRiTbt"
+            config.access_token        = "712122829186199553-jOcB1dH7IuVNm9c55BtLMrubvrLdHrZ"
+            config.access_token_secret = "q1HvqWYj0i4iYGHJ3klORo24jzbx2e7IYusill96yr7cp"
+          end
+
+          @twitter_bot.update(@convo.to_tweet)
+
           format.html { redirect_to :back }
           format.json { render :show, status: :created, location: @convo }
         else

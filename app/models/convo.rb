@@ -35,20 +35,23 @@ class Convo < ActiveRecord::Base
     @slug
   end
 
+  def render
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    text = strip_tags(markdown.render(convo))
+    
+    return Redcarpet::Render::SmartyPants.render(text).html_safe
+  end
+
   def title
     # matches first HTML tag and uses its content as title
     # e.g. if convo.convo is `<p>Hello</p><p>How are you?</p>`
     # `convo.title` would result in `Hello`
     # TODO: what if convo starts with image/multimedia? (use `alt`?)
-    
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
 
-    @title = strip_tags(markdown.render(convo.gsub(/\n.*$/, '')))
-
-    if @title.blank?
+    if self.render.blank?
       'untitled'
     else
-      Redcarpet::Render::SmartyPants.render(@title).html_safe.truncate(70)
+      self.render.truncate(70)
     end
   end
 
@@ -59,6 +62,11 @@ class Convo < ActiveRecord::Base
 
   def commenters
     comments.map(&:user).uniq
+  end
+
+  def to_tweet
+    convo_length = thumbnails.any? ? 93 : 116
+    (self.render.truncate(convo_length) + (thumbnails.first if thumbnails.any?) + " https://www.convos.org/topics/#{topic.slug}/#{id}/#{slug}").to_s
   end
 
   def self.search(search)
