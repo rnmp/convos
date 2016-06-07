@@ -1,4 +1,3 @@
-require 'open-uri'
 class ConvosController < ApplicationController
   before_action :set_convo, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :report]
   
