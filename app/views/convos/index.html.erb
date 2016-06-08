@@ -6,11 +6,9 @@
 	browse_convos_path: root_path,
 	browse_comments_path: comments_path
 	} %>
-<% cache(["convos_index", @convos.map(&:id), @convos.maximum(:updated_at)]) do %>
-	<% @convos.each do |convo| %>
-		<% cache(convo) do %>
-			<%= render partial: 'convo', locals: { convo: convo } %>
-		<% end %>
-	<% end %>
+<% if @convos.present? %>
+		<%= render @convos %>
+<% else %>
+	<p>no convos found.</p>
 <% end %>
 <%= paginate @convos %>
