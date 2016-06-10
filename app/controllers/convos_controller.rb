@@ -58,8 +58,8 @@ class ConvosController < ApplicationController
       respond_to do |format|
         if @convo.save
           @convo.upvote(current_user)
-          env["HTTP_REFERER"] += "?show=recent&convo=#{@convo.id}"
-          format.html { redirect_to :back }
+          format.html { redirect_to root_url(show: 'recent', convo: @convo.id) }
+          # TO DO: fix this so it works as expected from topic view
           format.json { render :show, status: :created, location: @convo }
         else
           format.html { render :new }
