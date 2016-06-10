@@ -5,10 +5,10 @@ class TopicsController < ApplicationController
     @title = "#{@topic.name}"
     @new_convo = Convo.new
     @new_convo.topic = @topic
-    if params[:show] == 'popular'
-      @convos = @topic.convos.order('weighted_score DESC').page(params[:page]).per(25)
-    else
+    if params[:show] == 'recent'
       @convos = @topic.convos.order('created_at DESC').page(params[:page]).per(25)
+    else
+      @convos = @topic.convos.order('weighted_score DESC').page(params[:page]).per(25)
     end
 
   end

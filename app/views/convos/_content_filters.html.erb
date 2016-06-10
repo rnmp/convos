@@ -1,8 +1,8 @@
 <nav class="content-filters _group">
 	<ul class="horizontal-menu" style="float: left;">
 		<li>sort by</li>
-		<li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] != 'popular') %></li>
-		<li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] == 'popular') %></li>
+		<li><%= link_to 'popular', '?show=popular', class: ("active" if params[:show] != 'recent') %></li>
+		<li><%= link_to 'recent', '?show=recent', class: ("active" if params[:show] == 'recent') %></li>
 	</ul>
 	<ul class="horizontal-menu" style="float: right;">
 		<li>browse</li>

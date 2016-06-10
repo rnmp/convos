@@ -6,10 +6,10 @@ class ConvosController < ApplicationController
   def index
     @new_convo = Convo.new
 
-    if params[:show] == 'popular'
-      @convos = Convo.order('weighted_score DESC').page(params[:page]).per(25)
-    else
+    if params[:show] == 'recent'
       @convos = Convo.order('created_at DESC').page(params[:page]).per(25)
+    else
+      @convos = Convo.order('weighted_score DESC').page(params[:page]).per(25)
     end
     if params[:search]
       @title = "search results for #{params[:search]}"
@@ -58,7 +58,7 @@ class ConvosController < ApplicationController
       respond_to do |format|
         if @convo.save
           @convo.upvote(current_user)
-          env["HTTP_REFERER"] += "?convo=#{@convo.id}"
+          env["HTTP_REFERER"] += "?show=recent&convo=#{@convo.id}"
           format.html { redirect_to :back }
           format.json { render :show, status: :created, location: @convo }
         else
