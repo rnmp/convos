@@ -7,6 +7,7 @@ class Convo < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   validates :convo, presence: true
+  validates_exclusion_of :convo, :in => %w( viagra cialis levitra vardenafil )
   validates :topic, presence: true
   validates :user, presence: true
 
